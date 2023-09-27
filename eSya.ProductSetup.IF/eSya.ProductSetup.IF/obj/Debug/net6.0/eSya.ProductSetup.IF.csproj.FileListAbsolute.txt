@@ -1,0 +1,105 @@
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI - JsonMessages\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Example\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\1.HCS_Projects\eSyaWebAPI&UI-working\jSonErrormessages-Working\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\JsonErrorMessages\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Debug\net6.0\ref\eSya.ProductSetup.IF.dll
