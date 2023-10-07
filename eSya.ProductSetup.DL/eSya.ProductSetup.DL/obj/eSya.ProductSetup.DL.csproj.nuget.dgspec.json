@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj": {}
+    "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj": {
+    "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj",
+        "projectUniqueName": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj",
         "projectName": "eSya.ProductSetup.DL",
-        "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj",
+        "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\obj\\",
+        "outputPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DL\\eSya.ProductSetup.DL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,11 +31,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
-                "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj"
+              "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
+                "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj"
               },
-              "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj": {
-                "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj"
+              "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj": {
+                "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj"
               }
             }
           }
@@ -99,14 +99,14 @@
         }
       }
     },
-    "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
+    "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
+        "projectUniqueName": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
         "projectName": "eSya.ProductSetup.DO",
-        "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
+        "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\obj\\",
+        "outputPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -157,14 +157,14 @@
         }
       }
     },
-    "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj": {
+    "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj",
+        "projectUniqueName": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj",
         "projectName": "eSya.ProductSetup.IF",
-        "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj",
+        "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\obj\\",
+        "outputPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.IF\\eSya.ProductSetup.IF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -184,8 +184,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
-                "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj"
+              "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj": {
+                "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj"
               }
             }
           }

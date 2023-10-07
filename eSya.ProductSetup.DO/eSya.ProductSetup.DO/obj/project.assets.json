@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
+      "projectUniqueName": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
       "projectName": "eSya.ProductSetup.DO",
-      "projectPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
+      "projectPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO.csproj",
       "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\obj\\",
+      "outputPath": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.DO\\eSya.ProductSetup.DO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
