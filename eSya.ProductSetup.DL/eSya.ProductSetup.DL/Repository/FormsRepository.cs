@@ -893,5 +893,157 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion
+
+        #region Define Actions 
+        public async Task<List<DO_Actions>> GetAllActions()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcfmacs
+                        .Select(r => new DO_Actions
+                        {
+                            ActionId = r.ActionId,
+                            ActionDesc = r.ActionDesc,
+                            ActiveStatus = r.ActiveStatus,
+                        }).OrderBy(o => o.ActionDesc).ToListAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> InsertIntoActions(DO_Actions obj)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                      
+
+                        bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
+                        if (is_actionExist)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0157", Message = string.Format(_localizer[name: "W0157"]) };
+                        }
+                        int maxAcctionId = db.GtEcfmacs.Select(c => c.ActionId).DefaultIfEmpty().Max();
+                        maxAcctionId = maxAcctionId + 1;
+                        var obj_act = new GtEcfmac
+                        {
+                            ActionId = maxAcctionId,
+                            ActionDesc = obj.ActionDesc,
+                            ActiveStatus = obj.ActiveStatus,
+                            CreatedBy = obj.UserID,
+                            CreatedOn = System.DateTime.Now,
+                            CreatedTerminal = obj.TerminalID
+                        };
+                        db.GtEcfmacs.Add(obj_act);
+
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        public async Task<DO_ReturnParameter> UpdateActions(DO_Actions obj)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionId != obj.ActionId && a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
+                        if (is_actionExist)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0157", Message = string.Format(_localizer[name: "W0157"]) };
+                        }
+
+
+                        GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == obj.ActionId).FirstOrDefault();
+                        if (act == null)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0158", Message = string.Format(_localizer[name: "W0158"]) };
+                        }
+
+                        act.ActionDesc = obj.ActionDesc;
+                        act.ActiveStatus= obj.ActiveStatus;
+                        act.ModifiedBy = obj.UserID;
+                        act.ModifiedOn = System.DateTime.Now;
+                        act.ModifiedTerminal = obj.TerminalID;
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        public async Task<DO_ReturnParameter> ActiveOrDeActiveActions(bool status, int actionId)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == actionId).FirstOrDefault();
+                        if (act == null)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00158", Message = string.Format(_localizer[name: "W00158"]) };
+                        }
+
+                        act.ActiveStatus = status;
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+
+                        if (status == true)
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0003", Message = string.Format(_localizer[name: "S0003"]) };
+                        else
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0004", Message = string.Format(_localizer[name: "S0004"]) };
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

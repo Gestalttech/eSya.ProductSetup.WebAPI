@@ -100,4 +100,13 @@ namespace eSya.ProductSetup.DO
         public List<DO_ApplicationCodes> l_Module { get; set; } = null!;
         public List<DO_FormModule> l_Form { get; set; } = null!;
     }
+
+    public class DO_Actions
+    {
+        public int ActionId { get; set; }
+        public string ActionDesc { get; set; } = null!;
+        public bool ActiveStatus { get; set; }
+        public int UserID { get; set; }
+        public string TerminalID { get; set; } = null!;
+    }
 }

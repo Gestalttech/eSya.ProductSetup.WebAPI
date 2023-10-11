@@ -49,5 +49,12 @@ namespace eSya.ProductSetup.IF
         Task<DO_ReturnParameter> ActiveOrDeActiveAreaController(bool status, int Id);
 
         #endregion
+
+        #region Define Actions 
+        Task<List<DO_Actions>> GetAllActions();
+        Task<DO_ReturnParameter> InsertIntoActions(DO_Actions obj);
+        Task<DO_ReturnParameter> UpdateActions(DO_Actions obj);
+        Task<DO_ReturnParameter> ActiveOrDeActiveActions(bool status, int actionId);
+        #endregion
     }
 }

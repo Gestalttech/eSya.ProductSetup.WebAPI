@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\wwwroot\\Resources\\ar-EG.json",
+      "Id": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\wwwroot\\Resources\\ar-EG.json",
       "PackagePath": "staticwebassets\\Resources\\ar-EG.json"
     },
     {
-      "Id": "D:\\Projects\\eSyaJsonworking\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\wwwroot\\Resources\\en-US.json",
+      "Id": "D:\\Projects\\eSyaProjects2022\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\eSya.ProductSetup.WebAPI\\wwwroot\\Resources\\en-US.json",
       "PackagePath": "staticwebassets\\Resources\\en-US.json"
     },
     {

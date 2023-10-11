@@ -1,4 +1,5 @@
-﻿using eSya.ProductSetup.DO;
+﻿using eSya.ProductSetup.DL.Repository;
+using eSya.ProductSetup.DO;
 using eSya.ProductSetup.IF;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -133,6 +134,53 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         {
             var msg = await _FormsRepository.ActiveOrDeActiveAreaController(status, Id);
             return Ok(msg);
+        }
+        #endregion
+
+        #region Define Actions 
+        /// <summary>
+        /// Get All Actions
+        /// UI Reffered - Actions,
+        /// </summary>
+        
+        [HttpGet]
+        public async Task<IActionResult> GetAllActions()
+        {
+            var actions = await _FormsRepository.GetAllActions();
+            return Ok(actions);
+        }
+        /// <summary>
+        /// Insert into Actions Table
+        /// UI Reffered - Actions,
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertIntoActions(DO_Actions obj)
+        {
+            var msg = await _FormsRepository.InsertIntoActions(obj);
+            return Ok(msg);
+        }
+
+        /// <summary>
+        /// Update into Actions Table
+        /// UI Reffered - Actions,
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> UpdateActions(DO_Actions obj)
+        {
+            var msg = await _FormsRepository.UpdateActions(obj);
+            return Ok(msg);
+        }
+        /// <summary>
+        /// Active Or De Active Code Types.
+        /// UI Reffered - Code Types
+        /// </summary>
+        /// <param name="status-code_type"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> ActiveOrDeActiveActions(bool status, int actionId)
+        {
+            var ac = await _FormsRepository.ActiveOrDeActiveActions(status, actionId);
+            return Ok(ac);
         }
         #endregion
     }
