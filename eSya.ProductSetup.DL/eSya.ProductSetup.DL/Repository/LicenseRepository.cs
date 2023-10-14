@@ -18,6 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
+
         #region Business Entity
         public async Task<List<DO_BusinessEntity>> GetBusinessEntities()
         {
@@ -257,9 +258,6 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion  Business Entity
-
-
-
 
         #region Business Subscription
         public async Task<List<DO_BusinessSubscription>> GetBusinessSubscription(int BusinessKey)
@@ -885,6 +883,226 @@ namespace eSya.ProductSetup.DL.Repository
         }
         #endregion
 
-        
+        #region Define User Role Action
+
+        public async Task<List<DO_ApplicationCodes>> GetUserRoleByCodeType(int codeType)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    
+                        var ds = db.GtEcapcds
+                       .Where(w => w.CodeType == codeType && w.ActiveStatus==true)
+                       .Select(r => new DO_ApplicationCodes
+                       {
+                           ApplicationCode = r.ApplicationCode,
+                           CodeDesc = r.CodeDesc
+                       }).OrderBy(o => o.CodeDesc).ToListAsync();
+                        return await ds;
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_UserRoleActionLink>> GetUserRoleActionLink(int userRole)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+
+                    var ds = await db.GtEcfmacs.Where(x => x.ActiveStatus == true)
+                   .GroupJoin(db.GtEuusrls.Where(w => w.UserRole == userRole),
+                     d => d.ActionId,
+                     l => l.ActionId,
+                    (act, rol) => new { act, rol })
+                   .SelectMany(z => z.rol.DefaultIfEmpty(),
+                    (a, b) => new DO_UserRoleActionLink
+                    {
+                        ActionId = a.act.ActionId,
+                        ActionDesc=a.act.ActionDesc,
+                        UserRole = b == null ? 0 : b.UserRole,
+                        ActiveStatus = b == null ? false : b.ActiveStatus
+                    }).ToListAsync();
+
+                    return ds;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> InsertOrUpdateUpdateUserRoleActionLink(List<DO_UserRoleActionLink> obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var _role in obj)
+                        {
+                            var roleExist = db.GtEuusrls.Where(w => w.UserRole == _role.UserRole && w.ActionId == _role.ActionId).FirstOrDefault();
+                            if (roleExist != null)
+                            {
+                                db.GtEuusrls.Remove(roleExist);
+                                await db.SaveChangesAsync();
+                            }
+                         }
+                        foreach (var _role in obj)
+                        { 
+                            if (_role.ActiveStatus == true) 
+                                { 
+                                    var userrolelink = new GtEuusrl
+                                    {
+                                        UserRole = _role.UserRole,
+                                        ActionId = _role.ActionId,
+                                        ActiveStatus = _role.ActiveStatus,
+                                        FormId= _role.FormID,
+                                        CreatedBy = _role.UserID,
+                                        CreatedOn = System.DateTime.Now,
+                                        CreatedTerminal = _role.TerminalID
+                                    };
+                                    db.GtEuusrls.Add(userrolelink);
+                                    await db.SaveChangesAsync();
+                                }
+                        }
+                    
+                       
+                        dbContext.Commit();
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Define Menu Link to Location
+        public async Task<DO_ConfigureMenu> GetLocationMenuLinkbyBusinessKey(int businesskey)
+        {
+            try
+            {
+                using (eSyaEnterprise db = new eSyaEnterprise())
+                {
+                    DO_ConfigureMenu mn = new DO_ConfigureMenu();
+                    mn.l_MainMenu = await db.GtEcmamns.Where(x=>x.ActiveStatus)
+                                    .Select(m => new DO_MainMenu()
+                                    {
+                                        MainMenuId = m.MainMenuId,
+                                        MainMenu = m.MainMenu,
+                                        MenuIndex = m.MenuIndex,
+                                        ActiveStatus = m.ActiveStatus
+                                    }).ToListAsync();
+
+                    mn.l_SubMenu = await db.GtEcsbmns.Where(x => x.ActiveStatus)
+                                    .Select(s => new DO_SubMenu()
+                                    {
+                                        MainMenuId = s.MainMenuId,
+                                        MenuItemId = s.MenuItemId,
+                                        MenuItemName = s.MenuItemName,
+                                        MenuIndex = s.MenuIndex,
+                                        ParentID = s.ParentId,
+                                        ActiveStatus = s.ActiveStatus
+                                    }).ToListAsync();
+
+                    mn.l_FormMenu = await db.GtEcmnfls.Where(x => x.ActiveStatus)
+                                    .Select(f => new DO_FormMenu()
+                                    {
+                                        MainMenuId = f.MainMenuId,
+                                        MenuItemId = f.MenuItemId,
+                                        //FormId = f.FormId,
+                                        FormId = f.MenuKey,
+                                        FormNameClient = f.FormNameClient,
+                                        FormIndex = f.FormIndex,
+                                        ActiveStatus = f.ActiveStatus,
+
+                                    }).ToListAsync();
+                    foreach (var obj in mn.l_FormMenu)
+                    {
+                        GtEcbsmn menulink = db.GtEcbsmns.Where(c => c.BusinessKey == businesskey && c.MenuKey == obj.FormId).FirstOrDefault();
+                        if (menulink != null)
+                        {
+                            obj.ActiveStatus = menulink.ActiveStatus;
+                        }
+                        else
+                        {
+                            obj.ActiveStatus = false;
+                        }
+                    }
+                    return mn;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> InsertOrUpdateLocationMenuLink(List<DO_LocationMenuLink> obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var _link in obj)
+                        {
+                            var _linkExist = db.GtEcbsmns.Where(w => w.MenuKey == _link.MenuKey && w.BusinessKey == _link.BusinessKey).FirstOrDefault();
+                            if (_linkExist != null)
+                            {
+                                if (_linkExist.ActiveStatus != _link.ActiveStatus)
+                                {
+                                    _linkExist.ActiveStatus = _link.ActiveStatus;
+                                    _linkExist.ModifiedBy = _link.UserID;
+                                    _linkExist.ModifiedOn = System.DateTime.Now;
+                                    _linkExist.ModifiedTerminal = _link.TerminalID;
+                                }
+
+                            }
+                            else
+                            {
+                                if (_link.ActiveStatus)
+                                {
+                                    var _loclink = new GtEcbsmn
+                                    {
+                                        BusinessKey = _link.BusinessKey,
+                                        MenuKey = _link.MenuKey,
+                                        ActiveStatus = _link.ActiveStatus,
+                                        CreatedBy = _link.UserID,
+                                        CreatedOn = System.DateTime.Now,
+                                        CreatedTerminal = _link.TerminalID
+                                    };
+                                    db.GtEcbsmns.Add(_loclink);
+                                }
+
+                            }
+                        }
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

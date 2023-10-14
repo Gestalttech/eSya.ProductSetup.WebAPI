@@ -12,13 +12,13 @@ namespace eSya.ProductSetup.DL.Entities
         }
 
         public int MainMenuId { get; set; }
-        public string MainMenu { get; set; } 
+        public string MainMenu { get; set; } = null!;
         public string? ImageUrl { get; set; }
         public int MenuIndex { get; set; }
         public bool ActiveStatus { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
-        public string CreatedTerminal { get; set; } 
+        public string CreatedTerminal { get; set; } = null!;
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public string? ModifiedTerminal { get; set; }

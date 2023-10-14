@@ -46,5 +46,17 @@ namespace eSya.ProductSetup.IF
         Task<List<DO_BusienssSegmentCurrency>> GetCurrencybyBusinessKey(int BusinessKey);
         Task<DO_BusinessEntity> GetBusinessUnitType(int businessId);
         #endregion
+
+        #region Define User Role Action
+        Task<List<DO_ApplicationCodes>> GetUserRoleByCodeType(int codeType);
+        Task<List<DO_UserRoleActionLink>> GetUserRoleActionLink(int userRole);
+        Task<DO_ReturnParameter> InsertOrUpdateUpdateUserRoleActionLink(List<DO_UserRoleActionLink> obj);
+        #endregion
+
+        #region Define Menu Link to Location
+        Task<DO_ConfigureMenu> GetLocationMenuLinkbyBusinessKey(int businesskey);
+
+        Task<DO_ReturnParameter> InsertOrUpdateLocationMenuLink(List<DO_LocationMenuLink> obj);
+        #endregion
     }
 }

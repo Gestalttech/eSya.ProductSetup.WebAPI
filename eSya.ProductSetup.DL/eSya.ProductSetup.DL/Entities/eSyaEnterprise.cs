@@ -29,6 +29,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcaprl> GtEcaprls { get; set; } = null!;
         public virtual DbSet<GtEcbsen> GtEcbsens { get; set; } = null!;
         public virtual DbSet<GtEcbsln> GtEcbslns { get; set; } = null!;
+        public virtual DbSet<GtEcbsmn> GtEcbsmns { get; set; } = null!;
         public virtual DbSet<GtEcbssc> GtEcbsscs { get; set; } = null!;
         public virtual DbSet<GtEcbssu> GtEcbssus { get; set; } = null!;
         public virtual DbSet<GtEcclco> GtEcclcos { get; set; } = null!;
@@ -53,6 +54,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcprrl> GtEcprrls { get; set; } = null!;
         public virtual DbSet<GtEcsbmn> GtEcsbmns { get; set; } = null!;
         public virtual DbSet<GtEcsupa> GtEcsupas { get; set; } = null!;
+        public virtual DbSet<GtEuusrl> GtEuusrls { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -407,6 +409,21 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.TorealCurrency).HasColumnName("TORealCurrency");
+            });
+
+            modelBuilder.Entity<GtEcbsmn>(entity =>
+            {
+                entity.HasKey(e => new { e.BusinessKey, e.MenuKey });
+
+                entity.ToTable("GT_ECBSMN");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
             });
 
             modelBuilder.Entity<GtEcbssc>(entity =>
@@ -1167,6 +1184,29 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<GtEuusrl>(entity =>
+            {
+                entity.HasKey(e => new { e.UserRole, e.ActionId })
+                    .HasName("PK_GT_EUUSRL_1");
+
+                entity.ToTable("GT_EUUSRL");
+
+                entity.Property(e => e.ActionId).HasColumnName("ActionID");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
 
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
