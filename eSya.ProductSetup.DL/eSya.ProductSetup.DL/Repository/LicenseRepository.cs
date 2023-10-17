@@ -122,8 +122,8 @@ namespace eSya.ProductSetup.DL.Repository
                             }
                             foreach (var _pl in obj.l_Preferredlang)
                             {
-                                if (_pl.ActiveStatus == true)
-                                {
+                                //if (_pl.ActiveStatus == true)
+                                //{
                                     var plang = new GtEcbspl
                                     {
                                         BusinessId = _businessID,
@@ -137,7 +137,7 @@ namespace eSya.ProductSetup.DL.Repository
                                     };
                                     db.GtEcbspls.Add(plang);
                                     await db.SaveChangesAsync();
-                                }
+                                //}
                             }
                             //await db.SaveChangesAsync();
                         }
