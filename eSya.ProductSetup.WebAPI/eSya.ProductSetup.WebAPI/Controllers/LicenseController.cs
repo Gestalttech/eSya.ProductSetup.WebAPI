@@ -87,6 +87,19 @@ namespace eSya.ProductSetup.WebAPI.Controllers
 
         }
 
+
+        /// <summary>
+        /// Getting  Business Entity Preferred Language.
+        /// UI Reffered - Business Entity Grid
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetPreferredLanguagebyBusinessKey(int BusinessId)
+        {
+            var lang = await _licenseRepository.GetPreferredLanguagebyBusinessKey(BusinessId);
+            return Ok(lang);
+
+        }
+
         #endregion  Business Entity
 
         #region Business Subscription

@@ -23,6 +23,8 @@ namespace eSya.ProductSetup.IF
 
         Task<List<DO_BusinessEntity>> GetActiveBusinessEntities();
 
+        Task<List<DO_EntityPreferredLanguage>> GetPreferredLanguagebyBusinessKey(int BusinessId);
+
         #endregion  Business Entity
 
         #region Business Subscription

@@ -108,6 +108,40 @@ namespace eSya.ProductSetup.DL.Repository
                         };
                         db.GtEcbsens.Add(b_Entity);
                         await db.SaveChangesAsync();
+
+                        if (obj.l_Preferredlang != null)
+                        {
+                            foreach (var pl in obj.l_Preferredlang)
+                            {
+                                var plExist = db.GtEcbspls.Where(w => w.BusinessId == _businessID && w.PreferredLanguage.ToUpper().Replace(" ", "") == pl.CultureCode.ToUpper().Replace(" ", "")).FirstOrDefault();
+                                if (plExist != null)
+                                {
+                                    db.GtEcbspls.Remove(plExist);
+                                    await db.SaveChangesAsync();
+                                }
+                            }
+                            foreach (var _pl in obj.l_Preferredlang)
+                            {
+                                if (_pl.ActiveStatus == true)
+                                {
+                                    var plang = new GtEcbspl
+                                    {
+                                        BusinessId = _businessID,
+                                        PreferredLanguage = _pl.CultureCode,
+                                        Pldesc=_pl.Pldesc,
+                                        ActiveStatus = _pl.ActiveStatus,
+                                        FormId = _pl.FormID,
+                                        CreatedBy = _pl.UserID,
+                                        CreatedOn = System.DateTime.Now,
+                                        CreatedTerminal = _pl.TerminalID
+                                    };
+                                    db.GtEcbspls.Add(plang);
+                                    await db.SaveChangesAsync();
+                                }
+                            }
+                            //await db.SaveChangesAsync();
+                        }
+                    
                         dbContext.Commit();
                         return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
                     }
@@ -140,15 +174,6 @@ namespace eSya.ProductSetup.DL.Repository
 
                         }
 
-                        //if (!businessentity.ActiveStatus)
-                        //{
-                        //    var b_seg = await db.GtEcbssgs.Where(w => w.BusinessId == businessentity.BusinessId && w.ActiveStatus).ToListAsync();
-
-                        //    if (b_seg != null)
-                        //    {
-                        //        return new DO_ReturnParameter() { Status = false, Message = "Business Segment Active for selected Business Entity, you can't Deactivate Business Entity." };
-                        //    }
-                        //}
 
                         GtEcbsen b_Entity = db.GtEcbsens.Where(be => be.BusinessId == obj.BusinessId).FirstOrDefault();
                         if (b_Entity != null)
@@ -162,6 +187,41 @@ namespace eSya.ProductSetup.DL.Repository
                             b_Entity.ModifiedOn = System.DateTime.Now;
                             b_Entity.ModifiedTerminal = obj.TerminalID;
                             await db.SaveChangesAsync();
+
+                            if (obj.l_Preferredlang != null)
+                            {
+                                foreach (var pl in obj.l_Preferredlang)
+                                {
+                                    var plExist = db.GtEcbspls.Where(w => w.BusinessId == pl.BusinessId && w.PreferredLanguage.ToUpper().Replace(" ", "") == pl.CultureCode.ToUpper().Replace(" ", "")).FirstOrDefault();
+                                    if (plExist != null)
+                                    {
+                                        db.GtEcbspls.Remove(plExist);
+                                        await db.SaveChangesAsync();
+                                    }
+                                }
+                                foreach (var _pl in obj.l_Preferredlang)
+                                {
+                                    //if (_pl.ActiveStatus == true)
+                                    //{
+                                        var plang = new GtEcbspl
+                                        {
+                                            BusinessId = _pl.BusinessId,
+                                            PreferredLanguage = _pl.CultureCode,
+                                            Pldesc = _pl.Pldesc,
+                                            ActiveStatus = _pl.ActiveStatus,
+                                            FormId = _pl.FormID,
+                                            CreatedBy = _pl.UserID,
+                                            CreatedOn = System.DateTime.Now,
+                                            CreatedTerminal = _pl.TerminalID
+                                        };
+                                        db.GtEcbspls.Add(plang);
+                                        await db.SaveChangesAsync();
+                                    //}
+                                }
+                                //await db.SaveChangesAsync();
+                            }
+
+
                             dbContext.Commit();
 
                             return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
@@ -207,16 +267,27 @@ namespace eSya.ProductSetup.DL.Repository
 
                         }
 
-                        //var b_seg = await db.GtEcbssgs.Where(w => w.BusinessId == BusinessEntityId && w.ActiveStatus).ToListAsync();
-
-                        //if (b_seg != null)
-                        //{
-                        //    return new DO_ReturnParameter() { Status = false, Message = "Business Segment Active for selected Business Entity, you can't Delete Business Entity." };
-                        //}
-
                         db.GtEcbsens.Remove(bu_en);
 
                         await db.SaveChangesAsync();
+
+
+                        var plist = db.GtEcbspls.Where(x => x.BusinessId == BusinessEntityId).ToList();
+                        if (plist != null)
+                        {
+                            foreach (var pl in plist)
+                            {
+                                var plExist = db.GtEcbspls.Where(w => w.BusinessId == pl.BusinessId && w.PreferredLanguage.ToUpper().Replace(" ", "") == pl.PreferredLanguage.ToUpper().Replace(" ", "")).FirstOrDefault();
+                                if (plExist != null)
+                                {
+                                    db.GtEcbspls.Remove(plExist);
+                                    await db.SaveChangesAsync();
+                                }
+                            }
+                           
+                        }
+
+
                         dbContext.Commit();
 
                         return new DO_ReturnParameter() { Status = true, StatusCode = "S0005", Message = string.Format(_localizer[name: "S0005"]) };
@@ -257,6 +328,46 @@ namespace eSya.ProductSetup.DL.Repository
                 throw ex;
             }
         }
+
+        public async Task<List<DO_EntityPreferredLanguage>> GetPreferredLanguagebyBusinessKey(int BusinessId)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = await db.GtEbeculs.Where(x=>x.ActiveStatus)
+                        .Select(r => new DO_EntityPreferredLanguage
+                        {
+                            BusinessId= BusinessId,
+                            CultureCode = r.CultureCode,
+                            CultureDesc = r.CultureDesc,
+                            ActiveStatus = false
+                        }).ToListAsync();
+
+                    foreach (var obj in ds)
+                    {
+                        GtEcbspl cul = db.GtEcbspls.Where(x => x.BusinessId == BusinessId && x.PreferredLanguage.ToUpper().Replace(" ", "") == obj.CultureCode.ToUpper().Replace(" ", "")).FirstOrDefault();
+                        if (cul != null)
+                        {
+                            obj.ActiveStatus = cul.ActiveStatus;
+                            obj.Pldesc = cul.Pldesc;
+                        }
+                        else
+                        {
+                            obj.ActiveStatus = false;
+                            obj.Pldesc = string.Empty;
+                        }
+                    }
+
+                    return ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion  Business Entity
 
         #region Business Subscription

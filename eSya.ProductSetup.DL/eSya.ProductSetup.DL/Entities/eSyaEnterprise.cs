@@ -23,6 +23,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtDccnst> GtDccnsts { get; set; } = null!;
         public virtual DbSet<GtDncnfd> GtDncnfds { get; set; } = null!;
         public virtual DbSet<GtEbecnt> GtEbecnts { get; set; } = null!;
+        public virtual DbSet<GtEbecul> GtEbeculs { get; set; } = null!;
         public virtual DbSet<GtEcapcd> GtEcapcds { get; set; } = null!;
         public virtual DbSet<GtEcapct> GtEcapcts { get; set; } = null!;
         public virtual DbSet<GtEcaprb> GtEcaprbs { get; set; } = null!;
@@ -30,6 +31,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcbsen> GtEcbsens { get; set; } = null!;
         public virtual DbSet<GtEcbsln> GtEcbslns { get; set; } = null!;
         public virtual DbSet<GtEcbsmn> GtEcbsmns { get; set; } = null!;
+        public virtual DbSet<GtEcbspl> GtEcbspls { get; set; } = null!;
         public virtual DbSet<GtEcbssc> GtEcbsscs { get; set; } = null!;
         public virtual DbSet<GtEcbssu> GtEcbssus { get; set; } = null!;
         public virtual DbSet<GtEcclco> GtEcclcos { get; set; } = null!;
@@ -197,6 +199,34 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.Area).HasMaxLength(50);
 
                 entity.Property(e => e.Controller).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<GtEbecul>(entity =>
+            {
+                entity.HasKey(e => e.CultureCode);
+
+                entity.ToTable("GT_EBECUL");
+
+                entity.Property(e => e.CultureCode)
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.CultureDesc)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .HasColumnName("FormID")
+                    .IsFixedLength();
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
             });
 
             modelBuilder.Entity<GtEcapcd>(entity =>
@@ -424,6 +454,36 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<GtEcbspl>(entity =>
+            {
+                entity.HasKey(e => new { e.BusinessId, e.PreferredLanguage });
+
+                entity.ToTable("GT_ECBSPL");
+
+                entity.Property(e => e.BusinessId).HasColumnName("BusinessID");
+
+                entity.Property(e => e.PreferredLanguage)
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .HasColumnName("FormID")
+                    .IsFixedLength();
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.Pldesc)
+                    .HasMaxLength(50)
+                    .HasColumnName("PLDesc");
             });
 
             modelBuilder.Entity<GtEcbssc>(entity =>
