@@ -930,7 +930,7 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
                         if (is_actionExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0157", Message = string.Format(_localizer[name: "W0157"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00157", Message = string.Format(_localizer[name: "W00157"]) };
                         }
                         int maxAcctionId = db.GtEcfmacs.Select(c => c.ActionId).DefaultIfEmpty().Max();
                         maxAcctionId = maxAcctionId + 1;
@@ -974,14 +974,14 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionId != obj.ActionId && a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
                         if (is_actionExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0157", Message = string.Format(_localizer[name: "W0157"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00157", Message = string.Format(_localizer[name: "W00157"]) };
                         }
 
 
                         GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == obj.ActionId).FirstOrDefault();
                         if (act == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0158", Message = string.Format(_localizer[name: "W0158"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00158", Message = string.Format(_localizer[name: "W00158"]) };
                         }
 
                         act.ActionDesc = obj.ActionDesc;

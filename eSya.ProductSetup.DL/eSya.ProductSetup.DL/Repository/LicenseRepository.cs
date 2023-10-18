@@ -188,6 +188,7 @@ namespace eSya.ProductSetup.DL.Repository
                             b_Entity.ModifiedTerminal = obj.TerminalID;
                             await db.SaveChangesAsync();
 
+
                             if (obj.l_Preferredlang != null)
                             {
                                 foreach (var pl in obj.l_Preferredlang)
