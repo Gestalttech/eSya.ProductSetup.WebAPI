@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -486,6 +487,155 @@ namespace eSya.ProductSetup.DL.Repository
         }
 
 
+        #endregion
+
+        #region Map Rules with Location
+        public async Task<List<DO_ProcessMaster>> GetProcessforLocationLink()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcprrls.Where(x=>x.ActiveStatus && x.IsSegmentSpecific==true)
+                        .Select(r => new DO_ProcessMaster
+                        {
+                            ProcessId = r.ProcessId,
+                            ProcessDesc = r.ProcessDesc,
+                            IsSegmentSpecific = r.IsSegmentSpecific,
+                            SystemControl = r.SystemControl,
+                            ProcessControl = r.ProcessControl,
+                            ActiveStatus = r.ActiveStatus
+                        }).ToListAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_ProcessRule>> GetProcessRuleforLocationLink()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcprrls.Where(x => x.ActiveStatus && x.IsSegmentSpecific)
+                        .Join(db.GtEcaprls.Where(x=>x.ActiveStatus),
+                         x => x.ProcessId,
+                         y => y.ProcessId,
+                        (x, y) => new DO_ProcessRule
+                        {
+                            ProcessId=y.ProcessId,
+                            RuleId=y.RuleId,
+                            RuleDesc=y.RuleDesc,
+                            ActiveStatus=y.ActiveStatus
+                        }).ToListAsync();
+
+                    
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_BusinessLocation>> GetProcessRulesMappedwithLocationByID(int processID, int ruleID)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+
+                    var ds = await db.GtEcbslns.Where(x => x.ActiveStatus==true) 
+                     .Select(f => new DO_BusinessLocation()
+                    {
+                         BusinessKey = f.BusinessKey,
+                         LocationDescription = f.BusinessName + "-" + f.LocationDescription,
+                         ActiveStatus = f.ActiveStatus
+                    }).ToListAsync();
+
+
+                    foreach (var _link in ds)
+                    {
+                        GtEcaprb _lexista = db.GtEcaprbs.Where(c => c.BusinessKey == _link.BusinessKey && c.ProcessId == processID && c.RuleId== ruleID).FirstOrDefault();
+                        if (_lexista != null)
+                        {
+                            _link.ActiveStatus = _lexista.ActiveStatus;
+
+                        }
+                        else
+                        { 
+                            _link.ActiveStatus = false;
+                        }
+                    }
+
+                    return ds;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> InsertOrUpdateProcessRulesMapwithLocation(List<DO_ProcessRulebySegment> obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var _link in obj)
+                        {
+                            var _linkExist = db.GtEcaprbs.Where(w => w.BusinessKey == _link.BusinessKey && w.ProcessId == _link.ProcessId && w.RuleId==_link.RuleId).FirstOrDefault();
+                            if (_linkExist != null)
+                            {
+                                if (_linkExist.ActiveStatus != _link.ActiveStatus)
+                                {
+                                    _linkExist.ActiveStatus = _link.ActiveStatus;
+                                    _linkExist.ModifiedBy = _link.UserID;
+                                    _linkExist.ModifiedOn = System.DateTime.Now;
+                                    _linkExist.ModifiedTerminal = _link.TerminalID;
+                                }
+
+                            }
+                            else
+                            {
+                                if (_link.ActiveStatus)
+                                {
+                                    var _loclink = new GtEcaprb
+                                    {
+                                        BusinessKey = _link.BusinessKey,
+                                        ProcessId = _link.ProcessId,
+                                        RuleId = _link.RuleId,
+                                        ActiveStatus = _link.ActiveStatus,
+                                        CreatedBy = _link.UserID,
+                                        FormId=_link.FormID,
+                                        CreatedOn = System.DateTime.Now,
+                                        CreatedTerminal = _link.TerminalID
+                                    };
+                                    db.GtEcaprbs.Add(_loclink);
+                                }
+
+                            }
+                        }
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

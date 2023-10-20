@@ -147,5 +147,53 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             return Ok(rp);
         }
         #endregion
+
+        #region Map Rules with Location
+        /// <summary>
+        /// Get Process for Location Link.
+        /// UI Reffered -Map Rules with Location
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetProcessforLocationLink()
+        {
+            var process = await _ProcessMasterRepository.GetProcessforLocationLink();
+            return Ok(process);
+        }
+
+        /// <summary>
+        /// Get Process Rule for Location Link.
+        /// UI Reffered - Map Rules with Location
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetProcessRuleforLocationLink()
+        {
+            var rules = await _ProcessMasterRepository.GetProcessRuleforLocationLink();
+            return Ok(rules);
+        }
+        /// <summary>
+        /// Get Mapped Process Rule.
+        /// UI Reffered - Map Rules with Location
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetProcessRulesMappedwithLocationByID(int processID, int ruleID)
+        {
+            var likedrules = await _ProcessMasterRepository.GetProcessRulesMappedwithLocationByID(processID, ruleID);
+            return Ok(likedrules);
+        }
+
+        /// <summary>
+        /// Insert or Update into Process Rules Map with Location
+        /// UI Reffered -  Map Rules with Location
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertOrUpdateProcessRulesMapwithLocation(List<DO_ProcessRulebySegment> obj)
+        {
+            var rp = await _ProcessMasterRepository.InsertOrUpdateProcessRulesMapwithLocation(obj);
+            return Ok(rp);
+        }
+        #endregion
     }
 }

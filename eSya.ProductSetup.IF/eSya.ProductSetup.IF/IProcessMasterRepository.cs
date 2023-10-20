@@ -41,5 +41,12 @@ namespace eSya.ProductSetup.IF
 
         Task<DO_ReturnParameter> InsertorUpdateProcessRulebySegment(DO_ProcessRulebySegment obj);
         #endregion
+
+        #region Map Rules with Location
+        Task<List<DO_ProcessMaster>> GetProcessforLocationLink();
+        Task<List<DO_ProcessRule>> GetProcessRuleforLocationLink();
+        Task<List<DO_BusinessLocation>> GetProcessRulesMappedwithLocationByID(int processID, int ruleID);
+        Task<DO_ReturnParameter> InsertOrUpdateProcessRulesMapwithLocation(List<DO_ProcessRulebySegment> obj);
+        #endregion
     }
 }
