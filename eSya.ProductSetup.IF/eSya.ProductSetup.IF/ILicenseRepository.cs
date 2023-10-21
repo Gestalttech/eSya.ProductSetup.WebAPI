@@ -47,6 +47,8 @@ namespace eSya.ProductSetup.IF
         Task<DO_TaxIdentification> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId);
         Task<List<DO_BusienssSegmentCurrency>> GetCurrencybyBusinessKey(int BusinessKey);
         Task<DO_BusinessEntity> GetBusinessUnitType(int businessId);
+        Task<List<DO_eSyaParameter>> GetLocationParametersbyBusinessKey(int BusinessKey);
+        Task<List<DO_LocationPreferredLanguage>> GetLocationPreferredLanguagebyBusinessKey(int BusinessID, int BusinessKey);
         #endregion
 
         #region Define User Role Action

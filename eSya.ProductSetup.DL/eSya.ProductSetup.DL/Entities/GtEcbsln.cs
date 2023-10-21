@@ -9,11 +9,13 @@ namespace eSya.ProductSetup.DL.Entities
         {
             GtEcbssus = new HashSet<GtEcbssu>();
             GtEcclcos = new HashSet<GtEcclco>();
+            GtEcpabls = new HashSet<GtEcpabl>();
         }
 
         public int BusinessId { get; set; }
         public int LocationId { get; set; }
         public int BusinessKey { get; set; }
+        public string ShortDesc { get; set; } = null!;
         public string LocationDescription { get; set; } = null!;
         public string BusinessName { get; set; } = null!;
         public byte[] EBusinessKey { get; set; } = null!;
@@ -42,5 +44,6 @@ namespace eSya.ProductSetup.DL.Entities
 
         public virtual ICollection<GtEcbssu> GtEcbssus { get; set; }
         public virtual ICollection<GtEcclco> GtEcclcos { get; set; }
+        public virtual ICollection<GtEcpabl> GtEcpabls { get; set; }
     }
 }

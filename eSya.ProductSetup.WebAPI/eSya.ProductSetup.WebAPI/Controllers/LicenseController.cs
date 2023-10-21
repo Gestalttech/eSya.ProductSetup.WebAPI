@@ -258,6 +258,28 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             var taxidentifications = await _licenseRepository.GetBusinessUnitType(businessId);
             return Ok(taxidentifications);
         }
+        /// <summary>
+        /// Get Parameters by BusinessKey.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetLocationParametersbyBusinessKey(int BusinessKey)
+        {
+            var param = await _licenseRepository.GetLocationParametersbyBusinessKey(BusinessKey);
+            return Ok(param);
+        }
+        /// <summary>
+        /// Get Location Preferred Languages by BusinessKey.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetLocationPreferredLanguagebyBusinessKey(int BusinessID, int BusinessKey)
+        {
+            var plang = await _licenseRepository.GetLocationPreferredLanguagebyBusinessKey(BusinessID,BusinessKey);
+            return Ok(plang);
+        }
         #endregion
 
         #region Define User Role Action

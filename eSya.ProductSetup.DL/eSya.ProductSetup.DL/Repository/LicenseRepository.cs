@@ -122,8 +122,7 @@ namespace eSya.ProductSetup.DL.Repository
                             }
                             foreach (var _pl in obj.l_Preferredlang)
                             {
-                                //if (_pl.ActiveStatus == true)
-                                //{
+                                
                                     var plang = new GtEcbspl
                                     {
                                         BusinessId = _businessID,
@@ -137,7 +136,7 @@ namespace eSya.ProductSetup.DL.Repository
                                     };
                                     db.GtEcbspls.Add(plang);
                                     await db.SaveChangesAsync();
-                                //}
+                                
                             }
                             //await db.SaveChangesAsync();
                         }
@@ -202,8 +201,7 @@ namespace eSya.ProductSetup.DL.Repository
                                 }
                                 foreach (var _pl in obj.l_Preferredlang)
                                 {
-                                    //if (_pl.ActiveStatus == true)
-                                    //{
+                                  
                                         var plang = new GtEcbspl
                                         {
                                             BusinessId = _pl.BusinessId,
@@ -217,7 +215,7 @@ namespace eSya.ProductSetup.DL.Repository
                                         };
                                         db.GtEcbspls.Add(plang);
                                         await db.SaveChangesAsync();
-                                    //}
+                                    
                                 }
                                 //await db.SaveChangesAsync();
                             }
@@ -488,11 +486,13 @@ namespace eSya.ProductSetup.DL.Repository
                             BusinessKey = x.BusinessKey,
                             LocationId = x.LocationId,
                             LocationDescription = x.LocationDescription,
+                            ShortDesc=x.ShortDesc,
                             BusinessName = x.BusinessName,
                             EBusinessKey = x.EBusinessKey,
                             Isdcode = x.Isdcode,
                             CityCode = x.CityCode,
                             CurrencyCode = x.CurrencyCode,
+                            //LocnDateFormat=x.LocnDateFormat,
                             CurrencyName = y.CurrencyName,
                             TaxIdentification = x.TaxIdentification,
                             ESyaLicenseType = x.ESyaLicenseType,
@@ -524,6 +524,7 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     try
                     {
+                        #region Location Master
 
                         if (obj.IsBookOfAccounts == true)
                         {
@@ -572,6 +573,7 @@ namespace eSya.ProductSetup.DL.Repository
                             BusinessKey = Business_Key,
                             LocationDescription = obj.LocationDescription,
                             BusinessName = obj.BusinessName,
+                            ShortDesc = obj.ShortDesc,
                             EBusinessKey = eBKey,
                             Isdcode = obj.Isdcode,
                             CityCode = obj.CityCode,
@@ -597,6 +599,10 @@ namespace eSya.ProductSetup.DL.Repository
 
                         db.GtEcbslns.Add(b_Location);
                         await db.SaveChangesAsync();
+
+                        #endregion Location Master
+
+                        #region location currencies
 
                         if (obj.TorealCurrency)
                         {
@@ -646,6 +652,94 @@ namespace eSya.ProductSetup.DL.Repository
                             }
                         }
 
+                        #endregion location currencies
+
+                        #region location parameter
+
+                        if (obj.l_FormParameter != null)
+                        {
+                            foreach (DO_eSyaParameter i in obj.l_FormParameter)
+                            {
+                                var obj_FA = await db.GtEcpabls.Where(w => w.BusinessKey == Business_Key && w.ParameterId == i.ParameterID).FirstOrDefaultAsync();
+                                if (obj_FA != null)
+                                {
+                                    obj_FA.ParmAction = i.ParmAction;
+                                    obj_FA.ActiveStatus = true;
+                                    obj_FA.ModifiedBy = obj.UserID;
+                                    obj_FA.ModifiedOn = DateTime.Now;
+                                    obj_FA.ModifiedTerminal = System.Environment.MachineName;
+                                }
+                                else
+                                {
+                                    obj_FA = new GtEcpabl();
+                                    obj_FA.BusinessKey = Business_Key;
+                                    obj_FA.ParameterId = i.ParameterID;
+                                    obj_FA.ParmPerc = 0;
+                                    obj_FA.ParmAction = i.ParmAction;
+                                    obj_FA.ParmDesc = null;
+                                    obj_FA.ParmValue = 0;
+                                    obj_FA.ActiveStatus = obj.ActiveStatus;
+                                    obj_FA.FormId = obj.FormId;
+                                    obj_FA.CreatedBy = obj.UserID;
+                                    obj_FA.CreatedOn = System.DateTime.Now;
+                                    obj_FA.CreatedTerminal = obj.TerminalID;
+
+                                    db.GtEcpabls.Add(obj_FA);
+                                }
+                            }
+                            await db.SaveChangesAsync();
+                        }
+
+                        else
+                        {
+                            var fa = await db.GtEcpabls.Where(w => w.BusinessKey == Business_Key).ToListAsync();
+
+                            foreach (GtEcpabl f in fa)
+                            {
+                                f.ParmAction = false;
+                                f.ActiveStatus = false;
+                                f.ModifiedBy = obj.UserID;
+                                f.ModifiedOn = System.DateTime.Now;
+                                f.ModifiedTerminal = obj.TerminalID;
+                            }
+                            await db.SaveChangesAsync();
+                        }
+
+                        #endregion location parameter
+
+                        #region Location Preferred Language
+                        if (obj.l_Preferredlanguage != null)
+                        {
+                            foreach (var pl in obj.l_Preferredlanguage)
+                            {
+                                var plExist = db.GtEcblpls.Where(w => w.BusinessKey == Business_Key && w.PreferredLanguage.ToUpper().Replace(" ", "") == pl.PreferredLanguage.ToUpper().Replace(" ", "")).FirstOrDefault();
+                                if (plExist != null)
+                                {
+                                    db.GtEcblpls.Remove(plExist);
+                                    await db.SaveChangesAsync();
+                                }
+                            }
+                            foreach (var _pl in obj.l_Preferredlanguage)
+                            {
+                                
+                                var plang = new GtEcblpl
+                                {
+                                    BusinessKey = Business_Key,
+                                    PreferredLanguage = _pl.PreferredLanguage,
+                                    ActiveStatus = _pl.ActiveStatus,
+                                    FormId = _pl.FormID,
+                                    CreatedBy = _pl.UserID,
+                                    CreatedOn = System.DateTime.Now,
+                                    CreatedTerminal = _pl.TerminalId
+                                };
+                                db.GtEcblpls.Add(plang);
+                               
+                            }
+                            await db.SaveChangesAsync();
+
+                        }
+                        #endregion Location Preferred Language
+
                         dbContext.Commit();
                         return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
                     }
@@ -671,6 +765,7 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     try
                     {
+                        #region Location Master
                         if (obj.IsBookOfAccounts == true)
                         {
                             obj.BusinessSegmentId = 0;
@@ -691,6 +786,7 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             b_loc.LocationDescription = obj.LocationDescription;
                             b_loc.BusinessName = obj.BusinessName;
+                            b_loc.ShortDesc = obj.ShortDesc;
                             b_loc.Isdcode = obj.Isdcode;
                             b_loc.CityCode = obj.CityCode;
                             //b_loc.StateCode = obj.StateCode;
@@ -715,6 +811,10 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             return new DO_ReturnParameter() { Status = false, StatusCode = "W0031", Message = string.Format(_localizer[name: "W0031"]) };
                         }
+                        #endregion Location Master
+
+                        #region Location Currencies
+
                         if (obj.TorealCurrency)
                         {
                             if (obj.l_BSCurrency != null)
@@ -759,6 +859,76 @@ namespace eSya.ProductSetup.DL.Repository
                                 db.GtEcbsscs.RemoveRange(bsCurrency);
                             await db.SaveChangesAsync();
                         }
+
+                        #endregion Location Currencies
+
+                        #region Location Parameters
+                        if (obj.l_FormParameter != null)
+                        {
+                            foreach (DO_eSyaParameter i in obj.l_FormParameter)
+                            {
+                                var obj_FA = await db.GtEcpabls.Where(w => w.BusinessKey == b_loc.BusinessKey && w.ParameterId == i.ParameterID).FirstOrDefaultAsync();
+                                if (obj_FA != null)
+                                {
+                                    obj_FA.ParmAction = i.ParmAction;
+                                    obj_FA.ActiveStatus = true;
+                                    obj_FA.ModifiedBy = obj.UserID;
+                                    obj_FA.ModifiedOn = DateTime.Now;
+                                    obj_FA.ModifiedTerminal = System.Environment.MachineName;
+                                }
+                                else
+                                {
+                                    obj_FA = new GtEcpabl();
+                                    obj_FA.BusinessKey = b_loc.BusinessKey;
+                                    obj_FA.ParameterId = i.ParameterID;
+                                    obj_FA.ParmPerc = 0;
+                                    obj_FA.ParmAction = i.ParmAction;
+                                    obj_FA.ParmDesc = null;
+                                    obj_FA.ParmValue = 0;
+                                    obj_FA.ActiveStatus = obj.ActiveStatus;
+                                    obj_FA.FormId = obj.FormId;
+                                    obj_FA.CreatedBy = obj.UserID;
+                                    obj_FA.CreatedOn = System.DateTime.Now;
+                                    obj_FA.CreatedTerminal = obj.TerminalID;
+
+                                    db.GtEcpabls.Add(obj_FA);
+                                }
+                            }
+                            await db.SaveChangesAsync();
+                        }
+                        #endregion Location Parameter
+
+                        #region Location Preferred Language
+                        if (obj.l_Preferredlanguage != null)
+                        {
+                            foreach (var pl in obj.l_Preferredlanguage)
+                            {
+                                var plExist = db.GtEcblpls.Where(w => w.BusinessKey == pl.BusinessKey && w.PreferredLanguage.ToUpper().Replace(" ", "") == pl.PreferredLanguage.ToUpper().Replace(" ", "")).FirstOrDefault();
+                                if (plExist != null)
+                                {
+                                    db.GtEcblpls.Remove(plExist);
+                                    await db.SaveChangesAsync();
+                                }
+                            }
+                            foreach (var _pl in obj.l_Preferredlanguage)
+                            {
+
+                                var plang = new GtEcblpl
+                                {
+                                    BusinessKey = _pl.BusinessKey,
+                                    PreferredLanguage = _pl.PreferredLanguage,
+                                    ActiveStatus = _pl.ActiveStatus,
+                                    FormId = _pl.FormID,
+                                    CreatedBy = _pl.UserID,
+                                    CreatedOn = System.DateTime.Now,
+                                    CreatedTerminal = _pl.TerminalId
+                                };
+                                db.GtEcblpls.Add(plang);
+
+                            }
+                            await db.SaveChangesAsync();
+                        }
+                        #endregion
 
                         dbContext.Commit();
                         return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
@@ -986,6 +1156,70 @@ namespace eSya.ProductSetup.DL.Repository
                     }
 
                     return _entity;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<DO_eSyaParameter>> GetLocationParametersbyBusinessKey(int BusinessKey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = await db.GtEcpabls
+                        .Where(w => w.BusinessKey==BusinessKey)
+                        .Select(r => new DO_eSyaParameter
+                        {
+                            ParameterID = r.ParameterId,
+                            ParmAction = r.ParmAction,
+                        }).ToListAsync();
+                    return ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<DO_LocationPreferredLanguage>> GetLocationPreferredLanguagebyBusinessKey(int BusinessID,int BusinessKey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = await db.GtEcbspls.Where(x => x.ActiveStatus && x.BusinessId== BusinessID)
+                        .Join(db.GtEbeculs.Where(x=>x.ActiveStatus),
+                         x => x.PreferredLanguage.ToUpper().Replace(" ", ""),
+                         y => y.CultureCode.ToUpper().Replace(" ", ""),
+
+                        (x, y) => new DO_LocationPreferredLanguage
+                        {
+                            BusinessKey = BusinessKey,
+                            PreferredLanguage = x.PreferredLanguage,
+                            Pldescription = x.Pldesc,
+                            CultureDesc = y.CultureDesc,
+                            ActiveStatus = false
+                        }).ToListAsync();
+
+                    foreach (var obj in ds)
+                    {
+                        GtEcblpl cul = db.GtEcblpls.Where(x => x.BusinessKey == BusinessKey && x.PreferredLanguage.ToUpper().Replace(" ", "") == obj.PreferredLanguage.ToUpper().Replace(" ", "")).FirstOrDefault();
+                        if (cul != null)
+                        {
+                            obj.ActiveStatus = cul.ActiveStatus;
+                        }
+                        else
+                        {
+                            obj.ActiveStatus = false;
+                        }
+                    }
+
+                    return ds;
                 }
             }
             catch (Exception ex)
