@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -488,22 +489,13 @@ namespace eSya.ProductSetup.DL.Repository
                             LocationDescription = x.LocationDescription,
                             ShortDesc=x.ShortDesc,
                             BusinessName = x.BusinessName,
-                            EBusinessKey = x.EBusinessKey,
                             Isdcode = x.Isdcode,
                             CityCode = x.CityCode,
                             CurrencyCode = x.CurrencyCode,
-                            //LocnDateFormat=x.LocnDateFormat,
                             CurrencyName = y.CurrencyName,
-                            TaxIdentification = x.TaxIdentification,
-                            ESyaLicenseType = x.ESyaLicenseType,
-                            EUserLicenses = Convert.ToInt32(Encoding.UTF8.GetString(x.EUserLicenses)),
-                            ENoOfBeds = Convert.ToInt32(x.ENoOfBeds != null ? Encoding.UTF8.GetString(x.ENoOfBeds) : "0"),
-                            EActiveUsers = x.EActiveUsers,
                             TolocalCurrency = x.TolocalCurrency,
                             TocurrConversion = x.TocurrConversion,
                             TorealCurrency = x.TorealCurrency,
-                            IsBookOfAccounts = x.IsBookOfAccounts,
-                            BusinessSegmentId = x.BusinessSegmentId,
                             ActiveStatus = x.ActiveStatus
                         }).ToListAsync();
 
@@ -525,14 +517,6 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
                         #region Location Master
-
-                        if (obj.IsBookOfAccounts == true)
-                        {
-                            obj.BusinessSegmentId = 0;
-                        }
-                        //int _segmentID = db.GtEcbsln.Where(x => x.BusinessId == obj.BusinessId).Select(c => c.SegmentId).DefaultIfEmpty().Max();
-                        //_segmentID = _segmentID + 1;
-                        //obj.SegmentId = _segmentID;
 
                         int _locationID = db.GtEcbslns.Where(x => x.BusinessId == obj.BusinessId).Select(c => c.LocationId).DefaultIfEmpty().Max();
                         _locationID = _locationID + 1;
@@ -559,13 +543,6 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             return new DO_ReturnParameter() { Status = false, StatusCode = "W0030", Message = string.Format(_localizer[name: "W0030"]) };
                         }
-
-                        byte[] eBKey = Encoding.UTF8.GetBytes(obj.BusinessKey.ToString());
-
-                        byte[] tbUserLicenses = Encoding.UTF8.GetBytes(obj.EUserLicenses.ToString());
-                        byte[] tbActiveUser = Encoding.UTF8.GetBytes(0.ToString());
-                        byte[] tbNoOfBeds = Encoding.UTF8.GetBytes(obj.ENoOfBeds.ToString());
-
                         var b_Location = new GtEcbsln
                         {
                             BusinessId = obj.BusinessId,
@@ -574,29 +551,18 @@ namespace eSya.ProductSetup.DL.Repository
                             LocationDescription = obj.LocationDescription,
                             BusinessName = obj.BusinessName,
                             ShortDesc = obj.ShortDesc,
-                            EBusinessKey = eBKey,
                             Isdcode = obj.Isdcode,
                             CityCode = obj.CityCode,
-                            //StateCode=obj.StateCode,
                             CurrencyCode = obj.CurrencyCode,
-                            TaxIdentification = obj.TaxIdentification,
-                            ESyaLicenseType = obj.ESyaLicenseType,
-                            EUserLicenses = tbUserLicenses,
-                            EActiveUsers = tbActiveUser,
-                            ENoOfBeds = tbNoOfBeds,
-                            IsBookOfAccounts = obj.IsBookOfAccounts,
-                            BusinessSegmentId = obj.BusinessSegmentId,
                             TolocalCurrency = obj.TolocalCurrency,
                             TocurrConversion = obj.TocurrConversion,
                             TorealCurrency = obj.TorealCurrency,
                             ActiveStatus = obj.ActiveStatus,
-                            LocnDateFormat = "DD/MM/YYYY",
                             FormId = obj.FormId,
                             CreatedBy = obj.UserID,
                             CreatedOn = System.DateTime.Now,
                             CreatedTerminal = obj.TerminalID,
                         };
-
                         db.GtEcbslns.Add(b_Location);
                         await db.SaveChangesAsync();
 
@@ -741,7 +707,7 @@ namespace eSya.ProductSetup.DL.Repository
                         #endregion Location Preferred Language
 
                         dbContext.Commit();
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]),Key= Business_Key.ToString() };
                     }
                     catch (DbUpdateException ex)
                     {
@@ -766,19 +732,13 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
                         #region Location Master
-                        if (obj.IsBookOfAccounts == true)
-                        {
-                            obj.BusinessSegmentId = 0;
-                        }
+                       
                         GtEcbsln is_locDescExists = db.GtEcbslns.FirstOrDefault(l => l.LocationDescription.ToUpper().Replace(" ", "") == obj.LocationDescription.ToUpper().Replace(" ", "") &&
                         l.BusinessId == obj.BusinessId && l.LocationId != obj.LocationId);
                         if (is_locDescExists != null)
                         {
                             return new DO_ReturnParameter() { Status = false, StatusCode = "W0029", Message = string.Format(_localizer[name: "W0029"]) };
                         }
-
-                        byte[] tbUserLicenses = Encoding.UTF8.GetBytes(obj.EUserLicenses.ToString());
-                        byte[] tbNoOfBeds = Encoding.UTF8.GetBytes(obj.ENoOfBeds.ToString());
 
                         GtEcbsln b_loc = db.GtEcbslns.Where(bl => bl.BusinessId == obj.BusinessId && bl.LocationId == obj.LocationId).FirstOrDefault();
 
@@ -789,18 +749,11 @@ namespace eSya.ProductSetup.DL.Repository
                             b_loc.ShortDesc = obj.ShortDesc;
                             b_loc.Isdcode = obj.Isdcode;
                             b_loc.CityCode = obj.CityCode;
-                            //b_loc.StateCode = obj.StateCode;
                             b_loc.CurrencyCode = obj.CurrencyCode;
-                            b_loc.TaxIdentification = obj.TaxIdentification;
-                            b_loc.ESyaLicenseType = obj.ESyaLicenseType;
-                            b_loc.EUserLicenses = tbUserLicenses;
-                            b_loc.ENoOfBeds = tbNoOfBeds;
                             b_loc.TolocalCurrency = obj.TolocalCurrency;
                             b_loc.TocurrConversion = obj.TocurrConversion;
                             b_loc.TorealCurrency = obj.TorealCurrency;
                             b_loc.ActiveStatus = obj.ActiveStatus;
-                            b_loc.IsBookOfAccounts = obj.IsBookOfAccounts;
-                            b_loc.BusinessSegmentId = obj.BusinessSegmentId;
                             b_loc.ModifiedBy = obj.UserID;
                             b_loc.ModifiedOn = System.DateTime.Now;
                             b_loc.ModifiedTerminal = obj.TerminalID;
@@ -963,6 +916,32 @@ namespace eSya.ProductSetup.DL.Repository
                         }
 
                         b_loc.ActiveStatus = status;
+                        if (b_loc != null)
+                        {
+                            GtEcbsfi fininfo = db.GtEcbsfis.Where(bl => bl.BusinessKey == b_loc.BusinessKey).FirstOrDefault();
+                            if (fininfo != null)
+                            {
+                                fininfo.ActiveStatus = status;
+
+                            }
+                        }
+                        if (b_loc != null)
+                        {
+                            GtEcbsli licinfo = db.GtEcbslis.Where(bl => bl.BusinessKey == b_loc.BusinessKey).FirstOrDefault();
+                            if (licinfo != null)
+                            {
+                                licinfo.ActiveStatus = status;
+                            }
+                        }
+                        if (b_loc != null)
+                        {
+                            GtEcbstx taxinfo = db.GtEcbstxes.Where(bl => bl.BusinessKey == b_loc.BusinessKey).FirstOrDefault();
+                            if (taxinfo != null)
+                            {
+                                taxinfo.ActiveStatus = status;
+                            }
+                        }
+
                         await db.SaveChangesAsync();
                         dbContext.Commit();
 
@@ -983,124 +962,6 @@ namespace eSya.ProductSetup.DL.Repository
                         throw ex;
                     }
                 }
-            }
-        }
-
-        public async Task<List<DO_TaxIdentification>> GetTaxIdentificationByISDCode(int ISDCode)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEccntis.Where(w => w.Isdcode == ISDCode && w.ActiveStatus == true)
-                        .Select(x => new DO_TaxIdentification
-                        {
-                            Isdcode = x.Isdcode,
-                            TaxIdentificationId = x.TaxIdentificationId,
-                            TaxIdentificationDesc = x.TaxIdentificationDesc,
-                            ActiveStatus = x.ActiveStatus
-                        }).OrderBy(o => o.TaxIdentificationId).ToListAsync();
-
-                    return await ds;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<DO_CountryCodes>> GetCurrencyListbyIsdCode(int IsdCode)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var Currency = db.GtEccncds.Where(c => c.Isdcode == IsdCode && c.ActiveStatus).Join(db.GtEccucos,
-                         x => x.CurrencyCode,
-                         y => y.CurrencyCode,
-                        (x, y) => new DO_CountryCodes
-                        {
-                            CurrencyCode = x.CurrencyCode,
-                            CurrencyName = y.CurrencyName
-                        }).ToListAsync();
-
-
-                    return await Currency;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<DO_BusinessLocation>> GetActiveLocationsAsSegments()
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEcbslns.Where(w => w.ActiveStatus == true && w.IsBookOfAccounts == true)
-                        .Select(x => new DO_BusinessLocation
-                        {
-                            SegmentId = x.BusinessKey,
-                            BusinessName = x.BusinessName
-                        }).OrderBy(o => o.SegmentId).ToListAsync();
-
-                    return await ds;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<DO_Cities>> GetCityListbyISDCode(int isdCode)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var pf = db.GtAddrcts.Where(x => x.Isdcode == isdCode && x.ActiveStatus)
-                   .Select(s => new DO_Cities
-                   {
-                       CityCode = s.CityCode,
-                       CityDesc = s.CityDesc
-                   }).
-                    Distinct()
-                   .ToListAsync();
-                    return await pf;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<DO_TaxIdentification> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEccntis.Where(w => w.Isdcode == isdCode && w.TaxIdentificationId == TaxIdentificationId && w.ActiveStatus)
-                        .Select(x => new DO_TaxIdentification
-                        {
-                            TaxIdentificationId = x.TaxIdentificationId,
-                            TaxIdentificationDesc = x.TaxIdentificationDesc,
-                            StateCode = x.StateCode,
-
-                        }).FirstOrDefaultAsync();
-
-                    return await ds;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
 
@@ -1171,7 +1032,7 @@ namespace eSya.ProductSetup.DL.Repository
                 using (var db = new eSyaEnterprise())
                 {
                     var ds = await db.GtEcpabls
-                        .Where(w => w.BusinessKey==BusinessKey)
+                        .Where(w => w.BusinessKey == BusinessKey)
                         .Select(r => new DO_eSyaParameter
                         {
                             ParameterID = r.ParameterId,
@@ -1186,14 +1047,14 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
 
-        public async Task<List<DO_LocationPreferredLanguage>> GetLocationPreferredLanguagebyBusinessKey(int BusinessID,int BusinessKey)
+        public async Task<List<DO_LocationPreferredLanguage>> GetLocationPreferredLanguagebyBusinessKey(int BusinessID, int BusinessKey)
         {
             try
             {
                 using (var db = new eSyaEnterprise())
                 {
-                    var ds = await db.GtEcbspls.Where(x => x.ActiveStatus && x.BusinessId== BusinessID)
-                        .Join(db.GtEbeculs.Where(x=>x.ActiveStatus),
+                    var ds = await db.GtEcbspls.Where(x => x.ActiveStatus && x.BusinessId == BusinessID)
+                        .Join(db.GtEbeculs.Where(x => x.ActiveStatus),
                          x => x.PreferredLanguage.ToUpper().Replace(" ", ""),
                          y => y.CultureCode.ToUpper().Replace(" ", ""),
 
@@ -1227,6 +1088,401 @@ namespace eSya.ProductSetup.DL.Repository
                 throw ex;
             }
         }
+
+        #endregion
+
+        #region Location Financial Info
+        public async Task<DO_ReturnParameter> InsertOrUpdateLocationFinancialInfo(DO_LocationFinancialInfo obj)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                      
+
+                        if (obj.IsBookOfAccounts == true)
+                        {
+                            obj.BusinessSegmentId = 0;
+                        }
+
+                        GtEcbsfi locfin = db.GtEcbsfis.FirstOrDefault(l => l.BusinessKey == obj.BusinessKey);
+
+                        if (locfin != null)
+                        {
+                            locfin.IsBookOfAccounts = obj.IsBookOfAccounts;
+                            locfin.BusinessSegmentId = obj.BusinessSegmentId;
+                            locfin.ActiveStatus = obj.ActiveStatus;
+                            locfin.ModifiedBy = obj.UserID;
+                            locfin.ModifiedOn = System.DateTime.Now;
+                            locfin.ModifiedTerminal = obj.TerminalId;
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+
+                        }
+                        else
+                        {
+                            var locinfo = new GtEcbsfi
+                            {
+                                
+                                BusinessKey = obj.BusinessKey,
+                                IsBookOfAccounts = obj.IsBookOfAccounts,
+                                BusinessSegmentId = obj.BusinessSegmentId,
+                                ActiveStatus = obj.ActiveStatus,
+                                FormId = obj.FormID,
+                                CreatedBy = obj.UserID,
+                                CreatedOn = System.DateTime.Now,
+                                CreatedTerminal = obj.TerminalId,
+                            };
+                            db.GtEcbsfis.Add(locinfo);
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        }
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        public async Task<DO_LocationFinancialInfo> GetLocationFinancialInfo(int BusinessKey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcbsfis.Where(w => w.BusinessKey== BusinessKey)
+                      .Select(x=> new DO_LocationFinancialInfo
+                      {
+                            BusinessKey = x.BusinessKey,
+                            IsBookOfAccounts = x.IsBookOfAccounts,
+                            BusinessSegmentId=x.BusinessSegmentId,
+                            ActiveStatus=x.ActiveStatus
+                        }).FirstOrDefaultAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_BusinessLocation>> GetActiveLocationsAsSegments()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcbsfis.Where(w => w.IsBookOfAccounts && w.ActiveStatus).Join(db.GtEcbslns.Where(w=>w.ActiveStatus),
+                         x => x.BusinessKey,
+                         y => y.BusinessKey,
+                        (x, y) => new DO_BusinessLocation
+                        {
+                            SegmentId = y.BusinessKey,
+                            BusinessName = y.BusinessName
+                        }).OrderBy(o => o.SegmentId).ToListAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region Location License Info
+        public async Task<DO_ReturnParameter> InsertOrUpdateLocationLicenseInfo(DO_LocationLicenseInfo obj)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        GtEcbsli licenseinfo = db.GtEcbslis.FirstOrDefault(l => l.BusinessKey == obj.BusinessKey);
+
+                        byte[] eBKey = Encoding.UTF8.GetBytes(obj.BusinessKey.ToString());
+
+                        byte[] tbUserLicenses = Encoding.UTF8.GetBytes(obj.EUserLicenses.ToString());
+                        byte[] tbActiveUser = Encoding.UTF8.GetBytes(0.ToString());
+                        byte[] tbNoOfBeds = Encoding.UTF8.GetBytes(obj.ENoOfBeds.ToString());
+
+                        if (licenseinfo != null)
+                        {
+                            licenseinfo.BusinessKey = obj.BusinessKey;
+                            licenseinfo.EBusinessKey = eBKey;
+                            licenseinfo.ESyaLicenseType = obj.ESyaLicenseType;
+                            licenseinfo.EUserLicenses = tbUserLicenses;
+                            licenseinfo.EActiveUsers = tbActiveUser;
+                            licenseinfo.ENoOfBeds = tbNoOfBeds;
+                            licenseinfo.ActiveStatus = obj.ActiveStatus;
+                            licenseinfo.ModifiedBy = obj.UserID;
+                            licenseinfo.ModifiedOn = System.DateTime.Now;
+                            licenseinfo.ModifiedTerminal = obj.TerminalId;
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+
+                        }
+                        else
+                        {
+                            var licinfo = new GtEcbsli
+                            {
+
+                                BusinessKey = obj.BusinessKey,
+                                EBusinessKey = eBKey,
+                                ESyaLicenseType = obj.ESyaLicenseType,
+                                EUserLicenses = tbUserLicenses,
+                                EActiveUsers = tbActiveUser,
+                                ENoOfBeds = tbNoOfBeds,
+                                ActiveStatus = obj.ActiveStatus,
+                                FormId = obj.FormID,
+                                CreatedBy = obj.UserID,
+                                CreatedOn = System.DateTime.Now,
+                                CreatedTerminal = obj.TerminalId,
+                            };
+                            db.GtEcbslis.Add(licinfo);
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        }
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        public async Task<DO_LocationLicenseInfo> GetLocationLicenseInfo(int BusinessKey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcbslis.Where(w => w.BusinessKey == BusinessKey)
+                      .Select(x => new DO_LocationLicenseInfo
+                      {
+                          BusinessKey = x.BusinessKey,
+                          EBusinessKey=x.EBusinessKey,
+                          ESyaLicenseType = x.ESyaLicenseType,
+                          EUserLicenses = Convert.ToInt32(Encoding.UTF8.GetString(x.EUserLicenses)),
+                          ENoOfBeds = Convert.ToInt32(x.ENoOfBeds != null ? Encoding.UTF8.GetString(x.ENoOfBeds) : "0"),
+                          EActiveUsers = x.EActiveUsers,
+                          ActiveStatus = x.ActiveStatus
+                      }).FirstOrDefaultAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Location Tax Info
+
+        public async Task<DO_ReturnParameter> InsertOrUpdateLocationTaxInfo(DO_LocationTaxInfo obj)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        GtEcbstx taxinfo = db.GtEcbstxes.FirstOrDefault(l => l.BusinessKey == obj.BusinessKey);
+                        if (taxinfo != null)
+                        {
+                            taxinfo.BusinessKey = obj.BusinessKey;
+                            taxinfo.TaxIdentificationId = obj.TaxIdentificationId;
+                            taxinfo.ActiveStatus = obj.ActiveStatus;
+                            taxinfo.ModifiedBy = obj.UserID;
+                            taxinfo.ModifiedOn = System.DateTime.Now;
+                            taxinfo.ModifiedTerminal = obj.TerminalId;
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+
+                        }
+                        else
+                        {
+                            var tax = new GtEcbstx
+                            {
+
+                                BusinessKey = obj.BusinessKey,
+                                TaxIdentificationId = obj.TaxIdentificationId,
+                                ActiveStatus = obj.ActiveStatus,
+                                FormId = obj.FormID,
+                                CreatedBy = obj.UserID,
+                                CreatedOn = System.DateTime.Now,
+                                CreatedTerminal = obj.TerminalId,
+                            };
+                            db.GtEcbstxes.Add(tax);
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        }
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        dbContext.Rollback();
+                        throw new Exception(CommonMethod.GetValidationMessageFromException(ex));
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        public async Task<DO_LocationTaxInfo> GetLocationLocationTaxInfo(int BusinessKey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEcbstxes.Where(w => w.BusinessKey == BusinessKey)
+                      .Select(x => new DO_LocationTaxInfo
+                      {
+                          BusinessKey = x.BusinessKey,
+                          TaxIdentificationId = x.TaxIdentificationId,
+                          ActiveStatus = x.ActiveStatus
+                      }).FirstOrDefaultAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_TaxIdentification>> GetTaxIdentificationByISDCode(int ISDCode)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEccntis.Where(w => w.Isdcode == ISDCode && w.ActiveStatus == true)
+                        .Select(x => new DO_TaxIdentification
+                        {
+                            Isdcode = x.Isdcode,
+                            TaxIdentificationId = x.TaxIdentificationId,
+                            TaxIdentificationDesc = x.TaxIdentificationDesc,
+                            ActiveStatus = x.ActiveStatus
+                        }).OrderBy(o => o.TaxIdentificationId).ToListAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<DO_CountryCodes>> GetCurrencyListbyIsdCode(int IsdCode)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var Currency = db.GtEccncds.Where(c => c.Isdcode == IsdCode && c.ActiveStatus).Join(db.GtEccucos,
+                         x => x.CurrencyCode,
+                         y => y.CurrencyCode,
+                        (x, y) => new DO_CountryCodes
+                        {
+                            CurrencyCode = x.CurrencyCode,
+                            CurrencyName = y.CurrencyName
+                        }).ToListAsync();
+
+
+                    return await Currency;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public async Task<List<DO_Cities>> GetCityListbyISDCode(int isdCode)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var pf = db.GtAddrcts.Where(x => x.Isdcode == isdCode && x.ActiveStatus)
+                   .Select(s => new DO_Cities
+                   {
+                       CityCode = s.CityCode,
+                       CityDesc = s.CityDesc
+                   }).
+                    Distinct()
+                   .ToListAsync();
+                    return await pf;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<DO_TaxIdentification> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var ds = db.GtEccntis.Where(w => w.Isdcode == isdCode && w.TaxIdentificationId == TaxIdentificationId && w.ActiveStatus)
+                        .Select(x => new DO_TaxIdentification
+                        {
+                            TaxIdentificationId = x.TaxIdentificationId,
+                            TaxIdentificationDesc = x.TaxIdentificationDesc,
+                            StateCode = x.StateCode,
+
+                        }).FirstOrDefaultAsync();
+
+                    return await ds;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
         #endregion
 
         #region Define User Role Action

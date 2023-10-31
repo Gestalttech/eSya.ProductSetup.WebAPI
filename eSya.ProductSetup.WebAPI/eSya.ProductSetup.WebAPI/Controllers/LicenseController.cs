@@ -176,66 +176,6 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Get Tax Idendification by ISD Code .
-        /// UI Reffered - Business Location 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetTaxIdentificationByISDCode(int IsdCode)
-        {
-            var taxidentifications = await _licenseRepository.GetTaxIdentificationByISDCode(IsdCode);
-            return Ok(taxidentifications);
-        }
-
-        /// <summary>
-        /// Get Currency List by ISD Code .
-        /// UI Reffered -Business Location 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetCurrencyListbyIsdCode(int IsdCode)
-        {
-            var currencies = await _licenseRepository.GetCurrencyListbyIsdCode(IsdCode);
-            return Ok(currencies);
-        }
-
-        /// <summary>
-        /// Get Existing Location as Segment if IsBookofAccount is checked .
-        /// UI Reffered -Business Location 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetActiveLocationsAsSegments()
-        {
-            var segments = await _licenseRepository.GetActiveLocationsAsSegments();
-            return Ok(segments);
-        }
-
-        /// <summary>
-        /// Get Cities List by ISD Code .
-        /// UI Reffered -Business Location 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetCityListbyISDCode(int isdCode)
-        {
-            var cities = await _licenseRepository.GetCityListbyISDCode(isdCode);
-            return Ok(cities);
-        }
-
-        /// <summary>
-        /// Get State Code By ISD Code and Tax Identification.
-        /// UI Reffered -Business Location 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId)
-        {
-            var state = await _licenseRepository.GetStateCodeByISDCode(isdCode, TaxIdentificationId);
-            return Ok(state);
-        }
-
-        /// <summary>
         /// Get Currency by BusinessKey.
         /// UI Reffered -Business Location 
         /// </summary>
@@ -279,6 +219,140 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         {
             var plang = await _licenseRepository.GetLocationPreferredLanguagebyBusinessKey(BusinessID,BusinessKey);
             return Ok(plang);
+        }
+        #endregion
+
+        #region Location Financial Info
+        /// <summary>
+        /// Insert Location Financial Info .
+        /// UI Reffered -Business Location
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertOrUpdateLocationFinancialInfo(DO_LocationFinancialInfo obj)
+        {
+            var msg = await _licenseRepository.InsertOrUpdateLocationFinancialInfo(obj);
+            return Ok(msg);
+
+        }
+        /// <summary>
+        /// Get Location Financial Info by BusinessKey.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetLocationFinancialInfo(int BusinessKey)
+        {
+            var fininfo = await _licenseRepository.GetLocationFinancialInfo(BusinessKey);
+            return Ok(fininfo);
+        }
+        /// <summary>
+        /// Get Existing Location as Segment if IsBookofAccount is checked .
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetActiveLocationsAsSegments()
+        {
+            var segments = await _licenseRepository.GetActiveLocationsAsSegments();
+            return Ok(segments);
+        }
+        #endregion
+
+        #region Location License Info
+        /// <summary>
+        /// Insert Location License Info .
+        /// UI Reffered -Business Location
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertOrUpdateLocationLicenseInfo(DO_LocationLicenseInfo obj)
+        {
+            var msg = await _licenseRepository.InsertOrUpdateLocationLicenseInfo(obj);
+            return Ok(msg);
+
+        }
+
+        /// <summary>
+        /// Get Location License Info by BusinessKey.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetLocationLicenseInfo(int BusinessKey)
+        {
+            var locinfo = await _licenseRepository.GetLocationLicenseInfo(BusinessKey);
+            return Ok(locinfo);
+        }
+        #endregion
+
+        #region Location Tax Info
+        /// <summary>
+        /// Insert Location Tax Info.
+        /// UI Reffered -Business Location
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertOrUpdateLocationTaxInfo(DO_LocationTaxInfo obj)
+        {
+            var msg = await _licenseRepository.InsertOrUpdateLocationTaxInfo(obj);
+            return Ok(msg);
+
+        }
+
+        /// <summary>
+        /// Get Location Tax Info.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetLocationLocationTaxInfo(int BusinessKey)
+        {
+            var taxinfo = await _licenseRepository.GetLocationLocationTaxInfo(BusinessKey);
+            return Ok(taxinfo);
+        }
+        /// <summary>
+        /// Get Tax Idendification by ISD Code .
+        /// UI Reffered - Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetTaxIdentificationByISDCode(int IsdCode)
+        {
+            var taxidentifications = await _licenseRepository.GetTaxIdentificationByISDCode(IsdCode);
+            return Ok(taxidentifications);
+        }
+
+        /// <summary>
+        /// Get Currency List by ISD Code .
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetCurrencyListbyIsdCode(int IsdCode)
+        {
+            var currencies = await _licenseRepository.GetCurrencyListbyIsdCode(IsdCode);
+            return Ok(currencies);
+        }
+
+        /// <summary>
+        /// Get Cities List by ISD Code .
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetCityListbyISDCode(int isdCode)
+        {
+            var cities = await _licenseRepository.GetCityListbyISDCode(isdCode);
+            return Ok(cities);
+        }
+        /// <summary>
+        /// Get State Code By ISD Code and Tax Identification.
+        /// UI Reffered -Business Location 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId)
+        {
+            var state = await _licenseRepository.GetStateCodeByISDCode(isdCode, TaxIdentificationId);
+            return Ok(state);
         }
         #endregion
 

@@ -67,6 +67,7 @@ builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
 builder.Services.AddScoped<ITaxIdentificationRepository, TaxIdentificationRepository>();
 builder.Services.AddScoped<IDocumentControlRepository, DocumentControlRepository>();
 builder.Services.AddScoped<IeSyaCultureRepository, eSyaCultureRepository>();
+builder.Services.AddScoped<IConnectRepository, ConnectRepository>();
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers();

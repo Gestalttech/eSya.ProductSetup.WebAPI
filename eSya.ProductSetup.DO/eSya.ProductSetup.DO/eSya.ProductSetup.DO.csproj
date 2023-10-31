@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="DO_BusinessConfiguration.cs" />
+    <Compile Remove="DO_EmailConnectHeader.cs" />
   </ItemGroup>
 
 </Project>
