@@ -142,7 +142,7 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         /// Get All Actions
         /// UI Reffered - Actions,
         /// </summary>
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAllActions()
         {

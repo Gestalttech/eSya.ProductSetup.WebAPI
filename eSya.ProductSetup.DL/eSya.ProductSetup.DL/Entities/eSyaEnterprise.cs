@@ -28,6 +28,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcapct> GtEcapcts { get; set; } = null!;
         public virtual DbSet<GtEcaprb> GtEcaprbs { get; set; } = null!;
         public virtual DbSet<GtEcaprl> GtEcaprls { get; set; } = null!;
+        public virtual DbSet<GtEcblcl> GtEcblcls { get; set; } = null!;
         public virtual DbSet<GtEcblpl> GtEcblpls { get; set; } = null!;
         public virtual DbSet<GtEcbsen> GtEcbsens { get; set; } = null!;
         public virtual DbSet<GtEcbsfi> GtEcbsfis { get; set; } = null!;
@@ -40,6 +41,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcbstx> GtEcbstxes { get; set; } = null!;
         public virtual DbSet<GtEcclco> GtEcclcos { get; set; } = null!;
         public virtual DbSet<GtEccldt> GtEccldts { get; set; } = null!;
+        public virtual DbSet<GtEcclpi> GtEcclpis { get; set; } = null!;
         public virtual DbSet<GtEccncd> GtEccncds { get; set; } = null!;
         public virtual DbSet<GtEccnpi> GtEccnpis { get; set; } = null!;
         public virtual DbSet<GtEccnsd> GtEccnsds { get; set; } = null!;
@@ -55,6 +57,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcfmnm> GtEcfmnms { get; set; } = null!;
         public virtual DbSet<GtEcfmp> GtEcfmps { get; set; } = null!;
         public virtual DbSet<GtEcfmpa> GtEcfmpas { get; set; } = null!;
+        public virtual DbSet<GtEclkpa> GtEclkpas { get; set; } = null!;
         public virtual DbSet<GtEcmamn> GtEcmamns { get; set; } = null!;
         public virtual DbSet<GtEcmnfl> GtEcmnfls { get; set; } = null!;
         public virtual DbSet<GtEcpabl> GtEcpabls { get; set; } = null!;
@@ -65,7 +68,6 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcsbmn> GtEcsbmns { get; set; } = null!;
         public virtual DbSet<GtEcsm91> GtEcsm91s { get; set; } = null!;
         public virtual DbSet<GtEcsupa> GtEcsupas { get; set; } = null!;
-        public virtual DbSet<GtEuusrl> GtEuusrls { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -358,6 +360,34 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasConstraintName("FK_GT_ECAPRL_GT_ECPRRL");
             });
 
+            modelBuilder.Entity<GtEcblcl>(entity =>
+            {
+                entity.HasKey(e => new { e.BusinessKey, e.CalenderKey });
+
+                entity.ToTable("GT_ECBLCL");
+
+                entity.Property(e => e.CalenderKey)
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.FromDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.TillDate).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<GtEcblpl>(entity =>
             {
                 entity.HasKey(e => new { e.BusinessKey, e.PreferredLanguage });
@@ -645,11 +675,20 @@ namespace eSya.ProductSetup.DL.Entities
 
             modelBuilder.Entity<GtEcclco>(entity =>
             {
-                entity.HasKey(e => new { e.BusinessKey, e.FinancialYear });
+                entity.HasKey(e => new { e.CalenderType, e.Year });
 
                 entity.ToTable("GT_ECCLCO");
 
-                entity.Property(e => e.FinancialYear).HasColumnType("numeric(4, 0)");
+                entity.Property(e => e.CalenderType)
+                    .HasMaxLength(2)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Year).HasColumnType("numeric(4, 0)");
+
+                entity.Property(e => e.CalenderKey)
+                    .HasMaxLength(6)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
@@ -667,26 +706,21 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
 
                 entity.Property(e => e.TillDate).HasColumnType("datetime");
-
-                entity.HasOne(d => d.BusinessKeyNavigation)
-                    .WithMany(p => p.GtEcclcos)
-                    .HasPrincipalKey(p => p.BusinessKey)
-                    .HasForeignKey(d => d.BusinessKey)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GT_ECCLCO_GT_ECBSLN");
             });
 
             modelBuilder.Entity<GtEccldt>(entity =>
             {
-                entity.HasKey(e => new { e.BusinessKey, e.FinancialYear, e.MonthId });
+                entity.HasKey(e => new { e.BusinessKey, e.CalenderKey, e.MonthId, e.ParameterId });
 
                 entity.ToTable("GT_ECCLDT");
 
-                entity.Property(e => e.FinancialYear).HasColumnType("numeric(4, 0)");
+                entity.Property(e => e.CalenderKey)
+                    .HasMaxLength(12)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.MonthId).HasColumnName("MonthID");
 
-                entity.Property(e => e.BudgetMonth).HasMaxLength(4);
+                entity.Property(e => e.ParameterId).HasColumnName("ParameterID");
 
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
@@ -701,22 +735,46 @@ namespace eSya.ProductSetup.DL.Entities
 
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
 
-                entity.Property(e => e.MonthFreezeHis).HasColumnName("MonthFreezeHIS");
+                entity.Property(e => e.ParmDesc)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.MonthFreezeHr).HasColumnName("MonthFreezeHR");
+                entity.Property(e => e.ParmPerc).HasColumnType("numeric(5, 2)");
 
-                entity.Property(e => e.PatientIdgen).HasColumnName("PatientIDGen");
+                entity.Property(e => e.ParmValue).HasColumnType("numeric(18, 6)");
+            });
 
-                entity.Property(e => e.PatientIdserial)
-                    .HasMaxLength(1)
-                    .HasColumnName("PatientIDSerial")
-                    .IsFixedLength();
+            modelBuilder.Entity<GtEcclpi>(entity =>
+            {
+                entity.HasKey(e => new { e.BusinessKey, e.CalenderKey, e.MonthId })
+                    .HasName("PK_GT_ECCLPI_1");
 
-                entity.HasOne(d => d.GtEcclco)
-                    .WithMany(p => p.GtEccldts)
-                    .HasForeignKey(d => new { d.BusinessKey, d.FinancialYear })
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GT_ECCLDT_GT_ECCLCO");
+                entity.ToTable("GT_ECCLPI");
+
+                entity.Property(e => e.CalenderKey)
+                    .HasMaxLength(12)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MonthId).HasColumnName("MonthID");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.PatientIdgen)
+                    .HasMaxLength(6)
+                    .HasColumnName("PatientIDGen");
+
+                entity.Property(e => e.PatientIdserial).HasColumnName("PatientIDSerial");
             });
 
             modelBuilder.Entity<GtEccncd>(entity =>
@@ -729,7 +787,9 @@ namespace eSya.ProductSetup.DL.Entities
                     .ValueGeneratedNever()
                     .HasColumnName("ISDCode");
 
-                entity.Property(e => e.CountryCode).HasMaxLength(4);
+                entity.Property(e => e.CountryCode)
+                    .HasMaxLength(4)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CountryFlag).HasMaxLength(150);
 
@@ -761,8 +821,6 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.Nationality).HasMaxLength(50);
 
                 entity.Property(e => e.PincodePattern)
                     .HasMaxLength(25)
@@ -1199,6 +1257,33 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasConstraintName("FK_GT_ECFMPA_GT_ECFMFD");
             });
 
+            modelBuilder.Entity<GtEclkpa>(entity =>
+            {
+                entity.HasKey(e => new { e.LinkParameterType, e.LinkParameterId });
+
+                entity.ToTable("GT_ECLKPA");
+
+                entity.Property(e => e.LinkParameterId).HasColumnName("LinkParameterID");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.SchemaId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("SchemaID");
+            });
+
             modelBuilder.Entity<GtEcmamn>(entity =>
             {
                 entity.HasKey(e => e.MainMenuId);
@@ -1516,29 +1601,6 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<GtEuusrl>(entity =>
-            {
-                entity.HasKey(e => new { e.UserRole, e.ActionId })
-                    .HasName("PK_GT_EUUSRL_1");
-
-                entity.ToTable("GT_EUUSRL");
-
-                entity.Property(e => e.ActionId).HasColumnName("ActionID");
-
-                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.FormId)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("FormID");
 
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 

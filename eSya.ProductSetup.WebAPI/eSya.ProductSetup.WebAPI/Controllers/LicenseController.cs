@@ -356,41 +356,6 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         }
         #endregion
 
-        #region Define User Role Action
-        /// <summary>
-        /// Getting  User Role for drop down.
-        /// UI Reffered - Define User Role Action Grid
-        /// </summary>
-        [HttpGet]
-        public async Task<IActionResult> GetUserRoleByCodeType(int codeType)
-        {
-            var user_role = await _licenseRepository.GetUserRoleByCodeType(codeType);
-            return Ok(user_role);
-
-        }
-        /// <summary>
-        /// Getting  User Role Action List.
-        /// UI Reffered - Define User Role Action Grid
-        /// </summary>
-        [HttpGet]
-        public async Task<IActionResult> GetUserRoleActionLink(int userRole)
-        {
-            var role_actions = await _licenseRepository.GetUserRoleActionLink(userRole);
-            return Ok(role_actions);
-
-        }
-        /// <summary>
-        /// Insert Or Update  User Role Action Grid .
-        /// UI Reffered -Define User Role Action
-        /// </summary>
-        [HttpPost]
-        public async Task<IActionResult> InsertOrUpdateUpdateUserRoleActionLink(List<DO_UserRoleActionLink> obj)
-        {
-            var msg = await _licenseRepository.InsertOrUpdateUpdateUserRoleActionLink(obj);
-            return Ok(msg);
-        }
-        #endregion
-
         #region Define Menu Link to Location
         /// <summary>
         /// Getting  All Menu .

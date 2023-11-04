@@ -1966,3 +1966,4 @@ D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\e
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.pdb
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.genruntimeconfig.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\ref\eSya.ProductSetup.WebAPI.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.MvcApplicationPartsAssemblyInfo.cs

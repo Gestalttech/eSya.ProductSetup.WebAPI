@@ -14,7 +14,7 @@ namespace eSya.ProductSetup.DO
         public string CountryFlag { get; set; } = null!;
         public string CurrencyCode { get; set; } = null!;
         public string? MobileNumberPattern { get; set; } = null!;
-        public string? Nationality { get; set; } = null!;
+        public int Nationality { get; set; }
         public bool IsPoboxApplicable { get; set; }
         public string? PoboxPattern { get; set; } = null!;
         public bool IsPinapplicable { get; set; }
@@ -25,6 +25,9 @@ namespace eSya.ProductSetup.DO
         public string TerminalID { get; set; } = null!;
         public string? CurrencyName { get; set; } = null!;
         public List<DO_UIDPattern>? _lstUIDpattern { get; set; } = null!;
+        public string? DateFormat { get; set; }
+        public string? ShortDateFormat { get; set; }
+
     }
     public class DO_UIDPattern
     {

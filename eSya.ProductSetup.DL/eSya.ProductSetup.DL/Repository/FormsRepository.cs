@@ -925,7 +925,7 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     try
                     {
-                      
+
 
                         bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
                         if (is_actionExist)
@@ -985,7 +985,7 @@ namespace eSya.ProductSetup.DL.Repository
                         }
 
                         act.ActionDesc = obj.ActionDesc;
-                        act.ActiveStatus= obj.ActiveStatus;
+                        act.ActiveStatus = obj.ActiveStatus;
                         act.ModifiedBy = obj.UserID;
                         act.ModifiedOn = System.DateTime.Now;
                         act.ModifiedTerminal = obj.TerminalID;

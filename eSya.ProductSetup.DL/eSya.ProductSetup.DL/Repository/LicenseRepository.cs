@@ -1482,113 +1482,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
 
-        
-        #endregion
 
-        #region Define User Role Action
-
-        public async Task<List<DO_ApplicationCodes>> GetUserRoleByCodeType(int codeType)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    
-                        var ds = db.GtEcapcds
-                       .Where(w => w.CodeType == codeType && w.ActiveStatus==true)
-                       .Select(r => new DO_ApplicationCodes
-                       {
-                           ApplicationCode = r.ApplicationCode,
-                           CodeDesc = r.CodeDesc
-                       }).OrderBy(o => o.CodeDesc).ToListAsync();
-                        return await ds;
-                    }
-                
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<List<DO_UserRoleActionLink>> GetUserRoleActionLink(int userRole)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-
-                    var ds = await db.GtEcfmacs.Where(x => x.ActiveStatus == true)
-                   .GroupJoin(db.GtEuusrls.Where(w => w.UserRole == userRole),
-                     d => d.ActionId,
-                     l => l.ActionId,
-                    (act, rol) => new { act, rol })
-                   .SelectMany(z => z.rol.DefaultIfEmpty(),
-                    (a, b) => new DO_UserRoleActionLink
-                    {
-                        ActionId = a.act.ActionId,
-                        ActionDesc=a.act.ActionDesc,
-                        UserRole = b == null ? 0 : b.UserRole,
-                        ActiveStatus = b == null ? false : b.ActiveStatus
-                    }).ToListAsync();
-
-                    return ds;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<DO_ReturnParameter> InsertOrUpdateUpdateUserRoleActionLink(List<DO_UserRoleActionLink> obj)
-        {
-            using (eSyaEnterprise db = new eSyaEnterprise())
-            {
-                using (var dbContext = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        foreach (var _role in obj)
-                        {
-                            var roleExist = db.GtEuusrls.Where(w => w.UserRole == _role.UserRole && w.ActionId == _role.ActionId).FirstOrDefault();
-                            if (roleExist != null)
-                            {
-                                db.GtEuusrls.Remove(roleExist);
-                                await db.SaveChangesAsync();
-                            }
-                         }
-                        foreach (var _role in obj)
-                        { 
-                            if (_role.ActiveStatus == true) 
-                                { 
-                                    var userrolelink = new GtEuusrl
-                                    {
-                                        UserRole = _role.UserRole,
-                                        ActionId = _role.ActionId,
-                                        ActiveStatus = _role.ActiveStatus,
-                                        FormId= _role.FormID,
-                                        CreatedBy = _role.UserID,
-                                        CreatedOn = System.DateTime.Now,
-                                        CreatedTerminal = _role.TerminalID
-                                    };
-                                    db.GtEuusrls.Add(userrolelink);
-                                    await db.SaveChangesAsync();
-                                }
-                        }
-                    
-                       
-                        dbContext.Commit();
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        dbContext.Rollback();
-                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Define Menu Link to Location
@@ -1708,3 +1602,4 @@ namespace eSya.ProductSetup.DL.Repository
         #endregion
     }
 }
+

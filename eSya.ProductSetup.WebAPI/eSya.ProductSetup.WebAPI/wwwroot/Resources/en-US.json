@@ -73,6 +73,10 @@
   "W00165": "SMS Connect not Exist",
   "W00166": "Email Connect not Exist",
   "W00167": "No Schema found to Activate/D-Activate",
+  "W00168": "Calendar already Link with selected Location",
+  "W00169": "Month is Already Exists for the Year and Business Key in PatientID Generation",
+  "W00170": "Month is Already Exists for the Year and Business Key in Parameter",
+ 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",
   "S0003": "Activated Successfully",

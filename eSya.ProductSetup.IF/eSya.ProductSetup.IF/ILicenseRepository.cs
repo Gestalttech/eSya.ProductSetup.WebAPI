@@ -66,12 +66,6 @@ namespace eSya.ProductSetup.IF
         Task<DO_TaxIdentification> GetStateCodeByISDCode(int isdCode, int TaxIdentificationId);
         #endregion
 
-        #region Define User Role Action
-        Task<List<DO_ApplicationCodes>> GetUserRoleByCodeType(int codeType);
-        Task<List<DO_UserRoleActionLink>> GetUserRoleActionLink(int userRole);
-        Task<DO_ReturnParameter> InsertOrUpdateUpdateUserRoleActionLink(List<DO_UserRoleActionLink> obj);
-        #endregion
-
         #region Define Menu Link to Location
         Task<DO_ConfigureMenu> GetLocationMenuLinkbyBusinessKey(int businesskey);
 

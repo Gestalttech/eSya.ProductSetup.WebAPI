@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Remove="DO_BusinessConfiguration.cs" />
     <Compile Remove="DO_EmailConnectHeader.cs" />
+    <Compile Remove="DO_UserRoleActionLink.cs" />
   </ItemGroup>
 
 </Project>

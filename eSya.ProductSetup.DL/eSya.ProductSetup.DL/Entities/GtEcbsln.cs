@@ -8,7 +8,6 @@ namespace eSya.ProductSetup.DL.Entities
         public GtEcbsln()
         {
             GtEcbssus = new HashSet<GtEcbssu>();
-            GtEcclcos = new HashSet<GtEcclco>();
             GtEcpabls = new HashSet<GtEcpabl>();
         }
 
@@ -34,7 +33,6 @@ namespace eSya.ProductSetup.DL.Entities
         public string? ModifiedTerminal { get; set; }
 
         public virtual ICollection<GtEcbssu> GtEcbssus { get; set; }
-        public virtual ICollection<GtEcclco> GtEcclcos { get; set; }
         public virtual ICollection<GtEcpabl> GtEcpabls { get; set; }
     }
 }

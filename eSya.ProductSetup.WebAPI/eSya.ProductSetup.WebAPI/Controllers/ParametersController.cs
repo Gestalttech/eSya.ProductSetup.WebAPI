@@ -101,5 +101,45 @@ namespace eSya.ProductSetup.WebAPI.Controllers
 
         }
         #endregion
+
+        #region Link Parameter with Schema
+
+        /// <summary>
+        /// Get Parameter Type for drop down.
+        /// UI Reffered - Parameter Link Schema
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetActiveParameterTypes()
+        {
+            var ptyes = await _ParametersRepository.GetActiveParameterTypes();
+            return Ok(ptyes);
+        }
+
+        /// <summary>
+        /// Get Parameter Link Schema by Parameter Type.
+        /// UI Reffered - Parameter Link Schema
+        /// </summary>
+        /// <param name="parameterType"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetParameterLinkSchema(int parametertype)
+        {
+            var pa_schema = await _ParametersRepository.GetParameterLinkSchema(parametertype);
+            return Ok(pa_schema);
+        }
+
+        /// <summary>
+        /// Insert into Parameter Link Schema .
+        /// UI Reffered - Parameter Link Schema
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertOrUpdateLinkParameterSchema(List<DO_LinkParameterSchema> obj)
+        {
+            var msg = await _ParametersRepository.InsertOrUpdateLinkParameterSchema(obj);
+            return Ok(msg);
+
+        }
+        #endregion
     }
 }

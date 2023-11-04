@@ -46,7 +46,9 @@ namespace eSya.ProductSetup.DL.Repository
                             IsPinapplicable = x.IsPinapplicable,
                             PincodePattern = x.PincodePattern,
                             ActiveStatus = x.ActiveStatus,
-                            CurrencyName = y.CurrencyName
+                            CurrencyName = y.CurrencyName,
+                            DateFormat=x.DateFormat,
+                            ShortDateFormat=x.ShortDateFormat
                         }).ToListAsync();
                     List<DO_CountryCodes> countrycodes = new List<DO_CountryCodes>();
                     foreach (var item in await result)
@@ -67,6 +69,8 @@ namespace eSya.ProductSetup.DL.Repository
                         country.PincodePattern = item.PincodePattern;
                         country.ActiveStatus = item.ActiveStatus;
                         country.CurrencyName = item.CurrencyName;
+                        country.DateFormat = item.DateFormat;
+                        country.ShortDateFormat = item.ShortDateFormat;
                         countrycodes.Add(country);
                     }
 
@@ -124,7 +128,9 @@ namespace eSya.ProductSetup.DL.Repository
                             FormId = countrycode.FormId,
                             CreatedBy = countrycode.UserID,
                             CreatedOn = System.DateTime.Now,
-                            CreatedTerminal = countrycode.TerminalID
+                            CreatedTerminal = countrycode.TerminalID,
+                            DateFormat=countrycode.DateFormat,
+                            ShortDateFormat=countrycode.ShortDateFormat
                         };
                         db.GtEccncds.Add(ctr);
                         await db.SaveChangesAsync();
@@ -213,6 +219,8 @@ namespace eSya.ProductSetup.DL.Repository
                         ctr.ModifiedBy = countrycode.UserID;
                         ctr.ModifiedOn = System.DateTime.Now;
                         ctr.ModifiedTerminal = countrycode.TerminalID;
+                        ctr.ShortDateFormat = countrycode.ShortDateFormat;
+                        ctr.DateFormat = countrycode.DateFormat;
                         await db.SaveChangesAsync();
 
                         if (countrycode._lstUIDpattern != null)

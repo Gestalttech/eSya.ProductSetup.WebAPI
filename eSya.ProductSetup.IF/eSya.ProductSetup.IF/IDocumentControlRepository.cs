@@ -9,13 +9,22 @@ namespace eSya.ProductSetup.IF
 {
     public interface IDocumentControlRepository
     {
-        #region Calendar Defination
-        Task<DO_ReturnParameter> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar);
-        Task<List<DO_CalendarDefinition>> GetCalendarHeadersbyBusinessKey(int Businesskey);
+        //#region Calendar Defination
+        //Task<DO_ReturnParameter> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar);
+        //Task<List<DO_CalendarDefinition>> GetCalendarHeadersbyBusinessKey(int Businesskey);
 
-        Task<List<DO_CalendarDefinition>> GetCalendarHeaders();
+        //Task<List<DO_CalendarDefinition>> GetCalendarHeaders();
 
-        #endregion Calendar Defination
+        //#endregion Calendar Defination
+        #region Calendar Header
+        Task<List<DO_CalendarHeader>> GetCalendarHeaders();
+        Task<DO_ReturnParameter> InsertCalendarHeader(DO_CalendarHeader obj);
+        #endregion
+
+        #region Calendar Header
+        Task<DO_ReturnParameter> InsertCalendarDetails(DO_CalendarHeader obj);
+
+         #endregion
 
         #region Document Master
         Task<List<DO_DocumentControlMaster>> GetDocumentControlMaster();

@@ -16,19 +16,45 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             _DocumentControlRepository = DocumentControlRepository;
         }
 
+        //#region Calendar Header
+
+        ///// <summary>
+        ///// Getting Calendar Headers by BusineeKey.
+        ///// UI Reffered - Calendar Header Grid
+        ///// </summary>
+        //[HttpGet]
+        //public async Task<IActionResult> GetCalendarHeadersbyBusinessKey(int Businesskey)
+        //{
+        //    var cal_headers = await _DocumentControlRepository.GetCalendarHeadersbyBusinessKey(Businesskey);
+        //    return Ok(cal_headers);
+        //}
+
+        ///// <summary>
+        ///// Getting Calendar Header.
+        ///// UI Reffered - Calendar Header Grid
+        ///// </summary>
+        //[HttpGet]
+        //public async Task<IActionResult> GetCalendarHeaders()
+        //{
+        //    var cal_headers = await _DocumentControlRepository.GetCalendarHeaders();
+        //    return Ok(cal_headers);
+        //}
+
+        ///// <summary>
+        ///// Insert Calendar Header & Details Table .
+        ///// UI Reffered -Calendar Header
+        ///// </summary>
+        //[HttpPost]
+        //public async Task<IActionResult> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar)
+        //{
+        //    var msg = await _DocumentControlRepository.InsertCalendarHeaderAndDetails(calendarheadar);
+        //    return Ok(msg);
+
+        //}
+
+        //#endregion Calendar Header
+
         #region Calendar Header
-
-        /// <summary>
-        /// Getting Calendar Headers by BusineeKey.
-        /// UI Reffered - Calendar Header Grid
-        /// </summary>
-        [HttpGet]
-        public async Task<IActionResult> GetCalendarHeadersbyBusinessKey(int Businesskey)
-        {
-            var cal_headers = await _DocumentControlRepository.GetCalendarHeadersbyBusinessKey(Businesskey);
-            return Ok(cal_headers);
-        }
-
         /// <summary>
         /// Getting Calendar Header.
         /// UI Reffered - Calendar Header Grid
@@ -41,18 +67,31 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Insert Calendar Header & Details Table .
+        /// Insert Calendar Header  Table .
         /// UI Reffered -Calendar Header
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar)
+        public async Task<IActionResult> InsertCalendarHeader(DO_CalendarHeader obj)
         {
-            var msg = await _DocumentControlRepository.InsertCalendarHeaderAndDetails(calendarheadar);
+            var msg = await _DocumentControlRepository.InsertCalendarHeader(obj);
             return Ok(msg);
 
         }
+        #endregion
 
-        #endregion Calendar Header
+        #region Calendar Details
+        /// <summary>
+        /// Insert Calendar Details  Table .
+        /// UI Reffered -Calendar Details
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertCalendarDetails(DO_CalendarHeader obj)
+        {
+            var msg = await _DocumentControlRepository.InsertCalendarDetails(obj);
+            return Ok(msg);
+
+        }
+        #endregion
 
         #region Document Master
 
