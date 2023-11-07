@@ -9,13 +9,7 @@ namespace eSya.ProductSetup.IF
 {
     public interface IDocumentControlRepository
     {
-        //#region Calendar Defination
-        //Task<DO_ReturnParameter> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar);
-        //Task<List<DO_CalendarDefinition>> GetCalendarHeadersbyBusinessKey(int Businesskey);
-
-        //Task<List<DO_CalendarDefinition>> GetCalendarHeaders();
-
-        //#endregion Calendar Defination
+        
         #region Calendar Header
         Task<List<DO_CalendarHeader>> GetCalendarHeaders();
         Task<DO_ReturnParameter> InsertCalendarHeader(DO_CalendarHeader obj);
@@ -24,7 +18,13 @@ namespace eSya.ProductSetup.IF
         #region Calendar Header
         Task<DO_ReturnParameter> InsertCalendarDetails(DO_CalendarHeader obj);
 
-         #endregion
+        #endregion
+
+        #region Calendar Patient ID Generation
+        Task<List<DO_CalendarHeader>> GetCalenderKeybyBusinessKey(int Businesskey);
+        List<DO_CalendarPatientIdGeneration> GetCalendarPatientGenerationbyBusinessKeyAndCalenderKey(int BusinessKey, string CalenderKey);
+        Task<DO_ReturnParameter> UpdateCalendarGeneration(DO_CalendarPatientIdGeneration obj);
+        #endregion
 
         #region Document Master
         Task<List<DO_DocumentControlMaster>> GetDocumentControlMaster();
@@ -36,6 +36,12 @@ namespace eSya.ProductSetup.IF
         Task<List<DO_Forms>> GetFormsForDocumentControl();
         Task<List<DO_FormDocumentLink>> GetFormDocumentlink(int formID);
         Task<DO_ReturnParameter> UpdateFormDocumentLinks(List<DO_FormDocumentLink> obj);
+        #endregion
+
+        #region  Document Link with Form
+        Task<List<DO_FormDocumentLink>> GetActiveDocumentControls();
+        Task<List<DO_FormDocumentLink>> GetDocumentFormlink(int documentID);
+        Task<DO_ReturnParameter> UpdateDocumentFormlink(List<DO_FormDocumentLink> obj);
         #endregion
     }
 }

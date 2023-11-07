@@ -16,44 +16,6 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             _DocumentControlRepository = DocumentControlRepository;
         }
 
-        //#region Calendar Header
-
-        ///// <summary>
-        ///// Getting Calendar Headers by BusineeKey.
-        ///// UI Reffered - Calendar Header Grid
-        ///// </summary>
-        //[HttpGet]
-        //public async Task<IActionResult> GetCalendarHeadersbyBusinessKey(int Businesskey)
-        //{
-        //    var cal_headers = await _DocumentControlRepository.GetCalendarHeadersbyBusinessKey(Businesskey);
-        //    return Ok(cal_headers);
-        //}
-
-        ///// <summary>
-        ///// Getting Calendar Header.
-        ///// UI Reffered - Calendar Header Grid
-        ///// </summary>
-        //[HttpGet]
-        //public async Task<IActionResult> GetCalendarHeaders()
-        //{
-        //    var cal_headers = await _DocumentControlRepository.GetCalendarHeaders();
-        //    return Ok(cal_headers);
-        //}
-
-        ///// <summary>
-        ///// Insert Calendar Header & Details Table .
-        ///// UI Reffered -Calendar Header
-        ///// </summary>
-        //[HttpPost]
-        //public async Task<IActionResult> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar)
-        //{
-        //    var msg = await _DocumentControlRepository.InsertCalendarHeaderAndDetails(calendarheadar);
-        //    return Ok(msg);
-
-        //}
-
-        //#endregion Calendar Header
-
         #region Calendar Header
         /// <summary>
         /// Getting Calendar Header.
@@ -88,6 +50,43 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         public async Task<IActionResult> InsertCalendarDetails(DO_CalendarHeader obj)
         {
             var msg = await _DocumentControlRepository.InsertCalendarDetails(obj);
+            return Ok(msg);
+
+        }
+        #endregion
+
+
+        #region Calendar Patient ID Generation
+        /// <summary>
+        /// Getting CalenderKey by BusinessKey.
+        /// UI Reffered - Calendar Calendar Key for drop down
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetCalenderKeybyBusinessKey(int Businesskey)
+        {
+            var calkeys = await _DocumentControlRepository.GetCalenderKeybyBusinessKey(Businesskey);
+            return Ok(calkeys);
+        }
+
+        /// <summary>
+        /// Getting Patient Generation by BusinessKey.
+        /// UI Reffered - Calendar Patient Generation for Grid
+        /// </summary>
+        [HttpGet]
+        public IActionResult GetCalendarPatientGenerationbyBusinessKeyAndCalenderKey(int BusinessKey, string CalenderKey)
+        {
+            var pa_gens =  _DocumentControlRepository.GetCalendarPatientGenerationbyBusinessKeyAndCalenderKey(BusinessKey, CalenderKey);
+            return Ok(pa_gens);
+        }
+
+        /// <summary>
+        /// Update Calendar Patient Generation .
+        /// UI Reffered -Calendar Patient Generation
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> UpdateCalendarGeneration(DO_CalendarPatientIdGeneration obj)
+        {
+            var msg = await _DocumentControlRepository.UpdateCalendarGeneration(obj);
             return Ok(msg);
 
         }
@@ -161,6 +160,42 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         public async Task<IActionResult> UpdateFormDocumentLinks(List<DO_FormDocumentLink> obj)
         {
             var msg = await _DocumentControlRepository.UpdateFormDocumentLinks(obj);
+            return Ok(msg);
+
+        }
+        #endregion
+
+        #region Document Link with Form
+        /// <summary>
+        /// Docuemt  List.
+        /// UI Reffered - Document Control -> Docuemnt Tree
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetActiveDocumentControls()
+        {
+            var ds = await _DocumentControlRepository.GetActiveDocumentControls();
+            return Ok(ds);
+        }
+
+        /// <summary>
+        /// Getting Getting Forms (IsDocumentControl=true) .
+        /// UI Reffered - Document Control -> Form Grid
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetDocumentFormlink(int documentID)
+        {
+            var ds = await _DocumentControlRepository.GetDocumentFormlink(documentID);
+            return Ok(ds);
+        }
+
+        /// <summary>
+        /// Update Document-Form Links .
+        /// UI Reffered - Document Control
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> UpdateDocumentFormlink(List<DO_FormDocumentLink> obj)
+        {
+            var msg = await _DocumentControlRepository.UpdateDocumentFormlink(obj);
             return Ok(msg);
 
         }

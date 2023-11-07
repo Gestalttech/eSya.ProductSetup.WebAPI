@@ -20,162 +20,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //#region Calendar Defination
-        //public async Task<DO_ReturnParameter> InsertCalendarHeaderAndDetails(DO_CalendarDefinition calendarheadar)
-        //{
-        //    using (eSyaEnterprise db = new eSyaEnterprise())
-        //    {
-        //        using (var dbContext = db.Database.BeginTransaction())
-        //        {
-        //            try
-        //            {
-
-        //                int financialcalr = Convert.ToInt32(calendarheadar.FinancialYear);
-
-        //                var isCalendarExists = db.GtEcclcos.Where(x => x.FinancialYear == financialcalr && x.BusinessKey == calendarheadar.BusinessKey).FirstOrDefault();
-
-        //                if (isCalendarExists == null)
-        //                {
-        //                    GtEcclco calheader = new GtEcclco();
-        //                    calheader.FinancialYear = Convert.ToInt32(calendarheadar.FinancialYear);
-        //                    calheader.BusinessKey = calendarheadar.BusinessKey;
-        //                    calheader.FromDate = calendarheadar.FromDate;
-        //                    calheader.TillDate = calendarheadar.TillDate;
-        //                    calheader.Status = calendarheadar.Status;
-        //                    calheader.FormId = calendarheadar.FormId;
-        //                    calheader.CreatedBy = calendarheadar.UserID;
-        //                    calheader.CreatedOn = System.DateTime.Now;
-        //                    calheader.CreatedTerminal = calendarheadar.TerminalID;
-        //                    db.GtEcclcos.Add(calheader);
-        //                    await db.SaveChangesAsync();
-        //                    List<int> MonthIds = new List<int>();
-        //                    string months;
-        //                    var financeyear = Convert.ToInt32(calendarheadar.FinancialYear);
-
-        //                    for (int i = calendarheadar.FromDate.Month; i <= calendarheadar.TillDate.Month; i++)
-        //                    {
-        //                        if (i.ToString().Length == 1)
-        //                        {
-        //                            string strMonth = 0 + i.ToString();
-        //                            months = financeyear.ToString() + "" + strMonth;
-        //                        }
-        //                        else
-        //                        {
-        //                            months = financeyear.ToString() + "" + i.ToString();
-
-        //                        }
-
-        //                        MonthIds.Add(Convert.ToInt32(months));
-        //                    }
-
-        //                    GtEccldt caldetails = new GtEccldt();
-
-        //                    foreach (var month in MonthIds)
-        //                    {
-        //                        var calendardetailsExists = db.GtEccldts.Where(x => x.BusinessKey == calendarheadar.BusinessKey &&
-        //                          x.FinancialYear == Convert.ToInt32(calendarheadar.FinancialYear) && x.MonthId == month).FirstOrDefault();
-        //                        if (calendardetailsExists != null)
-        //                        {
-        //                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0053", Message = string.Format(_localizer[name: "W0053"]) };
-        //                        }
-        //                        else
-        //                        {
-        //                            caldetails.BusinessKey = calendarheadar.BusinessKey;
-        //                            caldetails.FinancialYear = Convert.ToInt32(calendarheadar.FinancialYear);
-        //                            caldetails.MonthId = month;
-        //                            caldetails.MonthFreezeHis = false;
-        //                            caldetails.MonthFreezeFin = false;
-        //                            caldetails.MonthFreezeHr = false;
-        //                            caldetails.PatientIdgen = 0;
-        //                            caldetails.PatientIdserial = "0";
-        //                            caldetails.BudgetMonth = "Q";
-        //                            caldetails.ActiveStatus = true;
-        //                            caldetails.FormId = calendarheadar.FormId;
-        //                            caldetails.CreatedBy = calendarheadar.UserID;
-        //                            caldetails.CreatedOn = DateTime.Now;
-        //                            caldetails.CreatedTerminal = calendarheadar.TerminalID;
-        //                            db.GtEccldts.Add(caldetails);
-        //                            await db.SaveChangesAsync();
-        //                        }
-        //                    }
-        //                    dbContext.Commit();
-
-        //                    return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
-        //                }
-        //                else
-        //                {
-        //                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0054", Message = string.Format(_localizer[name: "W0054"]) };
-        //                }
-        //            }
-
-        //            catch (Exception ex)
-        //            {
-        //                dbContext.Rollback();
-        //                throw ex;
-        //            }
-        //        }
-
-
-
-
-        //    }
-        //}
-        //public async Task<List<DO_CalendarDefinition>> GetCalendarHeadersbyBusinessKey(int Businesskey)
-        //{
-        //    try
-        //    {
-        //        using (var db = new eSyaEnterprise())
-        //        {
-        //            var result = db.GtEcclcos.Where(x => x.BusinessKey == Businesskey)
-
-        //                         .Select(c => new DO_CalendarDefinition
-        //                         {
-        //                             BusinessKey = c.BusinessKey,
-        //                             FinancialYear = c.FinancialYear,
-        //                             FromDate = c.FromDate,
-        //                             TillDate = c.TillDate,
-        //                             Status = c.Status
-        //                         }).OrderByDescending(x => x.FinancialYear).ToListAsync();
-        //            return await result;
-
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //public async Task<List<DO_CalendarDefinition>> GetCalendarHeaders()
-        //{
-        //    try
-        //    {
-        //        using (var db = new eSyaEnterprise())
-        //        {
-        //            var result = db.GtEcclcos
-
-        //                         .Select(c => new DO_CalendarDefinition
-        //                         {
-        //                             BusinessKey = c.BusinessKey,
-        //                             FinancialYear = c.FinancialYear,
-        //                             FromDate = c.FromDate,
-        //                             TillDate = c.TillDate,
-        //                             Status = c.Status
-        //                         }).OrderByDescending(x => x.FinancialYear).ToListAsync();
-        //            return await result;
-
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //#endregion Calendar Defination
-
+        
         #region Calendar Header
         public async Task<List<DO_CalendarHeader>> GetCalendarHeaders()
         {
@@ -423,6 +268,326 @@ namespace eSya.ProductSetup.DL.Repository
 
         #endregion
 
+        #region Calendar Patient ID Generation
+
+        public async Task<List<DO_CalendarHeader>> GetCalenderKeybyBusinessKey(int Businesskey)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    var result = db.GtEcblcls.Where(x => x.BusinessKey == Businesskey && x.ActiveStatus)
+
+                                 .Select(c => new DO_CalendarHeader
+                                 {
+                                     CalenderKey = c.CalenderKey
+
+                                 }).OrderByDescending(x => x.CalenderKey).Distinct().ToListAsync();
+                    return await result;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<DO_CalendarPatientIdGeneration> GetCalendarPatientGenerationbyBusinessKeyAndCalenderKey(int BusinessKey, string CalenderKey)
+        {
+            try
+            {
+                using (eSyaEnterprise db = new eSyaEnterprise())
+                {
+                    if (BusinessKey != 0 && CalenderKey == "0")
+                    {
+                        return GetCalendarGenerationbyBusinessKey(BusinessKey);
+                    }
+                    var result = db.GtEcclpis.Where(h => h.BusinessKey == BusinessKey && h.CalenderKey.ToUpper().Replace(" ", "") == CalenderKey.ToUpper().Replace(" ", ""))
+                        .Join(db.GtEcclcos,
+                     x => x.CalenderKey,
+                     y => y.CalenderKey,
+
+                     (x, y) => new DO_CalendarPatientIdGeneration
+                     {
+
+                         BusinessKey = x.BusinessKey,
+                         CalenderKey = x.CalenderKey,
+                         MonthId = x.MonthId,
+                         EditMonthId = x.MonthId,
+                         PatientIdgen = x.PatientIdgen,
+                         PatientIdserial = x.PatientIdserial,
+                         ActiveStatus = x.ActiveStatus,
+                         Fromdate = y.FromDate,
+                         Tilldate = y.TillDate,
+                         Year = y.Year
+
+                     }).ToList();
+
+                    List<DO_CalendarPatientIdGeneration> Calendarpatientlist = new List<DO_CalendarPatientIdGeneration>();
+
+                    foreach (var item in result)
+                    {
+                        DO_CalendarPatientIdGeneration obj = new DO_CalendarPatientIdGeneration();
+                        obj.BusinessKey = item.BusinessKey;
+                        obj.CalenderKey = item.CalenderKey;
+                        obj.MonthId = item.MonthId;
+                        obj.EditMonthId = item.MonthId;
+                        obj.PatientIdgen = item.PatientIdgen;
+                        obj.PatientIdserial = item.PatientIdserial;
+                        obj.ActiveStatus = item.ActiveStatus;
+                        obj.Fromdate = item.Fromdate;
+                        obj.Tilldate = item.Tilldate;
+                        obj.Year = item.Year;
+                        String Monthlength = item.MonthId.ToString();
+                        String firstletter = "";
+                        if (!string.IsNullOrEmpty(Monthlength))
+                        {
+                            firstletter = Monthlength.Remove(0, 4);
+                        }
+
+                        if (firstletter == "01")
+                        {
+                            obj.MonthDescription = "January";
+
+
+                        }
+                        if (firstletter == "02")
+                        {
+                            obj.MonthDescription = "February";
+
+                        }
+                        if (firstletter == "03")
+                        {
+                            obj.MonthDescription = "March";
+
+                        }
+                        if (firstletter == "04")
+                        {
+                            obj.MonthDescription = "April";
+
+                        }
+                        if (firstletter == "05")
+                        {
+                            obj.MonthDescription = "May";
+
+                        }
+                        if (firstletter == "06")
+                        {
+                            obj.MonthDescription = "June";
+
+                        }
+                        if (firstletter == "07")
+                        {
+                            obj.MonthDescription = "July";
+
+                        }
+                        if (firstletter == "08")
+                        {
+                            obj.MonthDescription = "August";
+
+                        }
+                        if (firstletter == "09")
+                        {
+                            obj.MonthDescription = "September";
+
+                        }
+                        if (firstletter == "10")
+                        {
+                            obj.MonthDescription = "October";
+
+                        }
+                        if (firstletter == "11")
+                        {
+                            obj.MonthDescription = "November";
+
+                        }
+                        if (firstletter == "12")
+                        {
+                            obj.MonthDescription = "December";
+
+                        }
+                        Calendarpatientlist.Add(obj);
+                    }
+
+
+                    return Calendarpatientlist.ToList();
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<DO_CalendarPatientIdGeneration> GetCalendarGenerationbyBusinessKey(int BusinessKey)
+        {
+            try
+            {
+                using (eSyaEnterprise db = new eSyaEnterprise())
+                {
+                   
+                    var result = db.GtEcclpis.Where(k => k.BusinessKey == BusinessKey).Join(db.GtEcclcos,
+                     x => x.CalenderKey,
+                     y => y.CalenderKey,
+                     (x, y) => new { x, y })
+                    .Select(
+                     m=> new DO_CalendarPatientIdGeneration
+                     {
+
+                         BusinessKey = m.x.BusinessKey,
+                         CalenderKey =m.x.CalenderKey,
+                         MonthId = m.x.MonthId,
+                         EditMonthId = m.x.MonthId,
+                         PatientIdgen =m. x.PatientIdgen,
+                         PatientIdserial = m.x.PatientIdserial,
+                         ActiveStatus = m.x.ActiveStatus,
+                         Fromdate = m.y.FromDate,
+                         Tilldate = m.y.TillDate,
+                         Year=m.y.Year
+
+
+                     }).ToList();
+
+                    List<DO_CalendarPatientIdGeneration> CalendarDtailslist = new List<DO_CalendarPatientIdGeneration>();
+
+                    foreach (var item in result)
+                    {
+                        DO_CalendarPatientIdGeneration obj = new DO_CalendarPatientIdGeneration();
+                        obj.BusinessKey = item.BusinessKey;
+                        obj.CalenderKey = item.CalenderKey;
+                        obj.Year = item.Year;
+                        obj.MonthId = item.MonthId;
+                        obj.EditMonthId = item.MonthId;
+                        obj.PatientIdgen = item.PatientIdgen;
+                        obj.PatientIdserial = item.PatientIdserial;
+                        obj.ActiveStatus = item.ActiveStatus;
+                        obj.Fromdate = item.Fromdate;
+                        obj.Tilldate = item.Tilldate;
+                        String Monthlength = item.MonthId.ToString();
+                        String firstletter = "";
+                        if (!string.IsNullOrEmpty(Monthlength))
+                        {
+                            firstletter = Monthlength.Remove(0, 4);
+                        }
+                        if (firstletter == "01")
+                        {
+                            obj.MonthDescription = "January";
+
+
+                        }
+                        if (firstletter == "02")
+                        {
+                            obj.MonthDescription = "February";
+
+                        }
+                        if (firstletter == "03")
+                        {
+                            obj.MonthDescription = "March";
+
+                        }
+                        if (firstletter == "04")
+                        {
+                            obj.MonthDescription = "April";
+
+                        }
+                        if (firstletter == "05")
+                        {
+                            obj.MonthDescription = "May";
+
+                        }
+                        if (firstletter == "06")
+                        {
+                            obj.MonthDescription = "June";
+
+                        }
+                        if (firstletter == "07")
+                        {
+                            obj.MonthDescription = "July";
+
+                        }
+                        if (firstletter == "08")
+                        {
+                            obj.MonthDescription = "August";
+
+                        }
+                        if (firstletter == "09")
+                        {
+                            obj.MonthDescription = "September";
+
+                        }
+                        if (firstletter == "10")
+                        {
+                            obj.MonthDescription = "October";
+
+                        }
+                        if (firstletter == "11")
+                        {
+                            obj.MonthDescription = "November";
+
+                        }
+                        if (firstletter == "12")
+                        {
+                            obj.MonthDescription = "December";
+
+                        }
+                        CalendarDtailslist.Add(obj);
+                    }
+
+
+                    return CalendarDtailslist.ToList();
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<DO_ReturnParameter> UpdateCalendarGeneration(DO_CalendarPatientIdGeneration obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var calgen = db.GtEcclpis.Where(x => x.MonthId == obj.MonthId && x.BusinessKey == obj.BusinessKey && x.CalenderKey.ToUpper().Replace(" ", "") == obj.CalenderKey.ToUpper().Replace(" ", "")).FirstOrDefault();
+                        if (calgen != null)
+                        {
+                            calgen.PatientIdgen = obj.PatientIdgen;
+                            //calgen.PatientIdserial = obj.PatientIdserial;
+                            calgen.ActiveStatus = obj.ActiveStatus;
+                            calgen.ModifiedBy = obj.UserID;
+                            calgen.ModifiedOn = DateTime.Now;
+                            calgen.ModifiedTerminal = obj.TerminalID;
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+                        }
+                        else
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00171", Message = string.Format(_localizer[name: "W00171"]) };
+                        }
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        #endregion
+
         #region Document Master
         public async Task<List<DO_DocumentControlMaster>> GetDocumentControlMaster()
         {
@@ -620,44 +785,17 @@ namespace eSya.ProductSetup.DL.Repository
                 using (var db = new eSyaEnterprise())
                 {
 
-
-                    //var ds = await db.GtEcfmfds
-                    //    .Join(db.GtEcfmpas,
-                    //    f => f.FormId,
-                    //    p => p.FormId,
-                    //    (f, p) => new { f, p })
-                    //    .GroupJoin(db.GtDncnfds.Where(w => w.ActiveStatus),
-                    //    fp => fp.f.FormId,
-                    //    d => d.FormId,
-                    //    (fp, d) => new { fp, d = d.FirstOrDefault() })
-                    //    .Where(w => w.fp.f.ActiveStatus && w.fp.p.ParameterId == 2)
-                    //   .Select(s => new DO_Forms
-                    //   {
-                    //       FormID = s.fp.f.FormId,
-                    //       FormName = s.fp.f.FormName,
-                    //       FormCode = s.fp.f.FormCode,
-                    //       ActiveStatus = s.d != null ? true : false
-
-                    //   }).ToListAsync();
-                    //return ds;
-
                     var ds =await db.GtEcfmfds.Where(x=>x.ActiveStatus==true)
                         .Join(db.GtEcfmpas.Where(x => x.ParameterId == 2),
                         f => f.FormId,
                         p => p.FormId,
                         (f, p) => new { f, p })
-                    .GroupJoin(db.GtDncnfds.Where(w => w.ActiveStatus == true),
-                      e => e.f.FormId,
-                      d => d.FormId,
-                     (emp, depts) => new { emp, depts })
-                    //.Where(w => w.emp.f.ActiveStatus==true &&w.emp.p.ParameterId==2)
-                    .SelectMany(z => z.depts.DefaultIfEmpty(),
-                     (a, b) => new DO_Forms
+                      .Select( x=> new DO_Forms
                      {
-                         FormID =a.emp.f.FormId,
-                         FormName =a.emp.f.FormName,
-                         FormCode =a.emp.f.FormCode,
-                         ActiveStatus = b == null ? false : b.ActiveStatus
+                         FormID =x.f.FormId,
+                         FormName = x.f.FormName,
+                         FormCode = x.f.FormCode,
+                         ActiveStatus = x.f.ActiveStatus
                      }).ToListAsync();
                     //return ds;
                     var Distinctforms = ds.GroupBy(x => x.FormID).Select(y => y.First());
@@ -717,6 +855,119 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         public async Task<DO_ReturnParameter> UpdateFormDocumentLinks(List<DO_FormDocumentLink> obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var _link in obj)
+                        {
+                            var LinkExist = db.GtDncnfds.Where(w => w.FormId == _link.FormId && w.DocumentId == _link.DocumentId).FirstOrDefault();
+                            if (LinkExist != null)
+                            {
+                                if (_link.ActiveStatus != LinkExist.ActiveStatus)
+                                {
+                                    LinkExist.ActiveStatus = _link.ActiveStatus;
+                                    LinkExist.ModifiedBy = _link.UserID;
+                                    LinkExist.ModifiedOn = System.DateTime.Now;
+                                    LinkExist.ModifiedTerminal = _link.TerminalID;
+                                }
+                            }
+                            else
+                            {
+                                if (_link.ActiveStatus)
+                                {
+                                    var formdoclink = new GtDncnfd
+                                    {
+                                        FormId = _link.FormId,
+                                        DocumentId = _link.DocumentId,
+                                        ActiveStatus = _link.ActiveStatus,
+
+                                        CreatedBy = _link.UserID,
+                                        CreatedOn = System.DateTime.Now,
+                                        CreatedTerminal = _link.TerminalID
+                                    };
+                                    db.GtDncnfds.Add(formdoclink);
+                                }
+
+                            }
+                        }
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region  Document Link with Form
+        public async Task<List<DO_FormDocumentLink>> GetActiveDocumentControls()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+
+                    var ds = await db.GtDccnsts.Where(w => w.ActiveStatus == true).Select(x => new DO_FormDocumentLink
+                    {
+                        DocumentId=x.DocumentId,
+                        DocumentName=x.DocumentDesc,
+                    }).ToListAsync();
+                    return ds;
+                  
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_FormDocumentLink>> GetDocumentFormlink(int documentID)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+
+                    var ds = await db.GtEcfmfds.Where(x => x.ActiveStatus == true)
+                        .Join(db.GtEcfmpas.Where(x => x.ParameterId == 2),
+                        f => f.FormId,
+                        p => p.FormId,
+                        (f, p) => new { f, p })
+                   .GroupJoin(db.GtDncnfds.Where(w => w.DocumentId == documentID),
+                     d => d.f.FormId,
+                     l => l.FormId,
+                    (form, doc) => new { form, doc })
+                   .SelectMany(z => z.doc.DefaultIfEmpty(),
+                    (a, b) => new DO_FormDocumentLink
+                    {
+                        DocumentId = documentID,
+                        FormId = a.form.f.FormId,
+                        FormName = a.form.f.FormName,
+                        ActiveStatus = b == null ? false : b.ActiveStatus
+                    }).ToListAsync();
+
+                    var Distinctform = ds.GroupBy(x => x.FormId).Select(y => y.First());
+                    return Distinctform.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> UpdateDocumentFormlink(List<DO_FormDocumentLink> obj)
         {
             using (eSyaEnterprise db = new eSyaEnterprise())
             {

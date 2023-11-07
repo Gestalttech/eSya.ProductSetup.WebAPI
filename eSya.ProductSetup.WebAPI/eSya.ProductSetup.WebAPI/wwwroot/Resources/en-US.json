@@ -76,7 +76,8 @@
   "W00168": "Calendar already Link with selected Location",
   "W00169": "Month is Already Exists for the Year and Business Key in PatientID Generation",
   "W00170": "Month is Already Exists for the Year and Business Key in Parameter",
- 
+  "W00171": "Does Not Exist",
+
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",
   "S0003": "Activated Successfully",
