@@ -8,6 +8,7 @@ namespace eSya.ProductSetup.DL.Entities
         public int BusinessId { get; set; }
         public string PreferredLanguage { get; set; } = null!;
         public string Pldesc { get; set; } = null!;
+        public bool DefaultLanguage { get; set; }
         public bool ActiveStatus { get; set; }
         public string FormId { get; set; } = null!;
         public int CreatedBy { get; set; }

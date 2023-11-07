@@ -129,6 +129,7 @@ namespace eSya.ProductSetup.DL.Repository
                                         BusinessId = _businessID,
                                         PreferredLanguage = _pl.CultureCode,
                                         Pldesc=_pl.Pldesc,
+                                        DefaultLanguage=_pl.DefaultLanguage,
                                         ActiveStatus = _pl.ActiveStatus,
                                         FormId = _pl.FormID,
                                         CreatedBy = _pl.UserID,
@@ -208,6 +209,7 @@ namespace eSya.ProductSetup.DL.Repository
                                             BusinessId = _pl.BusinessId,
                                             PreferredLanguage = _pl.CultureCode,
                                             Pldesc = _pl.Pldesc,
+                                            DefaultLanguage=_pl.DefaultLanguage,
                                             ActiveStatus = _pl.ActiveStatus,
                                             FormId = _pl.FormID,
                                             CreatedBy = _pl.UserID,
@@ -341,7 +343,8 @@ namespace eSya.ProductSetup.DL.Repository
                             BusinessId= BusinessId,
                             CultureCode = r.CultureCode,
                             CultureDesc = r.CultureDesc,
-                            ActiveStatus = false
+                            ActiveStatus = false,
+                            DefaultLanguage=false
                         }).ToListAsync();
 
                     foreach (var obj in ds)
@@ -351,11 +354,13 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             obj.ActiveStatus = cul.ActiveStatus;
                             obj.Pldesc = cul.Pldesc;
+                            obj.DefaultLanguage = cul.DefaultLanguage;
                         }
                         else
                         {
                             obj.ActiveStatus = false;
                             obj.Pldesc = string.Empty;
+                            obj.DefaultLanguage = false;
                         }
                     }
 
