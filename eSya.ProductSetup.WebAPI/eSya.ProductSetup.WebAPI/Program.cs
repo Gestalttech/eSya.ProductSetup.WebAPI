@@ -68,6 +68,8 @@ builder.Services.AddScoped<ITaxIdentificationRepository, TaxIdentificationReposi
 builder.Services.AddScoped<IDocumentControlRepository, DocumentControlRepository>();
 builder.Services.AddScoped<IeSyaCultureRepository, eSyaCultureRepository>();
 builder.Services.AddScoped<IConnectRepository, ConnectRepository>();
+builder.Services.AddScoped<IAgeRangeRepository, AgeRangeRepository>();
+builder.Services.AddScoped<IBusinessCalendarRepository, BusinessCalendarRepository>();
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers();
