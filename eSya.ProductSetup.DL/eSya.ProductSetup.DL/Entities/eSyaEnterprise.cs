@@ -46,6 +46,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcclpi> GtEcclpis { get; set; } = null!;
         public virtual DbSet<GtEccncd> GtEccncds { get; set; } = null!;
         public virtual DbSet<GtEccnpi> GtEccnpis { get; set; } = null!;
+        public virtual DbSet<GtEccnpm> GtEccnpms { get; set; } = null!;
         public virtual DbSet<GtEccnsd> GtEccnsds { get; set; } = null!;
         public virtual DbSet<GtEccntc> GtEccntcs { get; set; } = null!;
         public virtual DbSet<GtEccnti> GtEccntis { get; set; } = null!;
@@ -938,6 +939,28 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("UIDPattern");
+            });
+
+            modelBuilder.Entity<GtEccnpm>(entity =>
+            {
+                entity.HasKey(e => new { e.Isdcode, e.InstrumentType });
+
+                entity.ToTable("GT_ECCNPM");
+
+                entity.Property(e => e.Isdcode).HasColumnName("ISDCode");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
             });
 
             modelBuilder.Entity<GtEccnsd>(entity =>

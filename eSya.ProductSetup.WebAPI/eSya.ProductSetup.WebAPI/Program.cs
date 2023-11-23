@@ -70,6 +70,7 @@ builder.Services.AddScoped<IeSyaCultureRepository, eSyaCultureRepository>();
 builder.Services.AddScoped<IConnectRepository, ConnectRepository>();
 builder.Services.AddScoped<IAgeRangeRepository, AgeRangeRepository>();
 builder.Services.AddScoped<IBusinessCalendarRepository, BusinessCalendarRepository>();
+builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers();
