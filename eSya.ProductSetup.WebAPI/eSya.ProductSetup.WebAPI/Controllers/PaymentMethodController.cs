@@ -22,9 +22,9 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetPaymentMethodbyISDCode(int codetype, int ISDCode)
+        public async Task<IActionResult> GetPaymentMethodbyISDCode(int ISDCode)
         {
-            var cities = await _paymentMethodRepository.GetPaymentMethodbyISDCode(codetype, ISDCode);
+            var cities = await _paymentMethodRepository.GetPaymentMethodbyISDCode(ISDCode);
             return Ok(cities);
         }
 
@@ -33,7 +33,7 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         /// UI Reffered - Payment methods,
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> InsertOrUpdatePaymentMethod(List<DO_PaymentMethod> obj)
+        public async Task<IActionResult> InsertOrUpdatePaymentMethod(DO_PaymentMethod obj)
         {
             var msg = await _paymentMethodRepository.InsertOrUpdatePaymentMethod(obj);
             return Ok(msg);

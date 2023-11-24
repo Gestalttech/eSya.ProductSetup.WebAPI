@@ -9,7 +9,7 @@ namespace eSya.ProductSetup.IF
 {
     public interface IPaymentMethodRepository
     {
-        Task<List<DO_PaymentMethod>> GetPaymentMethodbyISDCode(int codetype, int ISDCode);
-        Task<DO_ReturnParameter> InsertOrUpdatePaymentMethod(List<DO_PaymentMethod> obj);
+        Task<List<DO_PaymentMethod>> GetPaymentMethodbyISDCode(int ISDCode);
+        Task<DO_ReturnParameter> InsertOrUpdatePaymentMethod(DO_PaymentMethod obj);
     }
 }

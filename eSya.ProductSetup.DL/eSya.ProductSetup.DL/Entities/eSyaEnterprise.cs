@@ -943,7 +943,7 @@ namespace eSya.ProductSetup.DL.Entities
 
             modelBuilder.Entity<GtEccnpm>(entity =>
             {
-                entity.HasKey(e => new { e.Isdcode, e.InstrumentType });
+                entity.HasKey(e => new { e.Isdcode, e.PaymentMethod, e.InstrumentType });
 
                 entity.ToTable("GT_ECCNPM");
 
