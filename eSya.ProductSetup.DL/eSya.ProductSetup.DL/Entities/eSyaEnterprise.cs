@@ -787,7 +787,7 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.ToTable("GT_ECCLDT");
 
                 entity.Property(e => e.CalenderKey)
-                    .HasMaxLength(12)
+                    .HasMaxLength(6)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MonthId).HasColumnName("MonthID");
@@ -1695,6 +1695,11 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
 
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
