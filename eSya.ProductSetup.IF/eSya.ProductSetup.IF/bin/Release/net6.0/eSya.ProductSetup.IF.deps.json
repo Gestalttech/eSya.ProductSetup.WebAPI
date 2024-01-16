@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "eSya.ProductSetup.IF/1.0.0": {
+        "dependencies": {
+          "eSya.ProductSetup.DO": "1.0.0"
+        },
+        "runtime": {
+          "eSya.ProductSetup.IF.dll": {}
+        }
+      },
+      "eSya.ProductSetup.DO/1.0.0": {
+        "runtime": {
+          "eSya.ProductSetup.DO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "eSya.ProductSetup.IF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "eSya.ProductSetup.DO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,15 @@
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Release\net6.0\eSya.ProductSetup.IF.deps.json
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Release\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Release\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Release\net6.0\eSya.ProductSetup.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\bin\Release\net6.0\eSya.ProductSetup.DO.pdb
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.csproj.AssemblyReference.cache
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.AssemblyInfoInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.AssemblyInfo.cs
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.csproj.CoreCompileInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.csproj.CopyComplete
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\refint\eSya.ProductSetup.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\eSya.ProductSetup.IF.pdb
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\obj\Release\net6.0\ref\eSya.ProductSetup.IF.dll
