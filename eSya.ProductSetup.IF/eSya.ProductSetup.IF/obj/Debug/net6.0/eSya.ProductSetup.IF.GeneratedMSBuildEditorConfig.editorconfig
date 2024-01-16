@@ -9,3 +9,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = eSya.ProductSetup.IF
 build_property.ProjectDir = D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.IF\eSya.ProductSetup.IF\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
