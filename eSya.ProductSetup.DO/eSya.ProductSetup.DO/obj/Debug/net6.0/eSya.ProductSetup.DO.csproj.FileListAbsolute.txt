@@ -85,7 +85,6 @@ D:\Projects\eSyaJsonworking\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.P
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\bin\Debug\net6.0\eSya.ProductSetup.DO.deps.json
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\bin\Debug\net6.0\eSya.ProductSetup.DO.dll
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\bin\Debug\net6.0\eSya.ProductSetup.DO.pdb
-D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.csproj.AssemblyReference.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.AssemblyInfoInputs.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.AssemblyInfo.cs
@@ -94,3 +93,4 @@ D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\refint\eSya.ProductSetup.DO.dll
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.pdb
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\ref\eSya.ProductSetup.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DO\eSya.ProductSetup.DO\obj\Debug\net6.0\eSya.ProductSetup.DO.sourcelink.json

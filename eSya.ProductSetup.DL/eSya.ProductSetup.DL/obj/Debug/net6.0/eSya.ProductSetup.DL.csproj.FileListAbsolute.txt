@@ -150,3 +150,4 @@ D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DL\eSya.
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DL\eSya.ProductSetup.DL\obj\Debug\net6.0\eSya.ProductSetup.DL.pdb
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DL\eSya.ProductSetup.DL\obj\Debug\net6.0\eSya.ProductSetup.DL.genruntimeconfig.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DL\eSya.ProductSetup.DL\obj\Debug\net6.0\ref\eSya.ProductSetup.DL.dll
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.DL\eSya.ProductSetup.DL\obj\Debug\net6.0\eSya.ProductSetup.DL.sourcelink.json
