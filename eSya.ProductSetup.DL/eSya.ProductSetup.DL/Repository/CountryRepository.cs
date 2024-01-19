@@ -26,7 +26,7 @@ namespace eSya.ProductSetup.DL.Repository
             {
                 using (var db = new eSyaEnterprise())
                 {
-                    var result = db.GtEccncds.Join(db.GtEccucos,
+                    var result = db.GtEccncds.Join(db.GtEccucos.Where(x=>x.ActiveStatus),
                          x => x.CurrencyCode,
                          y => y.CurrencyCode,
                         (x, y) => new DO_CountryCodes
