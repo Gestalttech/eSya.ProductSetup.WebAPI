@@ -28,7 +28,8 @@ namespace eSya.ProductSetup.DL.Repository
             {
                 using (var db = new eSyaEnterprise())
                 {
-                    var result = db.GtEcclcos
+                    
+                    var result =await db.GtEcclcos
 
                                  .Select(c => new DO_CalendarHeader
                                  {
@@ -40,7 +41,33 @@ namespace eSya.ProductSetup.DL.Repository
                                      YearEndStatus = c.YearEndStatus,
                                      ActiveStatus = c.ActiveStatus
                                  }).OrderByDescending(x => x.Year).ToListAsync();
-                    return await result;
+                    List<DO_CalendarHeader> lstheader = new List<DO_CalendarHeader>();
+
+                    foreach(var link in result)
+                    {
+                        var exists = db.GtEcblcls.Where(x => x.CalenderKey == link.CalenderKey).FirstOrDefault();
+                        if(exists != null)
+                        {
+                            link.Alreadylinked = true;
+                        }
+                        else
+                        {
+                            link.Alreadylinked = false;
+                        }
+                        DO_CalendarHeader model = new DO_CalendarHeader()
+                        {
+                            CalenderType=link.CalenderType,
+                            Year= link.Year,
+                            CalenderKey= link.CalenderKey,
+                            FromDate=link.FromDate,
+                            TillDate=link.TillDate,
+                            YearEndStatus=link.YearEndStatus,
+                            ActiveStatus=link.ActiveStatus,
+                            Alreadylinked=link.Alreadylinked
+                        };
+                        lstheader.Add(model);
+                    }
+                    return  lstheader;
                 }
             }
             catch (Exception ex)
