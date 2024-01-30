@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IAgeRangeRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\eSya.ProductSetup.DO\eSya.ProductSetup.DO\eSya.ProductSetup.DO.csproj" />
   </ItemGroup>
 

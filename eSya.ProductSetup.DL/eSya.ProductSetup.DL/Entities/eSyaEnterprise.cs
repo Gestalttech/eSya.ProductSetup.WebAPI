@@ -23,7 +23,6 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtDccnst> GtDccnsts { get; set; } = null!;
         public virtual DbSet<GtDncnbc> GtDncnbcs { get; set; } = null!;
         public virtual DbSet<GtDncnfd> GtDncnfds { get; set; } = null!;
-        public virtual DbSet<GtEbeagr> GtEbeagrs { get; set; } = null!;
         public virtual DbSet<GtEbecnt> GtEbecnts { get; set; } = null!;
         public virtual DbSet<GtEbecul> GtEbeculs { get; set; } = null!;
         public virtual DbSet<GtEcapcd> GtEcapcds { get; set; } = null!;
@@ -233,44 +232,6 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<GtEbeagr>(entity =>
-            {
-                entity.HasKey(e => e.AgeRangeId);
-
-                entity.ToTable("GT_EBEAGR");
-
-                entity.Property(e => e.AgeRangeId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("AgeRangeID");
-
-                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.FormId)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("FormID");
-
-                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.RangeDesc)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.RangeFromPeriod)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.RangeToPeriod)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
             });
 
             modelBuilder.Entity<GtEbecnt>(entity =>

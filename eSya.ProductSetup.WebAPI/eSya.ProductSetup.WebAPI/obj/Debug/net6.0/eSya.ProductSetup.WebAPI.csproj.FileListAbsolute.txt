@@ -1953,13 +1953,14 @@ D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\e
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.csproj.CoreCompileInputs.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.sourcelink.json
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets.build.json
+D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets.development.json
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.eSya.ProductSetup.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.eSya.ProductSetup.WebAPI.props
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.eSya.ProductSetup.WebAPI.props
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.eSya.ProductSetup.WebAPI.props
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets.pack.json
-D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets.build.json
-D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\staticwebassets.development.json
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\scopedcss\bundle\eSya.ProductSetup.WebAPI.styles.css
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.csproj.CopyComplete
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.dll
@@ -1967,4 +1968,3 @@ D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\e
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.pdb
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.genruntimeconfig.cache
 D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\ref\eSya.ProductSetup.WebAPI.dll
-D:\Projects\eSyaProjects2022\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\eSya.ProductSetup.WebAPI\obj\Debug\net6.0\eSya.ProductSetup.WebAPI.sourcelink.json
