@@ -34,8 +34,8 @@ namespace eSya.ProductSetup.IF
 
         Task<List<DO_FormParameter>> GetFormParameterByID(int formID);
         Task<DO_ReturnParameter> InsertIntoFormParameter(DO_Forms obj);
-        Task<List<DO_FormSubParameter>> GetFormSubParameterByID(int formID, int parameterId);
-        Task<DO_ReturnParameter> InsertIntoFormSubParameter(DO_Forms obj);
+        //Task<List<DO_FormSubParameter>> GetFormSubParameterByID(int formID, int parameterId);
+        //Task<DO_ReturnParameter> InsertIntoFormSubParameter(DO_Forms obj);
 
         #endregion
 

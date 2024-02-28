@@ -586,168 +586,148 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
 
-        public async Task<List<DO_FormSubParameter>> GetFormSubParameterByID(int formID, int parameterId)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    if (parameterId == 1)
-                    {
-                        //return await db.GtEcparms.Where(w => w.ParameterType == 8)
-                        //      .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
-                        //      a => new { a.ParameterId },
-                        //      f => new { ParameterId = f.SubParameterId },
-                        //      (a, f) => new { a, f = f.FirstOrDefault() })
-                        //      .Select(r => new DO_FormSubParameter
-                        //      {
-                        //          SubParameterId = r.a.ParameterId,
-                        //          SubParameterDesc = r.a.ParameterDesc,
-                        //          ActiveStatus = r.f != null ? r.f.ActiveStatus : false,
-                        //      }).ToListAsync();
+        //public async Task<List<DO_FormSubParameter>> GetFormSubParameterByID(int formID, int parameterId)
+        //{
+        //    try
+        //    {
+        //        using (var db = new eSyaEnterprise())
+        //        {
+        //            if (parameterId == 1)
+        //            {
+                       
 
-                        var fa = db.GtEcparms.Where(w => w.ParameterType == 8)
-                       .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
-                      e => e.ParameterId,
-                      d => d.SubParameterId,
-                     (emp, depts) => new { emp, depts })
-                    .SelectMany(z => z.depts.DefaultIfEmpty(),
-                     (a, b) => new DO_FormSubParameter
-                     {
-                         SubParameterId = a.emp.ParameterId,
-                         SubParameterDesc = a.emp.ParameterDesc,
-                         ActiveStatus = b == null ? false : b.ActiveStatus
-                     }).ToListAsync();
-                        return await fa;
-                    }
-                    else
-                    {
-                        var fa = db.GtEcparms.Where(w => w.ParameterType == 13 && w.ParameterId == parameterId)
-                       .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
-                      e => e.ParameterId,
-                      d => d.ParameterId,
-                     (emp, depts) => new { emp, depts })
-                    .SelectMany(z => z.depts.DefaultIfEmpty(),
-                     (a, b) => new DO_FormSubParameter
-                     {
-                         SubParameterId = a.emp.ParameterId,
-                         SubParameterDesc = a.emp.ParameterDesc,
-                         ActiveStatus = b == null ? false : b.ActiveStatus
-                     }).ToListAsync();
-                        return await fa;
+        //                var fa = db.GtEcparms.Where(w => w.ParameterType == 8)
+        //               .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
+        //              e => e.ParameterId,
+        //              d => d.SubParameterId,
+        //             (emp, depts) => new { emp, depts })
+        //            .SelectMany(z => z.depts.DefaultIfEmpty(),
+        //             (a, b) => new DO_FormSubParameter
+        //             {
+        //                 SubParameterId = a.emp.ParameterId,
+        //                 SubParameterDesc = a.emp.ParameterDesc,
+        //                 ActiveStatus = b == null ? false : b.ActiveStatus
+        //             }).ToListAsync();
+        //                return await fa;
+        //            }
+        //            else
+        //            {
+        //                var fa = db.GtEcparms.Where(w => w.ParameterType == 13 && w.ParameterId == parameterId)
+        //               .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
+        //              e => e.ParameterId,
+        //              d => d.ParameterId,
+        //             (emp, depts) => new { emp, depts })
+        //            .SelectMany(z => z.depts.DefaultIfEmpty(),
+        //             (a, b) => new DO_FormSubParameter
+        //             {
+        //                 SubParameterId = a.emp.ParameterId,
+        //                 SubParameterDesc = a.emp.ParameterDesc,
+        //                 ActiveStatus = b == null ? false : b.ActiveStatus
+        //             }).ToListAsync();
+        //                return await fa;
 
-                        //return await db.GtEcparms.Where(w => w.ParameterType == 13 && w.ParameterId == parameterId)
-                        //  .GroupJoin(db.GtEcfmpas.Where(w => w.FormId == formID && w.ParameterId == parameterId),
-                        //  a => a.ParameterId,
-                        //  f => f.ParameterId,
-                        //  (a, f) => new { a, f = f.FirstOrDefault() })
-                        //  .Select(r => new DO_FormSubParameter
-                        //  {
-                        //      SubParameterId = r.a.ParameterId,
-                        //      SubParameterDesc = r.a.ParameterDesc,
-                        //      ActiveStatus = r.f != null ? r.f.ActiveStatus : false,
-                        //  }).ToListAsync();
-                    }
+                      
+        //            }
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
 
-        public async Task<DO_ReturnParameter> InsertIntoFormSubParameter(DO_Forms obj)
-        {
-            using (eSyaEnterprise db = new eSyaEnterprise())
-            {
-                using (var dbContext = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        int parameterId = obj.ParameterId;
-                        var fa = db.GtEcfmps.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId);
-                        foreach (GtEcfmp f in fa)
-                        {
-                            f.ParmAction = true;
-                            f.ActiveStatus = false;
-                            f.ModifiedBy = obj.UserID;
-                            f.ModifiedOn = System.DateTime.Now;
-                            f.ModifiedTerminal = obj.TerminalID;
-                        }
-                        await db.SaveChangesAsync();
+        //public async Task<DO_ReturnParameter> InsertIntoFormSubParameter(DO_Forms obj)
+        //{
+        //    using (eSyaEnterprise db = new eSyaEnterprise())
+        //    {
+        //        using (var dbContext = db.Database.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                int parameterId = obj.ParameterId;
+        //                var fa = db.GtEcfmps.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId);
+        //                foreach (GtEcfmp f in fa)
+        //                {
+        //                    f.ParmAction = true;
+        //                    f.ActiveStatus = false;
+        //                    f.ModifiedBy = obj.UserID;
+        //                    f.ModifiedOn = System.DateTime.Now;
+        //                    f.ModifiedTerminal = obj.TerminalID;
+        //                }
+        //                await db.SaveChangesAsync();
 
-                        var obj_P = db.GtEcfmpas.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId).FirstOrDefault();
-                        if (obj_P != null)
-                        {
-                            obj_P.ActiveStatus = false;
-                            obj_P.ModifiedBy = obj.UserID;
-                            obj_P.ModifiedOn = DateTime.Now;
-                            obj_P.ModifiedTerminal = System.Environment.MachineName;
-                        }
+        //                var obj_P = db.GtEcfmpas.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId).FirstOrDefault();
+        //                if (obj_P != null)
+        //                {
+        //                    obj_P.ActiveStatus = false;
+        //                    obj_P.ModifiedBy = obj.UserID;
+        //                    obj_P.ModifiedOn = DateTime.Now;
+        //                    obj_P.ModifiedTerminal = System.Environment.MachineName;
+        //                }
 
-                        if (obj.l_FormSubParameter != null)
-                        {
-                            if (obj_P != null)
-                            {
-                                obj_P.ActiveStatus = true;
-                                obj_P.ModifiedBy = obj.UserID;
-                                obj_P.ModifiedOn = DateTime.Now;
-                                obj_P.ModifiedTerminal = System.Environment.MachineName;
-                            }
-                            else
-                            {
-                                obj_P = new GtEcfmpa();
-                                obj_P.FormId = obj.FormID;
-                                obj_P.ParameterId = parameterId;
-                                obj_P.ActiveStatus = true;
-                                obj_P.CreatedBy = obj.UserID;
-                                obj_P.CreatedOn = DateTime.Now;
-                                obj_P.CreatedTerminal = System.Environment.MachineName;
-                                db.GtEcfmpas.Add(obj_P);
-                            }
+        //                if (obj.l_FormSubParameter != null)
+        //                {
+        //                    if (obj_P != null)
+        //                    {
+        //                        obj_P.ActiveStatus = true;
+        //                        obj_P.ModifiedBy = obj.UserID;
+        //                        obj_P.ModifiedOn = DateTime.Now;
+        //                        obj_P.ModifiedTerminal = System.Environment.MachineName;
+        //                    }
+        //                    else
+        //                    {
+        //                        obj_P = new GtEcfmpa();
+        //                        obj_P.FormId = obj.FormID;
+        //                        obj_P.ParameterId = parameterId;
+        //                        obj_P.ActiveStatus = true;
+        //                        obj_P.CreatedBy = obj.UserID;
+        //                        obj_P.CreatedOn = DateTime.Now;
+        //                        obj_P.CreatedTerminal = System.Environment.MachineName;
+        //                        db.GtEcfmpas.Add(obj_P);
+        //                    }
 
-                            foreach (DO_FormSubParameter i in obj.l_FormSubParameter)
-                            {
-                                var obj_FA = db.GtEcfmps.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId && w.SubParameterId == i.SubParameterId).FirstOrDefault();
-                                if (obj_FA != null)
-                                {
-                                    obj_FA.ParmAction = true;
-                                    obj_FA.ActiveStatus = true;
-                                    obj_FA.ModifiedBy = obj.UserID;
-                                    obj_FA.ModifiedOn = DateTime.Now;
-                                    obj_FA.ModifiedTerminal = System.Environment.MachineName;
-                                }
-                                else
-                                {
-                                    obj_FA = new GtEcfmp();
-                                    obj_FA.FormId = obj.FormID;
-                                    obj_FA.ParameterId = parameterId;
-                                    obj_FA.SubParameterId = i.SubParameterId;
-                                    obj_FA.ParmAction = true;
-                                    obj_FA.ActiveStatus = true;
-                                    obj_FA.CreatedBy = obj.UserID;
-                                    obj_FA.CreatedOn = DateTime.Now;
-                                    obj_FA.CreatedTerminal = System.Environment.MachineName;
-                                    db.GtEcfmps.Add(obj_FA);
-                                }
-                            }
-                        }
+        //                    foreach (DO_FormSubParameter i in obj.l_FormSubParameter)
+        //                    {
+        //                        var obj_FA = db.GtEcfmps.Where(w => w.FormId == obj.FormID && w.ParameterId == parameterId && w.SubParameterId == i.SubParameterId).FirstOrDefault();
+        //                        if (obj_FA != null)
+        //                        {
+        //                            obj_FA.ParmAction = true;
+        //                            obj_FA.ActiveStatus = true;
+        //                            obj_FA.ModifiedBy = obj.UserID;
+        //                            obj_FA.ModifiedOn = DateTime.Now;
+        //                            obj_FA.ModifiedTerminal = System.Environment.MachineName;
+        //                        }
+        //                        else
+        //                        {
+        //                            obj_FA = new GtEcfmp();
+        //                            obj_FA.FormId = obj.FormID;
+        //                            obj_FA.ParameterId = parameterId;
+        //                            obj_FA.SubParameterId = i.SubParameterId;
+        //                            obj_FA.ParmAction = true;
+        //                            obj_FA.ActiveStatus = true;
+        //                            obj_FA.CreatedBy = obj.UserID;
+        //                            obj_FA.CreatedOn = DateTime.Now;
+        //                            obj_FA.CreatedTerminal = System.Environment.MachineName;
+        //                            db.GtEcfmps.Add(obj_FA);
+        //                        }
+        //                    }
+        //                }
 
-                        await db.SaveChangesAsync();
-                        dbContext.Commit();
+        //                await db.SaveChangesAsync();
+        //                dbContext.Commit();
 
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
-                    }
-                    catch (Exception ex)
-                    {
-                        dbContext.Rollback();
-                        throw ex;
-                    }
-                }
-            }
-        }
+        //                return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                dbContext.Rollback();
+        //                throw ex;
+        //            }
+        //        }
+        //    }
+        //}
 
         #endregion
 

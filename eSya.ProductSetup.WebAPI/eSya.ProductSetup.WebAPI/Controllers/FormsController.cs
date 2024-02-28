@@ -95,18 +95,19 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             var msg = await _FormsRepository.InsertIntoFormParameter(obj);
             return Ok(msg);
         }
-        [HttpGet]
-        public async Task<IActionResult> GetFormSubParameterByID(int formID, int parameterId)
-        {
-            var form_action = await _FormsRepository.GetFormSubParameterByID(formID, parameterId);
-            return Ok(form_action);
-        }
-        [HttpPost]
-        public async Task<IActionResult> InsertIntoFormSubParameter(DO_Forms obj)
-        {
-            var msg = await _FormsRepository.InsertIntoFormSubParameter(obj);
-            return Ok(msg);
-        }
+
+        //[HttpGet]
+        //public async Task<IActionResult> GetFormSubParameterByID(int formID, int parameterId)
+        //{
+        //    var form_action = await _FormsRepository.GetFormSubParameterByID(formID, parameterId);
+        //    return Ok(form_action);
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> InsertIntoFormSubParameter(DO_Forms obj)
+        //{
+        //    var msg = await _FormsRepository.InsertIntoFormSubParameter(obj);
+        //    return Ok(msg);
+        //}
 
         #endregion Form Master
 

@@ -57,7 +57,6 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcfmal> GtEcfmals { get; set; } = null!;
         public virtual DbSet<GtEcfmfd> GtEcfmfds { get; set; } = null!;
         public virtual DbSet<GtEcfmnm> GtEcfmnms { get; set; } = null!;
-        public virtual DbSet<GtEcfmp> GtEcfmps { get; set; } = null!;
         public virtual DbSet<GtEcfmpa> GtEcfmpas { get; set; } = null!;
         public virtual DbSet<GtEclkpa> GtEclkpas { get; set; } = null!;
         public virtual DbSet<GtEcmamn> GtEcmamns { get; set; } = null!;
@@ -1268,23 +1267,6 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasForeignKey(d => d.FormId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GT_ECFMNM_GT_ECFMFD");
-            });
-
-            modelBuilder.Entity<GtEcfmp>(entity =>
-            {
-                entity.HasKey(e => new { e.FormId, e.ParameterId, e.SubParameterId });
-
-                entity.ToTable("GT_ECFMPS");
-
-                entity.Property(e => e.FormId).HasColumnName("FormID");
-
-                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-
-                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
             });
 
             modelBuilder.Entity<GtEcfmpa>(entity =>
