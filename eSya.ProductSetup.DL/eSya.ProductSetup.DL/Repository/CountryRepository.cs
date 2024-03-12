@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+       
         #region Country Codes
         public async Task<List<DO_CountryCodes>> GetAllCountryCodesAsync()
         {
@@ -363,7 +363,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion Country Codes
-        //used
+       
         #region Statutory Details
 
         public async Task<List<DO_eSyaParameter>> GetStatutoryCodesParameterList(int IsdCode, int StatutoryCode)

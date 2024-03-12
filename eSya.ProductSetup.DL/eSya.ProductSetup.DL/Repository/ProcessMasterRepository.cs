@@ -19,7 +19,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+       
         #region Process Master
 
         public async Task<List<DO_ProcessMaster>> GetProcessMaster()
@@ -153,7 +153,7 @@ namespace eSya.ProductSetup.DL.Repository
         }
 
         #endregion
-        //used
+       
         #region Process Rule
 
         public async Task<List<DO_ProcessRule>> GetProcessRule()

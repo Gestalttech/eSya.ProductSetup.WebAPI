@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+        
         #region Tax Identification
         public async Task<List<DO_TaxIdentification>> GetTaxIdentificationByISDCode(int ISDCode)
         {

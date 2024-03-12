@@ -19,7 +19,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+       
         public async Task<List<DO_PaymentMethod>> GetPaymentMethodbyISDCode(int ISDCode)
         {
             try

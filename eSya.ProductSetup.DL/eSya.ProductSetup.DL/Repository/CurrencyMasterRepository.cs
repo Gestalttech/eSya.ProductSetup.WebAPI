@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+       
         #region Currency Master
 
         public async Task<List<DO_CurrencyMaster>> GetCurrencyMaster()
@@ -274,7 +274,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion
-        //used
+       
 
         #region Currency Denomination Information
 

@@ -19,7 +19,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-        //used
+       
         #region define eSya Culture 
         public async Task<List<DO_eSyaCulture>> GetAlleSyaCultures()
         {
@@ -157,8 +157,5 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion
-
-
-        //need to shift FROM CONFIG PRODUCT TO product setup as EPS_10_00
     }
 }
