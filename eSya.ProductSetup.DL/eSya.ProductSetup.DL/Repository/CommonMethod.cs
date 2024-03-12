@@ -69,29 +69,6 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
 
-        public async Task<List<DO_BusinessLocation>> GetBusinessKey()
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var bk = db.GtEcbslns
-                        .Where(w => w.ActiveStatus)
-                        .Select(r => new DO_BusinessLocation
-                        {
-                            BusinessKey = r.BusinessKey,
-                            LocationDescription = r.BusinessName + "-" + r.LocationDescription
-                        }).ToListAsync();
-
-                    return await bk;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public async Task<List<DO_CountryCodes>> GetISDCodes()
         {
             try
@@ -105,29 +82,6 @@ namespace eSya.ProductSetup.DL.Repository
                             Isdcode = r.Isdcode,
                             CountryName = r.CountryName
                         }).ToListAsync();
-
-                    return await ds;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<DO_TaxStructure>> GetTaxCodeByISDCodes(int ISDCode)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEccntcs
-                        .Where(w => w.Isdcode == ISDCode)
-                        .Select(r => new DO_TaxStructure
-                        {
-                            TaxCode = r.TaxCode,
-                            TaxDescription = r.TaxDescription,
-                        }).OrderBy(o => o.TaxDescription).ToListAsync();
 
                     return await ds;
                 }
@@ -152,29 +106,6 @@ namespace eSya.ProductSetup.DL.Repository
                                       FormName = r.FormName
                                   }).OrderBy(o => o.FormName).ToListAsync();
                     return await result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<List<DO_TaxStructure>> GetTaxCode(int ISDCode)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEccntcs
-                        .Where(w => w.Isdcode == ISDCode && w.IsSplitApplicable && w.ActiveStatus)
-                        .Select(r => new DO_TaxStructure
-                        {
-                            TaxCode = r.TaxCode,
-                            TaxDescription = r.TaxDescription,
-                        }).OrderBy(o => o.TaxDescription).ToListAsync();
-
-                    return await ds;
                 }
             }
             catch (Exception ex)

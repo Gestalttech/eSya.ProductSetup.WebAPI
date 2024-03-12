@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="IAgeRangeRepository.cs" />
+    <Compile Remove="IBusinessCalendarRepository.cs" />
+    <Compile Remove="IBusinessStructureRepository.cs" />
+    <Compile Remove="IConnectRepository.cs" />
+    <Compile Remove="IDocumentControlRepository.cs" />
+    <Compile Remove="ILicenseRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

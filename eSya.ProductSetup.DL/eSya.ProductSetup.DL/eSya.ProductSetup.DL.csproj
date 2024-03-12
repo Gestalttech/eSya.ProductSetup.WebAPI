@@ -14,7 +14,11 @@
 
   <ItemGroup>
     <Compile Remove="Localization\Class1.cs" />
-    <Compile Remove="Repository\AgeRangeRepository.cs" />
+    <Compile Remove="Repository\BusinessCalendarRepository.cs" />
+    <Compile Remove="Repository\BusinessStructureRepository.cs" />
+    <Compile Remove="Repository\ConnectRepository.cs" />
+    <Compile Remove="Repository\DocumentControlRepository.cs" />
+    <Compile Remove="Repository\LicenseRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -79,7 +79,7 @@
   "W00171": "Does Not Exist",
 
   "W0183": "New effective date can't be less than the current effective date",
-  
+  "W0184": "Age Range Matrix not Exist",
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",
   "S0003": "Activated Successfully",

@@ -18,6 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
+       
         #region Form Master
         public async Task<List<DO_AreaController>> GetAreaController()
         {
@@ -730,6 +731,7 @@ namespace eSya.ProductSetup.DL.Repository
         //}
 
         #endregion
+       
 
         #region Area Controller
         public async Task<List<DO_AreaController>> GetAllAreaController()
@@ -873,6 +875,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion
+        
 
         #region Define Actions 
         public async Task<List<DO_Actions>> GetAllActions()
@@ -1026,90 +1029,6 @@ namespace eSya.ProductSetup.DL.Repository
         }
         #endregion
 
-        #region FORM LINK TO DOCUMENT
-        public async Task<List<DO_FormDocumentLink>> GetFormDocumentlink(int formID)
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = await db.GtDccnsts.Where(x => x.ActiveStatus == true)
-                   .GroupJoin(db.GtDncnfds.Where(w => w.FormId == formID),
-                     d => d.DocumentId,
-                     l => l.DocumentId,
-                    (emp, depts) => new { emp, depts })
-                   .SelectMany(z => z.depts.DefaultIfEmpty(),
-                    (a, b) => new DO_FormDocumentLink
-                    {
-                        FormId = formID,
-                        DocumentId = a.emp.DocumentId,
-                        DocumentName = a.emp.DocumentDesc,
-                        ActiveStatus = b == null ? false : b.ActiveStatus
-                    }).ToListAsync();
-
-                    var Distinctdocuments = ds.GroupBy(x => x.DocumentId).Select(y => y.First());
-                    return Distinctdocuments.ToList();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<DO_ReturnParameter> UpdateFormDocumentLinks(List<DO_FormDocumentLink> obj)
-        {
-            using (eSyaEnterprise db = new eSyaEnterprise())
-            {
-                using (var dbContext = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        foreach (var _link in obj)
-                        {
-                            var LinkExist = db.GtDncnfds.Where(w => w.FormId == _link.FormId && w.DocumentId == _link.DocumentId).FirstOrDefault();
-                            if (LinkExist != null)
-                            {
-                                if (_link.ActiveStatus != LinkExist.ActiveStatus)
-                                {
-                                    LinkExist.ActiveStatus = _link.ActiveStatus;
-                                    LinkExist.ModifiedBy = _link.UserID;
-                                    LinkExist.ModifiedOn = System.DateTime.Now;
-                                    LinkExist.ModifiedTerminal = _link.TerminalID;
-                                }
-                            }
-                            else
-                            {
-                                if (_link.ActiveStatus)
-                                {
-                                    var formdoclink = new GtDncnfd
-                                    {
-                                        FormId = _link.FormId,
-                                        DocumentId = _link.DocumentId,
-                                        ActiveStatus = _link.ActiveStatus,
-
-                                        CreatedBy = _link.UserID,
-                                        CreatedOn = System.DateTime.Now,
-                                        CreatedTerminal = _link.TerminalID
-                                    };
-                                    db.GtDncnfds.Add(formdoclink);
-                                }
-
-                            }
-                        }
-                        await db.SaveChangesAsync();
-                        dbContext.Commit();
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        dbContext.Rollback();
-                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
-                    }
-                }
-            }
-        }
-        #endregion
+       
     }
 }

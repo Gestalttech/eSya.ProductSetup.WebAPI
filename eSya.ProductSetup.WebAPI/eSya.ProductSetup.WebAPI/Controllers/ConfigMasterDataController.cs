@@ -23,16 +23,7 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             return Ok(ds);
         }
 
-        /// <summary>
-        /// Get Business key.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetBusinessKey()
-        {
-            var ds = await new CommonMethod().GetBusinessKey();
-            return Ok(ds);
-        }
+       
 
         /// <summary>
         /// Get ISDCodes.
@@ -46,17 +37,6 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             return Ok(ds);
         }
 
-        /// <summary>
-        /// Get Active Tax Codes by ISD Codes.
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetTaxCodeByISDCodes(int ISDCode)
-        {
-            var ds = await new CommonMethod().GetTaxCodeByISDCodes(ISDCode);
-            return Ok(ds);
-        }
 
         /// <summary>
         /// Get Form Detail.
@@ -67,18 +47,6 @@ namespace eSya.ProductSetup.WebAPI.Controllers
         public async Task<IActionResult> GetFormDetails()
         {
             var ds = await new CommonMethod().GetFormDetails();
-            return Ok(ds);
-        }
-
-        /// <summary>
-        /// Get Active Tax Codes by ISD Codes AND Split Applicable True Only.
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetTaxCode(int ISDCode)
-        {
-            var ds = await new CommonMethod().GetTaxCode(ISDCode);
             return Ok(ds);
         }
 

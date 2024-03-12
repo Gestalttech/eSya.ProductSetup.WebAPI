@@ -31,10 +31,5 @@ namespace eSya.ProductSetup.IF
 
         #endregion eSya Parameter
 
-        #region Link Parameter with Schema
-        Task<List<DO_Parameters>> GetActiveParameterTypes();
-        Task<List<DO_LinkParameterSchema>> GetParameterLinkSchema(int parametertype);
-        Task<DO_ReturnParameter> InsertOrUpdateLinkParameterSchema(List<DO_LinkParameterSchema> obj);
-        #endregion
     }
 }

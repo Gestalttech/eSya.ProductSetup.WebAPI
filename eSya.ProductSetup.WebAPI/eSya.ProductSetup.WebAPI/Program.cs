@@ -62,14 +62,11 @@ builder.Services.AddScoped<IParametersRepository, ParametersRepository>();
 builder.Services.AddScoped<IProcessMasterRepository, ProcessMasterRepository>();
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
-builder.Services.AddScoped<IBusinessStructureRepository, BusinessStructureRepository>();
-builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
 builder.Services.AddScoped<ITaxIdentificationRepository, TaxIdentificationRepository>();
-builder.Services.AddScoped<IDocumentControlRepository, DocumentControlRepository>();
 builder.Services.AddScoped<IeSyaCultureRepository, eSyaCultureRepository>();
-builder.Services.AddScoped<IConnectRepository, ConnectRepository>();
-builder.Services.AddScoped<IBusinessCalendarRepository, BusinessCalendarRepository>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+builder.Services.AddScoped<IMobileCarrierRepository, MobileCarrierRepository>();
+builder.Services.AddScoped<IAgeRangeRepository, AgeRangeRepository>();
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers();

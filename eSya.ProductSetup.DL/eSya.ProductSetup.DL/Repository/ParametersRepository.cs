@@ -19,6 +19,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
+        
         #region Parameter Header
 
         public async Task<List<DO_Parameters>> GetParametersHeaderInformation()
@@ -174,7 +175,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion Parameter Header
-
+      
         #region Parameters
 
         public async Task<List<DO_Parameters>> GetParametersInformationByParameterType(int parameterType)
@@ -301,125 +302,6 @@ namespace eSya.ProductSetup.DL.Repository
         }
 
         #endregion Parameters
-
-        #region Link Parameter with Schema
-
-        public async Task<List<DO_Parameters>> GetActiveParameterTypes()
-        {
-            try
-            {
-                using (var db = new eSyaEnterprise())
-                {
-                    var ds = db.GtEcparhs.Where(x=>x.ActiveStatus)
-                         .AsNoTracking()
-                         .Select(r => new DO_Parameters
-                         {
-                             ParameterType = r.ParameterType,
-                             ParameterHeaderDesc = r.ParameterHeaderDesc,
-                             ActiveStatus = r.ActiveStatus
-                         }).OrderBy(o => o.ParameterHeaderDesc).ToListAsync();
-
-                    return await ds;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<List<DO_LinkParameterSchema>> GetParameterLinkSchema(int parametertype)
-        {
-            try
-            {
-                using (eSyaEnterprise db = new eSyaEnterprise())
-                {
-                    
-                   var param= await db.GtEcparms.Where(x => x.ActiveStatus && x.ParameterType==parametertype)
-                                    .Select(f => new DO_LinkParameterSchema()
-                                    {
-                                        LinkParameterType = f.ParameterType,
-                                        LinkParameterId = f.ParameterId,
-                                        ParameterDesc = f.ParameterDesc,
-                                        ActiveStatus = f.ActiveStatus,
-                                        SchemaId=String.Empty
-
-                                    }).ToListAsync();
-                    foreach (var obj in param)
-                    {
-                        GtEclkpa schelink = db.GtEclkpas.Where(c => c.LinkParameterType == parametertype && c.LinkParameterId == obj.LinkParameterId).FirstOrDefault();
-                        if (schelink != null)
-                        {
-                            obj.ActiveStatus = schelink.ActiveStatus;
-                            obj.SchemaId = schelink.SchemaId;
-                        }
-                        else
-                        {
-                            obj.ActiveStatus = false;
-                            obj.SchemaId = string.Empty;
-                        }
-                    }
-                    return param;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<DO_ReturnParameter> InsertOrUpdateLinkParameterSchema(List<DO_LinkParameterSchema> obj)
-        {
-            using (eSyaEnterprise db = new eSyaEnterprise())
-            {
-                using (var dbContext = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        foreach (var _link in obj)
-                        {
-                            var _linkExist = db.GtEclkpas.Where(w => w.LinkParameterType == _link.LinkParameterType && w.LinkParameterId == _link.LinkParameterId).FirstOrDefault();
-                            if (_linkExist != null)
-                            {
-                                
-                                    _linkExist.ActiveStatus = _link.ActiveStatus;
-                                    _linkExist.SchemaId = _link.SchemaId;
-                                    _linkExist.ModifiedBy = _link.UserID;
-                                    _linkExist.ModifiedOn = System.DateTime.Now;
-                                    _linkExist.ModifiedTerminal = _link.TerminalID;
-
-                            }
-                            else
-                            {
-                                
-                                    var _schlink = new GtEclkpa
-                                    {
-                                        LinkParameterType = _link.LinkParameterType,
-                                        LinkParameterId = _link.LinkParameterId,
-                                        SchemaId = _link.SchemaId,
-                                        ActiveStatus = _link.ActiveStatus,
-                                        FormId=_link.FormID,
-                                        CreatedBy = _link.UserID,
-                                        CreatedOn = System.DateTime.Now,
-                                        CreatedTerminal = _link.TerminalID
-                                    };
-                                    db.GtEclkpas.Add(_schlink);
-                                
-
-                            }
-                        }
-                        await db.SaveChangesAsync();
-                        dbContext.Commit();
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        dbContext.Rollback();
-                        return new DO_ReturnParameter() { Status = false, Message = ex.Message };
-                    }
-                }
-            }
-        }
-        #endregion
+       
     }
 }

@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-
+        //used
         #region MainMenu
         public async Task<DO_MainMenu> GetMainMenuById(int mainMenuId)
         {

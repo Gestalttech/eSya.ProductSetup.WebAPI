@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-
+        //used
         #region Country Codes
         public async Task<List<DO_CountryCodes>> GetAllCountryCodesAsync()
         {
@@ -363,7 +363,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion Country Codes
-
+        //used
         #region Statutory Details
 
         public async Task<List<DO_eSyaParameter>> GetStatutoryCodesParameterList(int IsdCode, int StatutoryCode)
@@ -467,6 +467,7 @@ namespace eSya.ProductSetup.DL.Repository
                             CreatedTerminal = obj.TerminalID
                         };
                         db.GtEccnsds.Add(stat_code);
+                        obj.StatutoryCode = statutorycode_;
                         List<GtEcsupa> stparam = db.GtEcsupas.Where(p => p.StatutoryCode == obj.StatutoryCode && p.Isdcode == obj.Isdcode).ToList();
                         if (obj.l_FormParameter != null)
                         {

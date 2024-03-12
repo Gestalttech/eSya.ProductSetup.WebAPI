@@ -19,6 +19,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
+      
         #region Code Types
         public async Task<List<DO_CodeTypes>> GetCodeTypes()
         {
@@ -253,7 +254,7 @@ namespace eSya.ProductSetup.DL.Repository
             }
         }
         #endregion
-
+      
         #region Application Codes
         public async Task<List<DO_ApplicationCodes>> GetApplicationCodes()
         {
@@ -291,34 +292,36 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     if (codeType == 0)
                     {
-                        var ds = db.GtEcapcds
+                        var ds =await db.GtEcapcds
                         .Select(r => new DO_ApplicationCodes
                         {
                             CodeType = r.CodeType,
                             ApplicationCode = r.ApplicationCode,
                             CodeDesc = r.CodeDesc,
+                            //ShortCode = r.ShortCode??"",
                             ShortCode = r.ShortCode,
                             UsageStatus = r.UsageStatus,
                             DefaultStatus = r.DefaultStatus,
                             ActiveStatus = r.ActiveStatus,
                         }).OrderBy(o => o.CodeDesc).ToListAsync();
-                        return await ds;
+                        return  ds;
                     }
                     else
                     {
-                        var ds = db.GtEcapcds
+                        var ds =await db.GtEcapcds
                        .Where(w => w.CodeType == codeType)
                        .Select(r => new DO_ApplicationCodes
                        {
                            CodeType = r.CodeType,
                            ApplicationCode = r.ApplicationCode,
                            CodeDesc = r.CodeDesc,
+                           //ShortCode = r.ShortCode??"",
                            ShortCode = r.ShortCode,
                            UsageStatus = r.UsageStatus,
                            DefaultStatus = r.DefaultStatus,
                            ActiveStatus = r.ActiveStatus,
                        }).OrderBy(o => o.CodeDesc).ToListAsync();
-                        return await ds;
+                        return  ds;
                     }
                 }
             }

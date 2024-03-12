@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DO_AgeRange.cs" />
+    <Compile Remove="DO_BusinessCalendar.cs" />
     <Compile Remove="DO_BusinessConfiguration.cs" />
+    <Compile Remove="DO_BusinessEntity.cs" />
+    <Compile Remove="DO_BusinessLocation.cs" />
+    <Compile Remove="DO_CalendarHeader.cs" />
+    <Compile Remove="DO_DocumentControlMaster.cs" />
+    <Compile Remove="DO_EmailConnect.cs" />
     <Compile Remove="DO_EmailConnectHeader.cs" />
+    <Compile Remove="DO_EntityPreferredLanguage.cs" />
+    <Compile Remove="DO_LinkParameterSchema.cs" />
+    <Compile Remove="DO_LocationMenuLink.cs" />
+    <Compile Remove="DO_SMSConnect.cs" />
     <Compile Remove="DO_UserRoleActionLink.cs" />
   </ItemGroup>
 

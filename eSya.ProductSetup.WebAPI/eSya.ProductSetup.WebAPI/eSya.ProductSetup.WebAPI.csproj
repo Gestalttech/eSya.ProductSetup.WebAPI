@@ -14,7 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\AgeRangeController.cs" />
+    <Compile Remove="Controllers\BusinessCalendarController.cs" />
+    <Compile Remove="Controllers\BusinessStructureController.cs" />
+    <Compile Remove="Controllers\ConnectController.cs" />
+    <Compile Remove="Controllers\ControlController.cs" />
+    <Compile Remove="Controllers\LicenseController.cs" />
     <Compile Remove="Controllers\LocalizeController.cs" />
   </ItemGroup>
 

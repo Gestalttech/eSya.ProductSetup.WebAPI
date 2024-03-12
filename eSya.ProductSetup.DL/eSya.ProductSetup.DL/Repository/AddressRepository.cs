@@ -18,7 +18,7 @@ namespace eSya.ProductSetup.DL.Repository
         {
             _localizer = localizer;
         }
-
+      
         #region States
 
         public async Task<List<DO_States>> GetStatesbyISDCode(int isdCode)
@@ -97,7 +97,7 @@ namespace eSya.ProductSetup.DL.Repository
 
         }
         #endregion
-
+      
         #region Cities
 
         public async Task<List<DO_Cities>> GetCitiesbyStateCode(int isdCode, int stateCode)
@@ -184,7 +184,7 @@ namespace eSya.ProductSetup.DL.Repository
 
         }
         #endregion
-
+       
         #region Common Methods
         public async Task<List<DO_States>> GetActiveStatesbyISDCode(int isdCode)
         {

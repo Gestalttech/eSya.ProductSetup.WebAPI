@@ -8,7 +8,6 @@ namespace eSya.ProductSetup.DL.Entities
         public GtEccncd()
         {
             GtEccnsds = new HashSet<GtEccnsd>();
-            GtEccntcs = new HashSet<GtEccntc>();
         }
 
         public int Isdcode { get; set; }
@@ -34,6 +33,5 @@ namespace eSya.ProductSetup.DL.Entities
         public string? ModifiedTerminal { get; set; }
 
         public virtual ICollection<GtEccnsd> GtEccnsds { get; set; }
-        public virtual ICollection<GtEccntc> GtEccntcs { get; set; }
     }
 }
