@@ -503,7 +503,7 @@ namespace eSya.ProductSetup.DL.Entities
 
                 entity.Property(e => e.CurrencyName).HasMaxLength(25);
 
-                entity.Property(e => e.DecimalPlaces).HasColumnType("decimal(2, 0)");
+                entity.Property(e => e.DecimalPlaces).HasColumnType("decimal(6, 0)");
 
                 entity.Property(e => e.DecimalPortionWord).HasMaxLength(50);
 
@@ -541,7 +541,7 @@ namespace eSya.ProductSetup.DL.Entities
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
 
-                entity.Property(e => e.DenomConversion).HasColumnType("numeric(10, 2)");
+                entity.Property(e => e.DenomConversion).HasColumnType("decimal(10, 3)");
 
                 entity.Property(e => e.DenomDesc)
                     .HasMaxLength(100)
