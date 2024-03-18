@@ -113,6 +113,12 @@ namespace eSya.ProductSetup.WebAPI.Controllers
 
         #region Area Controller
         [HttpGet]
+        public async Task<IActionResult> GetControllerbyArea(string Area)
+        {
+            var ar_ctrls = await _FormsRepository.GetControllerbyArea(Area);
+            return Ok(ar_ctrls);
+        }
+        [HttpGet]
         public async Task<IActionResult> GetAllAreaController()
         {
             var ar_ctrls = await _FormsRepository.GetAllAreaController();

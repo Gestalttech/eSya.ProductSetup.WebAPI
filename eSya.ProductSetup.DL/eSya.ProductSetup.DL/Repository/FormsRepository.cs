@@ -6,6 +6,7 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -595,7 +596,7 @@ namespace eSya.ProductSetup.DL.Repository
         //        {
         //            if (parameterId == 1)
         //            {
-                       
+
 
         //                var fa = db.GtEcparms.Where(w => w.ParameterType == 8)
         //               .GroupJoin(db.GtEcfmps.Where(w => w.FormId == formID && w.ParameterId == parameterId),
@@ -627,7 +628,7 @@ namespace eSya.ProductSetup.DL.Repository
         //             }).ToListAsync();
         //                return await fa;
 
-                      
+
         //            }
 
         //        }
@@ -731,9 +732,49 @@ namespace eSya.ProductSetup.DL.Repository
         //}
 
         #endregion
-       
+
 
         #region Area Controller
+        public async Task<List<DO_AreaController>> GetControllerbyArea(string Area)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    if (Area == "All"||string.IsNullOrEmpty(Area))
+                    {
+
+                        var ds = db.GtEbecnts
+                        .Select(a => new DO_AreaController
+                        {
+                            Id = a.Id,
+                            Area = a.Area,
+                            Controller = a.Controller,
+                            ActiveStatus = a.ActiveStatus
+                        }).OrderBy(x => x.Controller).ToListAsync();
+
+                        return await ds;
+                    }
+                    else
+                    {
+                        var ds = db.GtEbecnts.Where(x =>x.Area.ToUpper().Replace(" ", "")== Area.ToUpper().Replace(" ", ""))
+                        .Select(a => new DO_AreaController
+                        {
+                            Id = a.Id,
+                            Area = a.Area,
+                            Controller = a.Controller,
+                            ActiveStatus = a.ActiveStatus
+                        }).OrderBy(x => x.Controller).ToListAsync();
+
+                        return await ds;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<List<DO_AreaController>> GetAllAreaController()
         {
             try
@@ -747,9 +788,9 @@ namespace eSya.ProductSetup.DL.Repository
                             Area = a.Area,
                             Controller = a.Controller,
                             ActiveStatus = a.ActiveStatus
-                        }).ToListAsync();
-
-                    return await ds;
+                        }).ToList();
+                    var DistinctKeys = ds.GroupBy(x => x.Area).Select(y => y.First());
+                    return DistinctKeys.OrderBy(x=>x.Area).ToList();
                 }
             }
             catch (Exception ex)

@@ -40,6 +40,7 @@ namespace eSya.ProductSetup.IF
         #endregion
 
         #region Area Controllers
+        Task<List<DO_AreaController>> GetControllerbyArea(string Area);
         Task<List<DO_AreaController>> GetAllAreaController();
 
         Task<DO_ReturnParameter> InsertIntoAreaController(DO_AreaController obj);
