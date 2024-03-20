@@ -57,13 +57,13 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_ParameterIdExist = db.GtEcparhs.Any(a => a.ParameterType == obj.ParameterType);
                         if (is_ParameterIdExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0060", Message = string.Format(_localizer[name: "W0060"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0037", Message = string.Format(_localizer[name: "W0037"]) };
                         }
 
                         bool is_ParameterDescExist = db.GtEcparhs.Any(a => a.ParameterHeaderDesc.Trim().ToUpper() == obj.ParameterHeaderDesc.Trim().ToUpper());
                         if (is_ParameterDescExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0061", Message = string.Format(_localizer[name: "W0061"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0038", Message = string.Format(_localizer[name: "W0038"]) };
                         }
                         //int maxval = db.GtEcparh.Select(c => c.ParameterType).DefaultIfEmpty().Max();
                         //int _parameterType = maxval + 1;
@@ -109,7 +109,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEcparh pa_rh = db.GtEcparhs.Where(w => w.ParameterType == obj.ParameterType).FirstOrDefault();
                         if (pa_rh == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0062", Message = string.Format(_localizer[name: "W0062"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0039", Message = string.Format(_localizer[name: "W0039"]) };
                         }
 
                         pa_rh.ParameterHeaderDesc = obj.ParameterHeaderDesc;
@@ -148,7 +148,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEcparh param = db.GtEcparhs.Where(w => w.ParameterType == parm_type).FirstOrDefault();
                         if (param == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0062", Message = string.Format(_localizer[name: "W0062"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0039", Message = string.Format(_localizer[name: "W0039"]) };
                         }
 
                         param.ActiveStatus = status;
@@ -217,7 +217,7 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_ParameterDescExist = db.GtEcparms.Any(a => a.ParameterDesc.Trim().ToUpper() == obj.ParameterDesc.Trim().ToUpper() && a.ParameterType == obj.ParameterType);
                         if (is_ParameterDescExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0063", Message = string.Format(_localizer[name: "W0063"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0040", Message = string.Format(_localizer[name: "W0040"]) };
                         }
                         int maxval = db.GtEcparms.Where(x => x.ParameterType == obj.ParameterType).Select(c => c.ParameterId).DefaultIfEmpty().Max();
                         int _parameterId = maxval + 1;
@@ -267,13 +267,13 @@ namespace eSya.ProductSetup.DL.Repository
                                 && w.ParameterId != obj.ParameterId && w.ParameterType == obj.ParameterType).FirstOrDefault();
                         if (is_ParameterExist != null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0063", Message = string.Format(_localizer[name: "W0063"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0040", Message = string.Format(_localizer[name: "W0040"]) };
                         }
 
                         GtEcparm pa_rm = db.GtEcparms.Where(w => w.ParameterId == obj.ParameterId && w.ParameterType == obj.ParameterType).FirstOrDefault();
                         if (pa_rm == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0064", Message = string.Format(_localizer[name: "W0064"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0041", Message = string.Format(_localizer[name: "W0041"]) };
                         }
 
                         pa_rm.ParameterDesc = obj.ParameterDesc;

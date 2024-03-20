@@ -59,14 +59,14 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_ProcessIdExist = db.GtEcprrls.Any(a => a.ProcessId == obj.ProcessId);
                         if (is_ProcessIdExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0065", Message = string.Format(_localizer[name: "W0065"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0042", Message = string.Format(_localizer[name: "W0042"]) };
                         }
 
                         var is_ProcessDescExist = db.GtEcprrls.Where(a => a.ProcessDesc.Trim().ToUpper().Replace(" ", "") == obj.ProcessDesc.Trim().ToUpper().Replace(" ", "")).FirstOrDefault();
 
                         if (is_ProcessDescExist != null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0066", Message = string.Format(_localizer[name: "W0066"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0043", Message = string.Format(_localizer[name: "W0043"]) };
                         }
 
                         var pr_ms = new GtEcprrl
@@ -115,13 +115,13 @@ namespace eSya.ProductSetup.DL.Repository
                                 && w.ProcessId != obj.ProcessId).Count();
                         if (is_ProcessDescExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0066", Message = string.Format(_localizer[name: "W0066"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0043", Message = string.Format(_localizer[name: "W0043"]) };
                         }
 
                         GtEcprrl pr_ms = db.GtEcprrls.Where(w => w.ProcessId == obj.ProcessId).FirstOrDefault();
                         if (pr_ms == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0067", Message = string.Format(_localizer[name: "W0067"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0044", Message = string.Format(_localizer[name: "W0044"]) };
                         }
 
                         pr_ms.ProcessDesc = obj.ProcessDesc;
@@ -241,12 +241,12 @@ namespace eSya.ProductSetup.DL.Repository
                                 && w.ProcessId == obj.ProcessId).Count();
                         if (is_RuleDescExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0068", Message = string.Format(_localizer[name: "W0068"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0045", Message = string.Format(_localizer[name: "W0045"]) };
                         }
                         bool is_RuleIdExist = db.GtEcaprls.Any(a => a.RuleId == obj.RuleId && a.ProcessId == obj.ProcessId);
                         if (is_RuleIdExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0069", Message = string.Format(_localizer[name: "W0069"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0046", Message = string.Format(_localizer[name: "W0046"]) };
                         }
                         if (obj.ActiveStatus)
                         {
@@ -254,7 +254,7 @@ namespace eSya.ProductSetup.DL.Repository
                             if (pr.ProcessControl == "S")
                             {
                                 if (db.GtEcaprls.Where(w => w.ProcessId == obj.ProcessId && w.ActiveStatus).Count() > 0)
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0070", Message = string.Format(_localizer[name: "W0070"]) };
+                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0047", Message = string.Format(_localizer[name: "W0047"]) };
                             }
                         }
 
@@ -303,13 +303,13 @@ namespace eSya.ProductSetup.DL.Repository
                                 && w.ProcessId != obj.ProcessId && w.RuleId != obj.RuleId).Count();
                         if (is_RuleDescExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0068", Message = string.Format(_localizer[name: "W0068"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0045", Message = string.Format(_localizer[name: "W0045"]) };
                         }
 
                         GtEcaprl pr_ru = db.GtEcaprls.Where(w => w.RuleId == obj.RuleId && w.ProcessId == obj.ProcessId).FirstOrDefault();
                         if (pr_ru == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0071", Message = string.Format(_localizer[name: "W0071"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0048", Message = string.Format(_localizer[name: "W0048"]) };
                         }
                         if (obj.ActiveStatus)
                         {
@@ -317,7 +317,7 @@ namespace eSya.ProductSetup.DL.Repository
                             if (pr.ProcessControl == "S")
                             {
                                 if (db.GtEcaprls.Where(w => w.ProcessId == obj.ProcessId && w.RuleId != obj.RuleId && w.ActiveStatus).Count() > 0)
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0070", Message = string.Format(_localizer[name: "W0070"]) };
+                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0047", Message = string.Format(_localizer[name: "W0047"]) };
                             }
                         }
 

@@ -94,20 +94,20 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_IsdCodeExist = db.GtEccncds.Any(c => c.Isdcode == countrycode.Isdcode);
                         if (is_IsdCodeExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0040", Message = string.Format(_localizer[name: "W0040"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0017", Message = string.Format(_localizer[name: "W0017"]) };
                         }
 
                         var is_CountryCodeExist = db.GtEccncds.Where(c => c.CountryCode.Trim().ToUpper().Replace(" ", "") == countrycode.CountryCode.Trim().ToUpper().Replace(" ", "")).Count();
 
                         if (is_CountryCodeExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0041", Message = string.Format(_localizer[name: "W0041"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0018", Message = string.Format(_localizer[name: "W0018"]) };
                         }
                         var is_CountryNameExist = db.GtEccncds.Where(c => c.CountryName.Trim().ToUpper().Replace(" ", "") == countrycode.CountryName.Trim().ToUpper().Replace(" ", "")).Count();
 
                         if (is_CountryNameExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0042", Message = string.Format(_localizer[name: "W0042"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0019", Message = string.Format(_localizer[name: "W0019"]) };
                         }
                         var ctr = new GtEccncd
                         {
@@ -191,14 +191,14 @@ namespace eSya.ProductSetup.DL.Repository
                         if (is_CountryCodeExist > 0)
                         {
 
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0041", Message = string.Format(_localizer[name: "W0041"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0018", Message = string.Format(_localizer[name: "W0018"]) };
                         }
                         var is_CountryNameExist = db.GtEccncds.Where(c => c.CountryName.Trim().ToUpper().Replace(" ", "") == countrycode.CountryName.Trim().ToUpper().Replace(" ", "")
                         && c.Isdcode != countrycode.Isdcode).Count();
 
                         if (is_CountryNameExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0042", Message = string.Format(_localizer[name: "W0042"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0019", Message = string.Format(_localizer[name: "W0019"]) };
                         }
                         GtEccncd ctr = db.GtEccncds.Where(x => x.Isdcode == countrycode.Isdcode).FirstOrDefault();
 
@@ -312,7 +312,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccncd isd_code = db.GtEccncds.Where(w => w.Isdcode == Isd_code).FirstOrDefault();
                         if (isd_code == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0043", Message = string.Format(_localizer[name: "W0043"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0020", Message = string.Format(_localizer[name: "W0020"]) };
                         }
 
                         isd_code.ActiveStatus = status;
@@ -448,7 +448,7 @@ namespace eSya.ProductSetup.DL.Repository
                         if (isStatshortcodeExists != null)
                         {
                             
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0044", Message = string.Format(_localizer[name: "W0044"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0021", Message = string.Format(_localizer[name: "W0021"]) };
                         }
 
                         int maxval = db.GtEccnsds.Where(x => x.Isdcode == obj.Isdcode).Select(c => c.StatutoryCode).DefaultIfEmpty().Max();
@@ -506,7 +506,7 @@ namespace eSya.ProductSetup.DL.Repository
 
                         else
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0045", Message = string.Format(_localizer[name: "W0045"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0022", Message = string.Format(_localizer[name: "W0022"]) };
                         }
                     }
                     catch (DbUpdateException ex)
@@ -536,14 +536,14 @@ namespace eSya.ProductSetup.DL.Repository
 
                         if (isStatshortcodeExists != null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0044", Message = string.Format(_localizer[name: "W0044"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0021", Message = string.Format(_localizer[name: "W0021"]) };
                         }
 
 
                         GtEccnsd stat_code = db.GtEccnsds.Where(st => st.StatutoryCode == obj.StatutoryCode && st.Isdcode == obj.Isdcode).FirstOrDefault();
                         if (stat_code == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0046", Message = string.Format(_localizer[name: "W0046"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0023", Message = string.Format(_localizer[name: "W0023"]) };
                         }
 
                         stat_code.StatShortCode = obj.StatShortCode;
@@ -592,7 +592,7 @@ namespace eSya.ProductSetup.DL.Repository
 
                         else
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0047", Message = string.Format(_localizer[name: "W0047"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0024", Message = string.Format(_localizer[name: "W0024"]) };
                         }
                     }
                     catch (DbUpdateException ex)
@@ -643,7 +643,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccnsd statutory = db.GtEccnsds.Where(w => w.Isdcode == Isd_code && w.StatutoryCode == statutorycode).FirstOrDefault();
                         if (statutory == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0046", Message = string.Format(_localizer[name: "W0046"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0023", Message = string.Format(_localizer[name: "W0023"]) };
                         }
 
                         statutory.ActiveStatus = status;

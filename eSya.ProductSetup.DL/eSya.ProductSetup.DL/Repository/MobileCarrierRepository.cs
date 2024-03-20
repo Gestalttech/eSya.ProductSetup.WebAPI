@@ -105,7 +105,7 @@ namespace eSya.ProductSetup.DL.Repository
                         var _mobcari = db.GtEccnmcs.Where(w => w.Isdcode == ISDCode && w.MobilePrefix.ToUpper().Replace(" ", "") == MobilePrefix.ToUpper().Replace(" ", "")).FirstOrDefault();
                         if (_mobcari == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0184", Message = string.Format(_localizer[name: "W0184"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0036", Message = string.Format(_localizer[name: "W0036"]) };
                         }
 
                         _mobcari.ActiveStatus = status;

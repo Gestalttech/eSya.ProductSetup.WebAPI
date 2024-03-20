@@ -161,7 +161,7 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             if (db.GtEcfmfds.Where(w => w.FormCode == obj.FormCode).Count() > 0)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0058", Message = string.Format(_localizer[name: "W0058"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0032", Message = string.Format(_localizer[name: "W0032"]) };
                             }
                         }
                         //   if (db.GtEcfmfd.Where(w => w.FormId == obj.FormID).Count() <= 0)
@@ -853,7 +853,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEbecnt ar_ct = db.GtEbecnts.Where(x => x.Id == obj.Id).FirstOrDefault();
                         if (ar_ct == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0059", Message = string.Format(_localizer[name: "W0059"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0033", Message = string.Format(_localizer[name: "W0033"]) };
                         }
 
                         ar_ct.Area = obj.Area;
@@ -889,7 +889,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEbecnt ar_ct = db.GtEbecnts.Where(w => w.Id == Id).FirstOrDefault();
                         if (ar_ct == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0059", Message = string.Format(_localizer[name: "W0059"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0033", Message = string.Format(_localizer[name: "W0033"]) };
                         }
 
                         ar_ct.ActiveStatus = status;
@@ -954,7 +954,7 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
                         if (is_actionExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00157", Message = string.Format(_localizer[name: "W00157"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0034", Message = string.Format(_localizer[name: "W0034"]) };
                         }
                         int maxAcctionId = db.GtEcfmacs.Select(c => c.ActionId).DefaultIfEmpty().Max();
                         maxAcctionId = maxAcctionId + 1;
@@ -998,14 +998,14 @@ namespace eSya.ProductSetup.DL.Repository
                         bool is_actionExist = db.GtEcfmacs.Any(a => a.ActionId != obj.ActionId && a.ActionDesc.ToUpper().Replace(" ", "") == obj.ActionDesc.ToUpper().Replace(" ", ""));
                         if (is_actionExist)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00157", Message = string.Format(_localizer[name: "W00157"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0034", Message = string.Format(_localizer[name: "W0034"]) };
                         }
 
 
                         GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == obj.ActionId).FirstOrDefault();
                         if (act == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00158", Message = string.Format(_localizer[name: "W00158"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0035", Message = string.Format(_localizer[name: "W0035"]) };
                         }
 
                         act.ActionDesc = obj.ActionDesc;
@@ -1042,7 +1042,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == actionId).FirstOrDefault();
                         if (act == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00158", Message = string.Format(_localizer[name: "W00158"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0035", Message = string.Format(_localizer[name: "W0035"]) };
                         }
 
                         act.ActiveStatus = status;

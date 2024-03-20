@@ -116,7 +116,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEbeagr agerange = db.GtEbeagrs.Where(w => w.AgeRangeId == ageId).FirstOrDefault();
                         if (agerange == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0184", Message = string.Format(_localizer[name: "W0184"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0001", Message = string.Format(_localizer[name: "W0001"]) };
                         }
 
                         agerange.ActiveStatus = status;

@@ -59,7 +59,7 @@ namespace eSya.ProductSetup.DL.Repository
                             bool is_ctrlExist = db.GtEbeculs.Any(a => a.CultureDesc.ToUpper().Replace(" ", "") == obj.CultureDesc.ToUpper().Replace(" ", ""));
                             if (is_ctrlExist)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W00159", Message = string.Format(_localizer[name: "W00159"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0030", Message = string.Format(_localizer[name: "W0030"]) };
                             }
                             var _ctrl = new GtEbecul
                             {
@@ -83,13 +83,13 @@ namespace eSya.ProductSetup.DL.Repository
                             
                             if (ctrl == null)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W00160", Message = string.Format(_localizer[name: "W00160"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0031", Message = string.Format(_localizer[name: "W0031"]) };
                             }
 
                             bool is_ctrlExist = db.GtEbeculs.Any(a => a.CultureCode.ToUpper().Trim().Replace(" ", "") != obj.CultureCode.ToUpper().Trim().Replace(" ", "") && a.CultureDesc.ToUpper().Trim().Replace(" ", "") == obj.CultureDesc.ToUpper().Trim().Replace(" ", ""));
                             if (is_ctrlExist)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W00159", Message = string.Format(_localizer[name: "W00159"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0030", Message = string.Format(_localizer[name: "W0030"]) };
                             }
 
                             ctrl.CultureDesc = obj.CultureDesc;
@@ -130,7 +130,7 @@ namespace eSya.ProductSetup.DL.Repository
 
                         if (ctrl == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W00160", Message = string.Format(_localizer[name: "W00160"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0031", Message = string.Format(_localizer[name: "W0031"]) };
                         }
 
                         ctrl.ActiveStatus = status;

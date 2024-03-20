@@ -106,13 +106,13 @@ namespace eSya.ProductSetup.DL.Repository
                         var is_CurrencyCodeExist = db.GtEccucos.Where(w => w.CurrencyCode == obj.CurrencyCode).Count();
                         if (is_CurrencyCodeExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0048", Message = string.Format(_localizer[name: "W0048"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0025", Message = string.Format(_localizer[name: "W0025"]) };
                         }
 
                         var is_CurrencyNameExist = db.GtEccucos.Where(w => w.CurrencyName.Trim().ToUpper() == obj.CurrencyName.Trim().ToUpper()).Count();
                         if (is_CurrencyNameExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0049", Message = string.Format(_localizer[name: "W0049"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0026", Message = string.Format(_localizer[name: "W0026"]) };
                         }
                         var cu_ms = new GtEccuco()
                         {
@@ -161,13 +161,13 @@ namespace eSya.ProductSetup.DL.Repository
                         var is_CurrencyNameExist = db.GtEccucos.Where(w => w.CurrencyName.Trim().ToUpper() == obj.CurrencyName.Trim().ToUpper() && w.CurrencyCode != obj.CurrencyCode).Count();
                         if (is_CurrencyNameExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0050", Message = string.Format(_localizer[name: "W0050"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0027", Message = string.Format(_localizer[name: "W0027"]) };
                         }
 
                         GtEccuco cu_ms = db.GtEccucos.Where(w => w.CurrencyCode == obj.CurrencyCode).FirstOrDefault();
                         if (cu_ms == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0048", Message = string.Format(_localizer[name: "W0048"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0025", Message = string.Format(_localizer[name: "W0025"]) };
                         }
 
                         cu_ms.CurrencyName = obj.CurrencyName;
@@ -212,7 +212,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccuco cu_ms = db.GtEccucos.Where(w => w.CurrencyCode == currencyCode).FirstOrDefault();
                         if (cu_ms == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0048", Message = string.Format(_localizer[name: "W0048"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0025", Message = string.Format(_localizer[name: "W0025"]) };
                         }
 
                         db.GtEccucos.Remove(cu_ms);
@@ -247,7 +247,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccuco cuurency_code = db.GtEccucos.Where(w => w.CurrencyCode.ToUpper().Replace(" ", "") == currency_code.ToUpper().Replace(" ", "")).FirstOrDefault();
                         if (cuurency_code == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0048", Message = string.Format(_localizer[name: "W0048"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0025", Message = string.Format(_localizer[name: "W0025"]) };
                         }
 
                         cuurency_code.ActiveStatus = status;
@@ -321,7 +321,7 @@ namespace eSya.ProductSetup.DL.Repository
                         if (is_DenominationExist)
                         {
 
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0051", Message = string.Format(_localizer[name: "W0051"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0028", Message = string.Format(_localizer[name: "W0028"]) };
                         }
                         var is_SequenceExists = await db.GtEccudns.Where(x => x.CurrencyCode.ToUpper().Replace(" ", "") == obj.CurrencyCode.ToUpper().Replace(" ", "") && x.Sequence == obj.Sequence).FirstOrDefaultAsync();
                         if (is_SequenceExists != null)
@@ -436,7 +436,7 @@ namespace eSya.ProductSetup.DL.Repository
 
                         if (cu_di == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0052", Message = string.Format(_localizer[name: "W0052"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0029", Message = string.Format(_localizer[name: "W0029"]) };
                         }
 
                         db.GtEccudns.Remove(cu_di);
@@ -471,7 +471,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccudn cu_denomination = db.GtEccudns.Where(w => w.CurrencyCode.ToUpper().Replace(" ", "") == currencycode.ToUpper().Replace(" ", "") && w.DenomId == denomId).FirstOrDefault();
                         if (cu_denomination == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0052", Message = string.Format(_localizer[name: "W0052"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0029", Message = string.Format(_localizer[name: "W0029"]) };
                         }
 
                         cu_denomination.ActiveStatus = status;

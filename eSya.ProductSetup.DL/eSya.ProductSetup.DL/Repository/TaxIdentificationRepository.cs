@@ -56,18 +56,18 @@ namespace eSya.ProductSetup.DL.Repository
                         var _isTaxDescriptionExist = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.TaxIdentificationDesc == obj.TaxIdentificationDesc).Count();
                         if (_isTaxDescriptionExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0072", Message = string.Format(_localizer[name: "W0072"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0049", Message = string.Format(_localizer[name: "W0049"]) };
                         }
 
                         var _isTaxIdentificationExist = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.TaxIdentificationId == obj.TaxIdentificationId).Count();
                         if (_isTaxIdentificationExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0073", Message = string.Format(_localizer[name: "W0073"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0050", Message = string.Format(_localizer[name: "W0050"]) };
                         }
                         var _isTaxstatecodeExist = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.StateCode.ToUpper().Replace(" ", "") == obj.StateCode.ToUpper().Replace(" ", "")).Count();
                         if (_isTaxstatecodeExist > 0)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0074", Message = string.Format(_localizer[name: "W0074"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0051", Message = string.Format(_localizer[name: "W0051"]) };
                         }
 
                         //int _taxIdnId = 0;
@@ -119,21 +119,21 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccnti ap_cd = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.TaxIdentificationId == obj.TaxIdentificationId).FirstOrDefault();
                         if (ap_cd == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0075", Message = string.Format(_localizer[name: "W0075"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0052", Message = string.Format(_localizer[name: "W0052"]) };
                         }
 
                         GtEccnti ap_cd1 = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.TaxIdentificationDesc.ToUpper().Replace(" ", "") == obj.TaxIdentificationDesc.ToUpper().Replace(" ", "")
                          && w.TaxIdentificationId != obj.TaxIdentificationId).FirstOrDefault();
                         if (ap_cd1 != null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0072", Message = string.Format(_localizer[name: "W0072"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0049", Message = string.Format(_localizer[name: "W0049"]) };
                         }
 
                         GtEccnti statecode = db.GtEccntis.Where(w => w.Isdcode == obj.Isdcode && w.StateCode.ToUpper().Replace(" ", "") == obj.StateCode.ToUpper().Replace(" ", "")
                          && w.TaxIdentificationId != obj.TaxIdentificationId).FirstOrDefault();
                         if (statecode != null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0076", Message = string.Format(_localizer[name: "W0076"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0053", Message = string.Format(_localizer[name: "W0053"]) };
                         }
                         //IEnumerable<GtEccnti> ls_apct = db.GtEccnti.Where(w => w.Isdcode == obj.Isdcode).ToList();
 
@@ -182,7 +182,7 @@ namespace eSya.ProductSetup.DL.Repository
                         GtEccnti tax_identification = db.GtEccntis.Where(w => w.Isdcode == Isd_code && w.TaxIdentificationId == TaxIdentificationId).FirstOrDefault();
                         if (tax_identification == null)
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0075", Message = string.Format(_localizer[name: "W0075"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0052", Message = string.Format(_localizer[name: "W0052"]) };
                         }
 
                         tax_identification.ActiveStatus = status;

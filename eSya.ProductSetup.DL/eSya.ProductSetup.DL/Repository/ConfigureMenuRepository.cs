@@ -57,7 +57,7 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             if (db.GtEcmamns.Where(w => w.MainMenu == obj.MainMenu).Count() > 0)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0032", Message = string.Format(_localizer[name: "W0032"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0009", Message = string.Format(_localizer[name: "W0009"]) };
                             }
 
                             var mainMenuId = db.GtEcmamns.Select(w => w.MainMenuId).DefaultIfEmpty().Max();
@@ -192,7 +192,7 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
                         if (db.GtEcsbmns.Where(w => w.MainMenuId == mainMenuId).Count() > 0)
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0033", Message = string.Format(_localizer[name: "W0033"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0010", Message = string.Format(_localizer[name: "W0010"]) };
                         var del = db.GtEcmamns.Where(w => w.MainMenuId == mainMenuId).FirstOrDefault();
                         if (del != null)
                         {
@@ -205,7 +205,7 @@ namespace eSya.ProductSetup.DL.Repository
                         }
                         else
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0034", Message = string.Format(_localizer[name: "W0034"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0011", Message = string.Format(_localizer[name: "W0011"]) };
                         }
                     }
                     catch (Exception ex)
@@ -263,7 +263,7 @@ namespace eSya.ProductSetup.DL.Repository
                             }
                             if (db.GtEcsbmns.Where(w => w.MainMenuId == obj.MainMenuId && w.ParentId == obj.ParentID && w.MenuItemName == obj.MenuItemName).Count() > 0)
                             {
-                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0035", Message = string.Format(_localizer[name: "W0035"]) };
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0012", Message = string.Format(_localizer[name: "W0012"]) };
                             }
 
                             var subMenuID = db.GtEcsbmns.Select(w => w.MenuItemId).DefaultIfEmpty().Max();
@@ -411,9 +411,9 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
                         if (db.GtEcsbmns.Where(w => w.ParentId == menuItemId).Count() > 0)
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0036", Message = string.Format(_localizer[name: "W0036"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0013", Message = string.Format(_localizer[name: "W0013"]) };
                         if (db.GtEcmnfls.Where(w => w.MenuItemId == menuItemId).Count() > 0)
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0037", Message = string.Format(_localizer[name: "W0037"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0014", Message = string.Format(_localizer[name: "W0014"]) };
 
                         var del = db.GtEcsbmns.Where(w => w.MenuItemId == menuItemId).FirstOrDefault();
                         if (del != null)
@@ -427,7 +427,7 @@ namespace eSya.ProductSetup.DL.Repository
                         }
                         else
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0038", Message = string.Format(_localizer[name: "W0038"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0015", Message = string.Format(_localizer[name: "W0015"]) };
                         }
                     }
                     catch (Exception ex)
@@ -674,7 +674,7 @@ namespace eSya.ProductSetup.DL.Repository
                         }
                         else
                         {
-                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0039", Message = string.Format(_localizer[name: "W0039"]) };
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0016", Message = string.Format(_localizer[name: "W0016"]) };
                         }
                     }
                     catch (Exception ex)
