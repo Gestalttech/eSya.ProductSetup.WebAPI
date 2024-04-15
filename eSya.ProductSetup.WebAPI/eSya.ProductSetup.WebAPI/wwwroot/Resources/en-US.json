@@ -52,6 +52,7 @@
   "W0051": "State Code is already Exist For Selected ISD Code & Tax Code",
   "W0052": "Tax Identification ID is not Exist For Selected ISD Code",
   "W0053": "State Code is already Exist For Selected ISD Code",
+  "W0110": "Display Sequence is already Exist",
 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",

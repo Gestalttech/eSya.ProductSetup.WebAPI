@@ -377,8 +377,9 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             ActionId = r.ActionId,
                             ActionDesc = r.ActionDesc,
+                            DisplaySequence=r.DisplaySequence,
                             ActiveStatus = r.ActiveStatus,
-                        }).ToListAsync();
+                        }).OrderBy(x=>x.DisplaySequence).ToListAsync();
                     return await fa;
                 }
             }
@@ -405,8 +406,9 @@ namespace eSya.ProductSetup.DL.Repository
                      {
                          ActionId = a.emp.ActionId,
                          ActionDesc = a.emp.ActionDesc,
+                         DisplaySequence=a.emp.DisplaySequence,
                          ActiveStatus = b == null ? false : b.ActiveStatus
-                    }).ToListAsync();
+                    }).OrderBy(x=>x.DisplaySequence).ToListAsync();
 
 
                     //var fa = db.GtEcfmacs
@@ -930,8 +932,9 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             ActionId = r.ActionId,
                             ActionDesc = r.ActionDesc,
+                            DisplaySequence=r.DisplaySequence,
                             ActiveStatus = r.ActiveStatus,
-                        }).OrderBy(o => o.ActionDesc).ToListAsync();
+                        }).OrderBy(o => o.DisplaySequence).ToListAsync();
 
                     return await ds;
                 }
@@ -956,12 +959,18 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             return new DO_ReturnParameter() { Status = false, StatusCode = "W0034", Message = string.Format(_localizer[name: "W0034"]) };
                         }
+                        bool is_displayExist = db.GtEcfmacs.Any(a => a.DisplaySequence == obj.DisplaySequence);
+                        if (is_displayExist)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0110", Message = string.Format(_localizer[name: "W0110"]) };
+                        }
                         int maxAcctionId = db.GtEcfmacs.Select(c => c.ActionId).DefaultIfEmpty().Max();
                         maxAcctionId = maxAcctionId + 1;
                         var obj_act = new GtEcfmac
                         {
                             ActionId = maxAcctionId,
                             ActionDesc = obj.ActionDesc,
+                            DisplaySequence = obj.DisplaySequence,
                             ActiveStatus = obj.ActiveStatus,
                             CreatedBy = obj.UserID,
                             CreatedOn = System.DateTime.Now,
@@ -1000,7 +1009,12 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             return new DO_ReturnParameter() { Status = false, StatusCode = "W0034", Message = string.Format(_localizer[name: "W0034"]) };
                         }
-
+                        bool is_displayExist = db.GtEcfmacs.Any(a => a.ActionId != obj.ActionId && a.DisplaySequence == obj.DisplaySequence);
+                        
+                        if (is_displayExist)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0110", Message = string.Format(_localizer[name: "W0110"]) };
+                        }
 
                         GtEcfmac act = db.GtEcfmacs.Where(w => w.ActionId == obj.ActionId).FirstOrDefault();
                         if (act == null)
