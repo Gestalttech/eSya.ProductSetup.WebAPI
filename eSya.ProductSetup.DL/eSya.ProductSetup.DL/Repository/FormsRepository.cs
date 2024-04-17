@@ -753,7 +753,7 @@ namespace eSya.ProductSetup.DL.Repository
                             Area = a.Area,
                             Controller = a.Controller,
                             ActiveStatus = a.ActiveStatus
-                        }).OrderBy(x => x.Controller).ToListAsync();
+                        }).OrderBy(x=>x.Area).ThenBy(x => x.Controller).ToListAsync();
 
                         return await ds;
                     }
@@ -766,7 +766,7 @@ namespace eSya.ProductSetup.DL.Repository
                             Area = a.Area,
                             Controller = a.Controller,
                             ActiveStatus = a.ActiveStatus
-                        }).OrderBy(x => x.Controller).ToListAsync();
+                        }).OrderBy(x => x.Area).ThenBy(x => x.Controller).ToListAsync();
 
                         return await ds;
                     }
