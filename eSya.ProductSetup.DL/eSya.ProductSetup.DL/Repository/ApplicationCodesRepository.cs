@@ -273,7 +273,7 @@ namespace eSya.ProductSetup.DL.Repository
                             DefaultStatus = r.DefaultStatus,
                             ActiveStatus = r.ActiveStatus,
                             TerminalID = r.CodeTypeNavigation.CodeTyepDesc
-                        }).OrderBy(o => o.CodeDesc).ToListAsync();
+                        }).OrderBy(o => o.ApplicationCode).ToListAsync();
 
                     return await ds;
                 }
@@ -303,7 +303,7 @@ namespace eSya.ProductSetup.DL.Repository
                             UsageStatus = r.UsageStatus,
                             DefaultStatus = r.DefaultStatus,
                             ActiveStatus = r.ActiveStatus,
-                        }).OrderBy(o => o.CodeDesc).ToListAsync();
+                        }).OrderBy(o => o.ApplicationCode).ToListAsync();
                         return  ds;
                     }
                     else
@@ -320,7 +320,7 @@ namespace eSya.ProductSetup.DL.Repository
                            UsageStatus = r.UsageStatus,
                            DefaultStatus = r.DefaultStatus,
                            ActiveStatus = r.ActiveStatus,
-                       }).OrderBy(o => o.CodeDesc).ToListAsync();
+                       }).OrderBy(o => o.ApplicationCode).ToListAsync();
                         return  ds;
                     }
                 }
