@@ -154,7 +154,7 @@ namespace eSya.ProductSetup.DL.Repository
                 using (var db = new eSyaEnterprise())
                 {
                     var ds = db.GtEcapcts
-                        .Where(w => w.ActiveStatus)
+                        .Where(w => w.ActiveStatus && w.CodeTypeControl == "S")
                         .Select(r => new DO_CodeTypes
                         {
                             CodeType = r.CodeType,
@@ -292,34 +292,40 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     if (codeType == 0)
                     {
-                        var ds =await db.GtEcapcds
-                        .Select(r => new DO_ApplicationCodes
+                        var ds =await db.GtEcapcds.Join(db.GtEcapcts.Where(c=>c.CodeTypeControl=="S"),
+                        x => x.CodeType,
+                        y => y.CodeType,
+                        (x,y)=> new DO_ApplicationCodes
                         {
-                            CodeType = r.CodeType,
-                            ApplicationCode = r.ApplicationCode,
-                            CodeDesc = r.CodeDesc,
-                            //ShortCode = r.ShortCode??"",
-                            ShortCode = r.ShortCode,
-                            UsageStatus = r.UsageStatus,
-                            DefaultStatus = r.DefaultStatus,
-                            ActiveStatus = r.ActiveStatus,
+                            CodeType = x.CodeType,
+                            ApplicationCode = x.ApplicationCode,
+                            CodeDesc = x.CodeDesc,
+                           // ShortCode = r.ShortCode??"",
+                            ShortCode = x.ShortCode,
+                            CodeTypeControl=y.CodeTypeControl,
+                            UsageStatus = x.UsageStatus,
+                            DefaultStatus = x.DefaultStatus,
+                            ActiveStatus = x.ActiveStatus,
                         }).OrderBy(o => o.ApplicationCode).ToListAsync();
                         return  ds;
                     }
                     else
                     {
                         var ds =await db.GtEcapcds
-                       .Where(w => w.CodeType == codeType)
-                       .Select(r => new DO_ApplicationCodes
+                       .Where(w => w.CodeType == codeType).Join(db.GtEcapcts.Where(c => c.CodeTypeControl == "S"),
+                        x => x.CodeType,
+                        y => y.CodeType,
+                        (x, y) => new DO_ApplicationCodes
                        {
-                           CodeType = r.CodeType,
-                           ApplicationCode = r.ApplicationCode,
-                           CodeDesc = r.CodeDesc,
+                           CodeType = x.CodeType,
+                           ApplicationCode = x.ApplicationCode,
+                           CodeDesc = x.CodeDesc,
                            //ShortCode = r.ShortCode??"",
-                           ShortCode = r.ShortCode,
-                           UsageStatus = r.UsageStatus,
-                           DefaultStatus = r.DefaultStatus,
-                           ActiveStatus = r.ActiveStatus,
+                           ShortCode = x.ShortCode,
+                           CodeTypeControl = y.CodeTypeControl,
+                            UsageStatus = x.UsageStatus,
+                           DefaultStatus = x.DefaultStatus,
+                           ActiveStatus = x.ActiveStatus,
                        }).OrderBy(o => o.ApplicationCode).ToListAsync();
                         return  ds;
                     }

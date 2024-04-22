@@ -18,6 +18,7 @@ namespace eSya.ProductSetup.DO
         public string FormID { get; set; } = null!;
         public int UserID { get; set; }
         public string TerminalID { get; set; } = null!;
+        public string? CodeTypeControl { get; set; }
     }
    
 }
