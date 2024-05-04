@@ -154,7 +154,8 @@ namespace eSya.ProductSetup.DL.Repository
                 using (var db = new eSyaEnterprise())
                 {
                     var ds = db.GtEcapcts
-                        .Where(w => w.ActiveStatus && w.CodeTypeControl == "S")
+                        //.Where(w => w.ActiveStatus && w.CodeTypeControl == "S")
+                        .Where(w => w.ActiveStatus)
                         .Select(r => new DO_CodeTypes
                         {
                             CodeType = r.CodeType,
@@ -292,9 +293,10 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     if (codeType == 0)
                     {
-                        var ds =await db.GtEcapcds.Join(db.GtEcapcts.Where(c=>c.CodeTypeControl=="S"),
-                        x => x.CodeType,
-                        y => y.CodeType,
+                        //var ds =await db.GtEcapcds.Join(db.GtEcapcts.Where(c=>c.CodeTypeControl=="S"),
+                        var ds = await db.GtEcapcds.Join(db.GtEcapcts,
+                            x => x.CodeType,
+                            y => y.CodeType,
                         (x,y)=> new DO_ApplicationCodes
                         {
                             CodeType = x.CodeType,
@@ -312,7 +314,9 @@ namespace eSya.ProductSetup.DL.Repository
                     else
                     {
                         var ds =await db.GtEcapcds
-                       .Where(w => w.CodeType == codeType).Join(db.GtEcapcts.Where(c => c.CodeTypeControl == "S"),
+                       .Where(w => w.CodeType == codeType)
+                        .Join(db.GtEcapcts,
+                        //.Join(db.GtEcapcts.Where(c => c.CodeTypeControl == "S"),
                         x => x.CodeType,
                         y => y.CodeType,
                         (x, y) => new DO_ApplicationCodes
