@@ -132,16 +132,6 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.RangeDesc)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.RangeFromPeriod)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.RangeToPeriod)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
             });
 
             modelBuilder.Entity<GtEbecnt>(entity =>

@@ -23,16 +23,26 @@ namespace eSya.ProductSetup.DL.Repository
         {
             using (var db = new eSyaEnterprise())
             {
-                var age = db.GtEbeagrs
+                var age = db.GtEbeagrs.Join
+                    (db.GtEcapcds,
+                    a => new { a.RangeFromPeriod },
+                    fr => new { RangeFromPeriod= fr.ApplicationCode },
+                    (a, fr) => new { a, fr }).Join
+                    (db.GtEcapcds,
+                    ag=>new {ag.a.RangeToPeriod},
+                    ft=>new { RangeToPeriod=ft.ApplicationCode},
+                    (ag, ft) => new { ag, ft })
                .Select(s => new DO_AgeRange
                {
-                   AgeRangeId = s.AgeRangeId,
-                   RangeDesc = s.RangeDesc,
-                   AgeRangeFrom = s.AgeRangeFrom,
-                   RangeFromPeriod = s.RangeFromPeriod,
-                   AgeRangeTo = s.AgeRangeTo,
-                   RangeToPeriod = s.RangeToPeriod,
-                   ActiveStatus = s.ActiveStatus
+                   AgeRangeId = s.ag.a.AgeRangeId,
+                   RangeDesc = s.ag.a.RangeDesc,
+                   AgeRangeFrom = s.ag.a.AgeRangeFrom,
+                   RangeFromPeriod = s.ag.a.RangeFromPeriod,
+                   AgeRangeTo = s.ag.a.AgeRangeTo,
+                   RangeToPeriod = s.ag.a.RangeToPeriod,
+                   ActiveStatus = s.ag.a.ActiveStatus,
+                   RangeFromPeriodDesc=s.ag.fr.CodeDesc,
+                   RangeToPeriodDesc=s.ft.CodeDesc
                })
                .ToListAsync();
                 return await age;
