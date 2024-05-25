@@ -35,7 +35,7 @@ namespace eSya.ProductSetup.DL.Repository
                             UsageStatus = r.UsageStatus,
                             CodeTypeControl = r.CodeTypeControl,
                             ActiveStatus = r.ActiveStatus
-                        }).OrderBy(o => o.CodeTypeDesc).ToListAsync();
+                        }).OrderBy(o => o.CodeType).ToListAsync();
 
                     return await ds;
                 }
