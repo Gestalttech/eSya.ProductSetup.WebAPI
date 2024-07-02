@@ -28,21 +28,17 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     var ds = await db.GtEccnpms.Where(x => x.Isdcode == ISDCode)
                        .Join(db.GtEcapcds,
-                       a => a.PaymentMethod,
+                       a => a.InstrumentType,
                        p => p.ApplicationCode,
                        (a, p) => new { a, p })
-                      .Join(db.GtEcapcds,
-                      aa => aa.a.InstrumentType,
-                      I => I.ApplicationCode,
-                      (aa, I) => new { aa, I })
                      .Select(r => new DO_PaymentMethod
                      {
-                         Isdcode = r.aa.a.Isdcode,
-                         PaymentMethod = r.aa.a.PaymentMethod,
-                         InstrumentType = r.aa.a.InstrumentType,
-                         PaymentMethodDesc = r.aa.p.CodeDesc,
-                         InstrumentTypeDesc = r.I.CodeDesc,
-                         ActiveStatus = r.aa.a.ActiveStatus
+                         Isdcode = r.a.Isdcode,
+                         PaymentMethod = r.a.PaymentMethod,
+                         InstrumentType = r.a.InstrumentType,
+                         InstrumentTypeDesc = r.p.CodeDesc,
+                         PaymentMethodDesc = r.a.PaymentMethod == "C" ? "Cash" : "Bank",
+                         ActiveStatus = r.a.ActiveStatus
                      }).ToListAsync();
 
                     return ds;
@@ -62,7 +58,7 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
 
-                        var _payExist = db.GtEccnpms.Where(w => w.Isdcode == obj.Isdcode && w.PaymentMethod == obj.PaymentMethod && w.InstrumentType == obj.InstrumentType).FirstOrDefault();
+                        var _payExist = db.GtEccnpms.Where(w => w.Isdcode == obj.Isdcode && w.PaymentMethod.ToUpper().Replace(" ", "") == obj.PaymentMethod.ToUpper().Replace(" ", "") && w.InstrumentType == obj.InstrumentType).FirstOrDefault();
                         if (_payExist != null)
                         {
 
