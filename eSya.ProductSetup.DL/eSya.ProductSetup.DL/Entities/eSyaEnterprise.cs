@@ -8,7 +8,6 @@ namespace eSya.ProductSetup.DL.Entities
     public partial class eSyaEnterprise : DbContext
     {
         public static string _connString = "";
-
         public eSyaEnterprise()
         {
         }
@@ -39,6 +38,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcfmfd> GtEcfmfds { get; set; } = null!;
         public virtual DbSet<GtEcfmnm> GtEcfmnms { get; set; } = null!;
         public virtual DbSet<GtEcfmpa> GtEcfmpas { get; set; } = null!;
+        public virtual DbSet<GtEcgwrl> GtEcgwrls { get; set; } = null!;
         public virtual DbSet<GtEcmamn> GtEcmamns { get; set; } = null!;
         public virtual DbSet<GtEcmnfl> GtEcmnfls { get; set; } = null!;
         public virtual DbSet<GtEcparh> GtEcparhs { get; set; } = null!;
@@ -702,6 +702,35 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasForeignKey(d => d.FormId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GT_ECFMPA_GT_ECFMFD");
+            });
+
+            modelBuilder.Entity<GtEcgwrl>(entity =>
+            {
+                entity.HasKey(e => e.GwruleId);
+
+                entity.ToTable("GT_ECGWRL");
+
+                entity.Property(e => e.GwruleId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("GWRuleID");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.Gwdesc)
+                    .HasMaxLength(75)
+                    .IsUnicode(false)
+                    .HasColumnName("GWDesc");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
             });
 
             modelBuilder.Entity<GtEcmamn>(entity =>
