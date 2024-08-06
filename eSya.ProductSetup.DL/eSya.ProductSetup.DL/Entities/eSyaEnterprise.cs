@@ -8,6 +8,7 @@ namespace eSya.ProductSetup.DL.Entities
     public partial class eSyaEnterprise : DbContext
     {
         public static string _connString = "";
+
         public eSyaEnterprise()
         {
         }
@@ -473,6 +474,8 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("FormID");
+
+                entity.Property(e => e.IsUt).HasColumnName("IsUT");
 
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 

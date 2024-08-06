@@ -33,6 +33,7 @@ namespace eSya.ProductSetup.DL.Repository
                             TaxIdentificationId = x.TaxIdentificationId,
                             TaxIdentificationDesc = x.TaxIdentificationDesc,
                             StateCode = x.StateCode,
+                            IsUt=x.IsUt,
                             ActiveStatus = x.ActiveStatus
                         }).OrderBy(o => o.TaxIdentificationId).ToListAsync();
 
@@ -81,6 +82,7 @@ namespace eSya.ProductSetup.DL.Repository
                             TaxIdentificationId = obj.TaxIdentificationId,
                             TaxIdentificationDesc = obj.TaxIdentificationDesc.Trim(),
                             StateCode = obj.StateCode,
+                            IsUt=obj.IsUt,
                             ActiveStatus = obj.ActiveStatus,
                             FormId = obj.FormId,
                             CreatedBy = obj.UserID,
@@ -147,6 +149,7 @@ namespace eSya.ProductSetup.DL.Repository
                         ap_cd.TaxIdentificationId = obj.TaxIdentificationId;
                         ap_cd.TaxIdentificationDesc = obj.TaxIdentificationDesc.Trim();
                         ap_cd.StateCode = obj.StateCode;
+                        ap_cd.IsUt=obj.IsUt;
                         ap_cd.ActiveStatus = obj.ActiveStatus;
                         ap_cd.ModifiedBy = obj.UserID;
                         ap_cd.ModifiedOn = System.DateTime.Now;
