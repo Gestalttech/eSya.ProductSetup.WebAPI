@@ -46,6 +46,8 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcparm> GtEcparms { get; set; } = null!;
         public virtual DbSet<GtEcprrl> GtEcprrls { get; set; } = null!;
         public virtual DbSet<GtEcsbmn> GtEcsbmns { get; set; } = null!;
+        public virtual DbSet<GtEcsulg> GtEcsulgs { get; set; } = null!;
+        public virtual DbSet<GtEcsult> GtEcsults { get; set; } = null!;
         public virtual DbSet<GtEcsupa> GtEcsupas { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -913,6 +915,69 @@ namespace eSya.ProductSetup.DL.Entities
                     .HasForeignKey(d => d.MainMenuId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GT_ECSBMN_GT_ECMAMN");
+            });
+
+            modelBuilder.Entity<GtEcsulg>(entity =>
+            {
+                entity.HasKey(e => e.SubledgerGroup);
+
+                entity.ToTable("GT_ECSULG");
+
+                entity.Property(e => e.SubledgerGroup).ValueGeneratedNever();
+
+                entity.Property(e => e.Coahead)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("COAHead");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.SubledgerDesc).HasMaxLength(75);
+
+                entity.Property(e => e.SubledgerType)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+            });
+
+            modelBuilder.Entity<GtEcsult>(entity =>
+            {
+                entity.HasKey(e => e.SubledgerType);
+
+                entity.ToTable("GT_ECSULT");
+
+                entity.Property(e => e.SubledgerType)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.Sltdesc)
+                    .HasMaxLength(50)
+                    .HasColumnName("SLTDesc");
             });
 
             modelBuilder.Entity<GtEcsupa>(entity =>

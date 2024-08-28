@@ -54,6 +54,11 @@
   "W0053": "State Code is already Exist For Selected ISD Code",
   "W0110": "Display Sequence is already Exist",
   "W0111": "Gate Way Rule Not Exist",
+  "W0112": "Subledger Type already Exist",
+  "W0113": "Subledger Description already Exist",
+  "W0114": "Subledger Type Not Exist",
+  "W0115": "Subledger Group Description is already Exist",
+  "W0116": "Subledger Group not Exist",
 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",

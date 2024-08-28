@@ -67,7 +67,9 @@ builder.Services.AddScoped<IeSyaCultureRepository, eSyaCultureRepository>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
 builder.Services.AddScoped<IMobileCarrierRepository, MobileCarrierRepository>();
 builder.Services.AddScoped<IAgeRangeRepository, AgeRangeRepository>();
-builder.Services.AddScoped<IGatewayRepository, GatewayRepository>(); 
+builder.Services.AddScoped<IGatewayRepository, GatewayRepository>();
+builder.Services.AddScoped<ISubledgerRepository, SubledgerRepository>();
+
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers();
