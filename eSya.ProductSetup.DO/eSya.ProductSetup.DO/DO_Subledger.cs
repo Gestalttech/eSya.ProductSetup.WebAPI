@@ -9,9 +9,9 @@ namespace eSya.ProductSetup.DO
     public class DO_Subledger
     {
         public string SubledgerType { get; set; } 
-        public string Sltdesc { get; set; }
+        public string? Sltdesc { get; set; }
         public int SubledgerGroup { get; set; }
-        public string SubledgerDesc { get; set; } 
+        public string? SubledgerDesc { get; set; } 
         public string? Coahead { get; set; }
         public bool ActiveStatus { get;set; }
         public int UserID { get; set; }
