@@ -159,7 +159,7 @@ namespace eSya.ProductSetup.DL.Repository
                     {
                         if (obj.IsInsert)
                         {
-                            if (db.GtEcfmfds.Where(w => w.FormCode == obj.FormCode).Count() > 0)
+                            if (db.GtEcfmfds.Where(w => w.FormCode.ToUpper().Replace(" ", "") == obj.FormCode.ToUpper().Replace(" ", "")).Count() > 0)
                             {
                                 return new DO_ReturnParameter() { Status = false, StatusCode = "W0032", Message = string.Format(_localizer[name: "W0032"]) };
                             }
@@ -812,21 +812,32 @@ namespace eSya.ProductSetup.DL.Repository
 
                         //int maxId = db.GtEbecnt.Select(a => a.Id).DefaultIfEmpty().Max();
                         //int Ar_Id = maxId + 1;
-                        //Here Id is Identity column
-
-                        var ar_ct = new GtEbecnt
+                        //Here Id is Identity column 
+                        var isarea = db.GtEbecnts.Where(x => x.Area.ToUpper().Replace(" ", "") ==
+                        obj.Area.ToUpper().Replace(" ", "") && x.Controller.ToUpper().Replace(" ", "") ==
+                        obj.Controller.ToUpper().Replace(" ", "")).FirstOrDefault();
+                        if (isarea == null)
                         {
-                            //Id=Ar_Id,
-                            Area = obj.Area,
-                            Controller = obj.Controller,
-                            ActiveStatus = obj.ActiveStatus
-                        };
-                        db.GtEbecnts.Add(ar_ct);
+                            var ar_ct = new GtEbecnt
+                            {
+                                //Id=Ar_Id,
+                                Area = obj.Area,
+                                Controller = obj.Controller,
+                                ActiveStatus = obj.ActiveStatus
+                            };
+                            db.GtEbecnts.Add(ar_ct);
 
-                        await db.SaveChangesAsync();
-                        dbContext.Commit();
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
 
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        }
+                        else
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0117", Message = string.Format(_localizer[name: "W0117"]) };
+
+                        }
+
                     }
                     catch (DbUpdateException ex)
                     {
@@ -851,7 +862,14 @@ namespace eSya.ProductSetup.DL.Repository
                 {
                     try
                     {
+                        var isarea = db.GtEbecnts.Where(x => x.Area.ToUpper().Replace(" ", "") ==
+                        obj.Area.ToUpper().Replace(" ", "") && x.Controller.ToUpper().Replace(" ", "") ==
+                        obj.Controller.ToUpper().Replace(" ", "") && x.Id!=obj.Id).FirstOrDefault();
+                        if (isarea !=null)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0117", Message = string.Format(_localizer[name: "W0117"]) };
 
+                        }
                         GtEbecnt ar_ct = db.GtEbecnts.Where(x => x.Id == obj.Id).FirstOrDefault();
                         if (ar_ct == null)
                         {

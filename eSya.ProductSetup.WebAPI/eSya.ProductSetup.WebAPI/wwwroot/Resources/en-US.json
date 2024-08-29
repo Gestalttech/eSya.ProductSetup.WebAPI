@@ -59,6 +59,7 @@
   "W0114": "Subledger Type Not Exist",
   "W0115": "Subledger Group Description is already Exist",
   "W0116": "Subledger Group not Exist",
+  "W0117": "The combination of Area and Controller is already Exist",
 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",
