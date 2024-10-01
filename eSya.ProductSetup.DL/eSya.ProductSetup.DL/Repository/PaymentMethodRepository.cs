@@ -31,14 +31,18 @@ namespace eSya.ProductSetup.DL.Repository
                        a => a.InstrumentType,
                        p => p.ApplicationCode,
                        (a, p) => new { a, p })
+                        .Join(db.GtEcapcds,
+                       aa => aa.a.PaymentMethod,
+                       pa => pa.ApplicationCode,
+                       (aa, pa) => new { aa, pa })
                      .Select(r => new DO_PaymentMethod
                      {
-                         Isdcode = r.a.Isdcode,
-                         PaymentMethod = r.a.PaymentMethod,
-                         InstrumentType = r.a.InstrumentType,
-                         InstrumentTypeDesc = r.p.CodeDesc,
-                         PaymentMethodDesc = r.a.PaymentMethod == "C" ? "Cash" : "Bank",
-                         ActiveStatus = r.a.ActiveStatus
+                         Isdcode = r.aa.a.Isdcode,
+                         PaymentMethod = r.aa.a.PaymentMethod,
+                         InstrumentType = r.aa.a.InstrumentType,
+                         InstrumentTypeDesc = r.aa.p.CodeDesc,
+                         PaymentMethodDesc = r.pa.CodeDesc,
+                         ActiveStatus = r.aa.a.ActiveStatus
                      }).ToListAsync();
 
                     return ds;
@@ -58,7 +62,7 @@ namespace eSya.ProductSetup.DL.Repository
                     try
                     {
 
-                        var _payExist = db.GtEccnpms.Where(w => w.Isdcode == obj.Isdcode && w.PaymentMethod.ToUpper().Replace(" ", "") == obj.PaymentMethod.ToUpper().Replace(" ", "") && w.InstrumentType == obj.InstrumentType).FirstOrDefault();
+                        var _payExist = db.GtEccnpms.Where(w => w.Isdcode == obj.Isdcode && w.PaymentMethod == obj.PaymentMethod && w.InstrumentType == obj.InstrumentType).FirstOrDefault();
                         if (_payExist != null)
                         {
 

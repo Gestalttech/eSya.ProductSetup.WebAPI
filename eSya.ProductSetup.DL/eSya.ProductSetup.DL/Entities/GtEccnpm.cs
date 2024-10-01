@@ -6,7 +6,7 @@ namespace eSya.ProductSetup.DL.Entities
     public partial class GtEccnpm
     {
         public int Isdcode { get; set; }
-        public string PaymentMethod { get; set; } = null!;
+        public int PaymentMethod { get; set; }
         public int InstrumentType { get; set; }
         public bool ActiveStatus { get; set; }
         public string FormId { get; set; } = null!;

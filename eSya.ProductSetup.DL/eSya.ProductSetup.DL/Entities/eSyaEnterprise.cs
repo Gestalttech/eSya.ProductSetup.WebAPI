@@ -402,11 +402,6 @@ namespace eSya.ProductSetup.DL.Entities
 
                 entity.Property(e => e.Isdcode).HasColumnName("ISDCode");
 
-                entity.Property(e => e.PaymentMethod)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);

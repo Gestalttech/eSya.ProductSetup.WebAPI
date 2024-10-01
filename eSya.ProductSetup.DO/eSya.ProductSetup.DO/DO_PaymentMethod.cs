@@ -9,7 +9,7 @@ namespace eSya.ProductSetup.DO
     public class DO_PaymentMethod
     {
         public int Isdcode { get; set; }
-        public string PaymentMethod { get; set; }
+        public int PaymentMethod { get; set; }
         public int InstrumentType { get; set; }
         public bool ActiveStatus { get; set; }
         public string FormID { get; set; }
