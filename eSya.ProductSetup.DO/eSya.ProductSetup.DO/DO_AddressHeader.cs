@@ -44,6 +44,7 @@ namespace eSya.ProductSetup.DO
         public int Isdcode { get; set; }
         public int StateCode { get; set; }
         public int CityCode { get; set; }
+        public int Stdcode { get; set; }
         public string CityDesc { get; set; }
         public bool ActiveStatus { get; set; }
         public string FormID { get; set; }

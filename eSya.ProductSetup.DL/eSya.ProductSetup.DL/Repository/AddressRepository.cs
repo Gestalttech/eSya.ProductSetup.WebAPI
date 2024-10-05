@@ -114,6 +114,7 @@ namespace eSya.ProductSetup.DL.Repository
                    Isdcode = r.c.Isdcode,
                    StateCode = r.c.StateCode,
                    CityCode = r.c.CityCode,
+                   Stdcode=r.c.Stdcode,
                    CityDesc = r.c.CityDesc,
                    StateDesc = r.s.StateDesc,
                    ActiveStatus = r.c.ActiveStatus
@@ -134,6 +135,7 @@ namespace eSya.ProductSetup.DL.Repository
                         var _ci = db.GtAddrcts.Where(w => w.Isdcode == obj.Isdcode && w.CityCode == obj.CityCode && w.StateCode == obj.StateCode).FirstOrDefault();
                         if (_ci != null)
                         {
+                            _ci.Stdcode = obj.Stdcode;
                             _ci.CityDesc = obj.CityDesc;
                             _ci.ActiveStatus = obj.ActiveStatus;
                             _ci.ModifiedBy = obj.UserID;
@@ -152,6 +154,7 @@ namespace eSya.ProductSetup.DL.Repository
                                 Isdcode = obj.Isdcode,
                                 CityCode = _CityId,
                                 StateCode = obj.StateCode,
+                                Stdcode=obj.Stdcode,
                                 CityDesc = obj.CityDesc,
                                 ActiveStatus = obj.ActiveStatus,
                                 FormId = obj.FormID,
