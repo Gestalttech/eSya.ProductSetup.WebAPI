@@ -69,6 +69,7 @@ builder.Services.AddScoped<IMobileCarrierRepository, MobileCarrierRepository>();
 builder.Services.AddScoped<IAgeRangeRepository, AgeRangeRepository>();
 builder.Services.AddScoped<IGatewayRepository, GatewayRepository>();
 builder.Services.AddScoped<ISubledgerRepository, SubledgerRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 

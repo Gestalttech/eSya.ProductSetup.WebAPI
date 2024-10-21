@@ -60,6 +60,10 @@
   "W0115": "Subledger Group Description is already Exist",
   "W0116": "Subledger Group not Exist",
   "W0117": "The combination of Area and Controller is already Exist",
+  "W0118": "Trigger event Exist",
+  "W0119": "Trigger event Description Exist",
+  "W0120": "Trigger event not Exist",
+
 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",
