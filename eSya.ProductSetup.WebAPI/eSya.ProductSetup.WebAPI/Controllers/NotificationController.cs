@@ -17,7 +17,7 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             _notificationRepository = notificationRepository;
         }
 
-        #region Trigger Event
+        #region Notification Trigger Event
         /// <summary>
         /// Get SMS Trigger Event by Trigger event Id.
         /// UI Reffered - SMS Trigger Event
@@ -80,5 +80,69 @@ namespace eSya.ProductSetup.WebAPI.Controllers
             return Ok(msg);
         }
         #endregion SMS Trigger Event
+
+        #region Notification Variables
+        /// <summary>
+        /// Get SMS Variable Information.
+        /// UI Reffered - SMS Variable
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetSMSVariableInformation()
+        {
+            var sm_sv = await _notificationRepository.GetSMSVariableInformation();
+            return Ok(sm_sv);
+        }
+
+        /// <summary>
+        /// Get Active SMS Variable Information.
+        /// UI Reffered - SMS Information
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetActiveSMSVariableInformation()
+        {
+            var sm_sv = await _notificationRepository.GetActiveSMSVariableInformation();
+            return Ok(sm_sv);
+        }
+
+
+        /// <summary>
+        /// Insert into SMS Variable .
+        /// UI Reffered - SMS Variable
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> InsertIntoSMSVariable(DO_SMSVariable obj)
+        {
+            var msg = await _notificationRepository.InsertIntoSMSVariable(obj);
+            return Ok(msg);
+
+        }
+
+        /// <summary>
+        /// Update SMS Variable .
+        /// UI Reffered - SMS Variable
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> UpdateSMSVariable(DO_SMSVariable obj)
+        {
+            var msg = await _notificationRepository.UpdateSMSVariable(obj);
+            return Ok(msg);
+
+        }
+
+        /// <summary>
+        /// Active Or De Active SMS Variable.
+        /// UI Reffered - SMS Variable
+        /// </summary>
+        /// <param name="status-smsvariable"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> ActiveOrDeActiveSMSVariable(bool status, string smsvariable)
+        {
+            var msg = await _notificationRepository.ActiveOrDeActiveSMSVariable(status, smsvariable);
+            return Ok(msg);
+        }
+        #endregion
     }
 }

@@ -47,6 +47,7 @@ namespace eSya.ProductSetup.DL.Entities
         public virtual DbSet<GtEcprrl> GtEcprrls { get; set; } = null!;
         public virtual DbSet<GtEcsbmn> GtEcsbmns { get; set; } = null!;
         public virtual DbSet<GtEcsmst> GtEcsmsts { get; set; } = null!;
+        public virtual DbSet<GtEcsmsv> GtEcsmsvs { get; set; } = null!;
         public virtual DbSet<GtEcsulg> GtEcsulgs { get; set; } = null!;
         public virtual DbSet<GtEcsult> GtEcsults { get; set; } = null!;
         public virtual DbSet<GtEcsupa> GtEcsupas { get; set; } = null!;
@@ -937,6 +938,36 @@ namespace eSya.ProductSetup.DL.Entities
                 entity.Property(e => e.TeventDesc)
                     .HasMaxLength(150)
                     .HasColumnName("TEventDesc");
+            });
+
+            modelBuilder.Entity<GtEcsmsv>(entity =>
+            {
+                entity.HasKey(e => e.Smsvariable);
+
+                entity.ToTable("GT_ECSMSV");
+
+                entity.Property(e => e.Smsvariable)
+                    .HasMaxLength(6)
+                    .IsUnicode(false)
+                    .HasColumnName("SMSVariable");
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.Smscomponent)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("SMSComponent");
             });
 
             modelBuilder.Entity<GtEcsulg>(entity =>
