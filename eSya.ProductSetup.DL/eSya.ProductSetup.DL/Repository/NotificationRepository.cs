@@ -31,6 +31,7 @@ namespace eSya.ProductSetup.DL.Repository
                          {
                              TEventID = t.TeventId,
                              TEventDesc = t.TeventDesc,
+                             MaxSequenceNumber=t.MaxSequenceNumber,
                              ActiveStatus = t.ActiveStatus
                          }).ToListAsync();
 
@@ -68,6 +69,7 @@ namespace eSya.ProductSetup.DL.Repository
                         {
                             TeventId = obj.TEventID,
                             TeventDesc = obj.TEventDesc,
+                            MaxSequenceNumber=obj.MaxSequenceNumber,
                             ActiveStatus = obj.ActiveStatus,
                             FormId = obj.FormID,
                             CreatedBy = obj.UserID,
@@ -118,6 +120,7 @@ namespace eSya.ProductSetup.DL.Repository
                         }
 
                         sm_tevent.TeventDesc = obj.TEventDesc;
+                        sm_tevent.MaxSequenceNumber = obj.MaxSequenceNumber;
                         sm_tevent.ActiveStatus = obj.ActiveStatus;
                         sm_tevent.ModifiedBy = obj.UserID;
                         sm_tevent.ModifiedOn = DateTime.Now;
